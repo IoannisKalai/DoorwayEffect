@@ -6,7 +6,7 @@ public class Backpack : MonoBehaviour
 {
 
     private bool isEmpty = true;
-    private GameObject ItemInBackback;
+    private GameObject ItemInBackback = null;
     private bool handInBag = false;
     private string BackpackItemName;
     private Color BackpackItemColor;
@@ -20,14 +20,24 @@ public class Backpack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (ItemInBackback != null)
+        {
+            if (ItemInBackback.GetComponent<OVRGrabbable>().isGrabbed)
+            {
+                ItemInBackback.GetComponent<Rigidbody>().useGravity = false;
+            }
+            else
+            {
+                ItemInBackback.GetComponent<Rigidbody>().useGravity = true;
+            }
+        }
+
         
     }
 
     void OnTriggerStay(Collider other)
     {
-        // (other.gameObject.GetComponent<OVRGrabbable>().isGrabbed)
-        Debug.Log("Inside Collider");
-       
+        Debug.Log("Inside Collider");  
         if (OVRInput.GetUp(OVRInput.RawButton.RHandTrigger) && isEmpty == true && other.gameObject.tag != "Hand" && handInBag == false)
         {
             Debug.Log("ITEM IN BAG" + other.gameObject.name);
@@ -46,47 +56,41 @@ public class Backpack : MonoBehaviour
             other.gameObject.transform.SetParent(this.gameObject.transform, true);
             other.gameObject.transform.position = this.gameObject.transform.position;
             other.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+            ItemInBackback = other.gameObject;
+            //other.gameObject.GetComponent<OVRGrabbable>().grabPoints
 
            handInBag = true;
         }
-        else if (isEmpty == false && other.gameObject.GetComponent<OVRGrabbable>().isGrabbed)
+        else if (isEmpty == false && OVRInput.GetDown(OVRInput.RawButton.RHandTrigger))
         {
             Debug.Log("Create New Item");
-            /*
-            //ItemInBackback.SetActive(true);
-            itemInstance = Instantiate(Resources.Load("InteractObjects/" + BackpackItemName)) as GameObject;
-			//itemInstance.transform.SetParent(this.gameObject.transform);
-			//itemInstance.transform.position = this.gameObject.transform.position;
-			itemInstance.transform.position = GameObject.Find("CustomHandRight").transform.position;
-            itemInstance.transform.SetParent(GameObject.Find("CustomHandRight").transform);
-            itemInstance.AddComponent<BoxCollider>();
-            itemInstance.GetComponent<OVRGrabbable>().GrabBegin(GameObject.Find("CustomHandRight").GetComponent<OVRGrabber>(), GameObject.Find("GrabVolumeBigR").GetComponent<Collider>());
 
-            itemInstance.GetComponent<Rigidbody>().isKinematic = false;
-            itemInstance.GetComponent<Rigidbody>().useGravity = false;
-            itemInstance.GetComponent<Renderer>().material.color = BackpackItemColor;
-            */
+            other.gameObject.transform.position = Hand.transform.position;
             other.gameObject.transform.SetParent(null);
-            other.gameObject.GetComponent<Rigidbody>().isKinematic = false;
-            //other.gameObject.GetComponent<Rigidbody>().useGravity = true;
+            //other.gameObject.GetComponent<Rigidbody>().isKinematic = false;
+           
             isEmpty = true;
         }
-
 
     }
 
 	private void OnTriggerExit(Collider other)
 	{
-        handInBag = false;        
+        handInBag = false;
+        if (other.gameObject == ItemInBackback)
+        {
+            ItemInBackback = null;
+        }
     }
-	
-	private bool BackbackHasItem()
-    {
-        return true;
-    }
 
+	private void OnTriggerEnter(Collider other)
+	{
+        if (other.gameObject.name == Hand.name && isEmpty == false)
+        {
+           
+        }
 
+        
 
-
-    
+	}
 }
