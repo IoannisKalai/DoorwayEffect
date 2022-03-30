@@ -85,12 +85,8 @@ public class Backpack : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
-        if (other.gameObject.name == Hand.name && isEmpty == false)
-        {
-           
-        }
-
-        
+       
+          
 
 	}
 }
