@@ -264,7 +264,7 @@ GameObject:
   - component: {fileID: 135598845}
   - component: {fileID: 135598844}
   m_Layer: 0
-  m_Name: Cube (9)
+  m_Name: WallRoomA2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -359,7 +359,7 @@ GameObject:
   - component: {fileID: 172287074}
   - component: {fileID: 172287073}
   m_Layer: 0
-  m_Name: Cube (10)
+  m_Name: WallRoomB2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -854,7 +854,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &535784977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -864,16 +864,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 535784976}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4feda1be43f27e42b11ec937955b011, type: 3}
+  m_Script: {fileID: 11500000, guid: a0989742179f0ee43b8b1f9fed7a414e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shapes: []
-  colors:
-  - {r: 0, g: 0, b: 0, a: 1}
-  - {r: 0, g: 0, b: 1, a: 1}
-  - {r: 0, g: 1, b: 0, a: 1}
-  - {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  createdObjects: []
+  roomGeneratorIndex: 0
+  roomA:
+  - {fileID: 2114173268}
+  - {fileID: 135598842}
+  - {fileID: 602612031}
+  - {fileID: 1955507348}
+  roomB:
+  - {fileID: 1627739901}
+  - {fileID: 172287071}
+  - {fileID: 1424441250}
+  - {fileID: 1890496368}
+  roomWeAreInside: 66
 --- !u!4 &535784978
 Transform:
   m_ObjectHideFlags: 0
@@ -901,7 +906,7 @@ GameObject:
   - component: {fileID: 602612034}
   - component: {fileID: 602612033}
   m_Layer: 0
-  m_Name: Cube (12)
+  m_Name: WallRoomA3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1758,7 +1763,7 @@ GameObject:
   - component: {fileID: 1424441253}
   - component: {fileID: 1424441252}
   m_Layer: 0
-  m_Name: Cube (11)
+  m_Name: WallRoomB3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2696,7 +2701,7 @@ GameObject:
   - component: {fileID: 1627739904}
   - component: {fileID: 1627739903}
   m_Layer: 0
-  m_Name: Cube (6)
+  m_Name: WallRoomB1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3272,7 +3277,7 @@ GameObject:
   - component: {fileID: 1890496371}
   - component: {fileID: 1890496370}
   m_Layer: 0
-  m_Name: Cube (13)
+  m_Name: CeilingRoomB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3460,7 +3465,7 @@ GameObject:
   - component: {fileID: 1955507351}
   - component: {fileID: 1955507350}
   m_Layer: 0
-  m_Name: Cube (14)
+  m_Name: CeilingRoomA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3963,7 +3968,7 @@ GameObject:
   - component: {fileID: 2114173271}
   - component: {fileID: 2114173270}
   m_Layer: 0
-  m_Name: Cube (5)
+  m_Name: WallRoomA1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
