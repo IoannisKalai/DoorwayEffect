@@ -27,7 +27,7 @@ public class Backpack : MonoBehaviour
                 ItemInBackback.GetComponent<Rigidbody>().useGravity = false;
             }
             else
-            {
+            {                
                 ItemInBackback.GetComponent<Rigidbody>().useGravity = true;
             }
         }
@@ -37,7 +37,10 @@ public class Backpack : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        Debug.Log("Inside Collider");  
+        if (other.gameObject.tag == "Hand")
+        {
+            Debug.Log(" Hand Inside Collider");
+        }
         if (OVRInput.GetUp(OVRInput.RawButton.RHandTrigger) && isEmpty == true && other.gameObject.tag != "Hand" && handInBag == false)
         {
             Debug.Log("ITEM IN BAG" + other.gameObject.name);
@@ -61,12 +64,14 @@ public class Backpack : MonoBehaviour
 
            handInBag = true;
         }
-        else if (isEmpty == false && OVRInput.GetDown(OVRInput.RawButton.RHandTrigger))
+        else if (isEmpty == false && OVRInput.GetDown(OVRInput.RawButton.RHandTrigger) && other.gameObject.tag == "Hand")
         {
             Debug.Log("Create New Item");
 
-            other.gameObject.transform.position = Hand.transform.position;
+            other.gameObject.transform.position = Hand.transform.position;           
             other.gameObject.transform.SetParent(null);
+            
+           
             //other.gameObject.GetComponent<Rigidbody>().isKinematic = false;
            
             isEmpty = true;
