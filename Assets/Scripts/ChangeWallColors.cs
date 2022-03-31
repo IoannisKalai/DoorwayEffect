@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class ChangeWallColors : MonoBehaviour
 {
-    private Color[] wallColors;
-    public int roomGeneratorIndex;
-    public GameObject[] roomA;
-    public GameObject[] roomB;
+    public Color[] wallColors;
+    public int roomGeneratorIndex = 0;
+    public GameObject[] roomA = null;
+    public GameObject[] roomB = null;
     public char roomWeAreInside = 'B';
+
     // Start is called before the first frame update
     void Start()
-    {
-        wallColors = new Color[7] { Color.red, Color.blue, Color.green, Color.grey, Color.yellow, Color.magenta, Color.white };
-        roomGeneratorIndex = 0;
+    {     
+        
     }
 
     // Update is called once per frame
@@ -26,9 +26,10 @@ public class ChangeWallColors : MonoBehaviour
     {
         if (roomWeAreInside == 'B')
         {
+            Debug.Log(wallColors);
             for (int i = 0; i < roomA.Length; i++)
-            {
-                roomA[i].GetComponent<Renderer>().material.color = wallColors[roomGeneratorIndex];
+            {               
+                roomA[i].GetComponent<Renderer>().material.color = wallColors[roomGeneratorIndex];               
             }
         }
         else if (roomWeAreInside == 'A')

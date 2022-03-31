@@ -44,15 +44,18 @@ public class CreateRandomObject : MonoBehaviour
            // Debug.Log("Tag set to table1");
             obj.gameObject.tag = "Table1";
             GameObject.Find("GameObject").GetComponent<ChangeWallColors>().roomWeAreInside = 'A';
+            GameObject.Find("GameObject").GetComponent<ChangeWallColors>().ChangeColor();
+            GameObject.Find("GameObject").GetComponent<ChangeWallColors>().roomGeneratorIndex += 1;
         }
-        else
+        else if(this.gameObject.name == "Table2")
         {
            // Debug.Log("Tag set to table2");
             obj.gameObject.tag = "Table2";
             GameObject.Find("GameObject").GetComponent<ChangeWallColors>().roomWeAreInside = 'B';
+            GameObject.Find("GameObject").GetComponent<ChangeWallColors>().ChangeColor();
+            GameObject.Find("GameObject").GetComponent<ChangeWallColors>().roomGeneratorIndex += 1;
         }
-        GameObject.Find("GameObject").GetComponent<ChangeWallColors>().ChangeColor();
-        GameObject.Find("GameObject").GetComponent<ChangeWallColors>().roomGeneratorIndex += 1;
+       
         hasEntered = false;       
        
         return obj;         
