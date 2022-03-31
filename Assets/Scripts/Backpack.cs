@@ -24,74 +24,50 @@ public class Backpack : MonoBehaviour
         {
             if (ItemInBackback.GetComponent<OVRGrabbable>().isGrabbed)
             {
-                ItemInBackback.GetComponent<Rigidbody>().useGravity = false;
+                ItemInBackback.GetComponent<Rigidbody>().useGravity = false;            
             }
             else
             {                
-                ItemInBackback.GetComponent<Rigidbody>().useGravity = true;
+                ItemInBackback.GetComponent<Rigidbody>().useGravity = true;                
             }
-        }
-
-        
+        }        
     }
 
     void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == "Hand")
-        {
-            Debug.Log(" Hand Inside Collider");
-        }
-        if (OVRInput.GetUp(OVRInput.RawButton.RHandTrigger) && isEmpty == true && other.gameObject.tag != "Hand" && handInBag == false)
+        if (OVRInput.GetUp(OVRInput.RawButton.RHandTrigger) && isEmpty == true && other.gameObject.tag != "Hand")
         {
             Debug.Log("ITEM IN BAG" + other.gameObject.name);
             isEmpty = false;
 
-            /*
-             BackpackItemName = other.gameObject.name;
-             BackpackItemColor = other.gameObject.GetComponent<Renderer>().material.color;
-             Destroy(other.gameObject);
-
-             ItemInBackback = other.gameObject;
-             ItemInBackback.transform.SetParent(this.transform);
-             ItemInBackback.GetComponent<MeshRenderer>()
-             //ItemInBackback.SetActive(false);
-             */
             other.gameObject.transform.SetParent(this.gameObject.transform, true);
             other.gameObject.transform.position = this.gameObject.transform.position;
             other.gameObject.GetComponent<Rigidbody>().isKinematic = true;
-            ItemInBackback = other.gameObject;
-            //other.gameObject.GetComponent<OVRGrabbable>().grabPoints
-
-           handInBag = true;
+            ItemInBackback = other.gameObject;               
         }
-        else if (isEmpty == false && OVRInput.GetDown(OVRInput.RawButton.RHandTrigger) && other.gameObject.tag == "Hand")
+        if (isEmpty == false && other.gameObject.tag == "Hand")
         {
-            Debug.Log("Create New Item");
-
-            other.gameObject.transform.position = Hand.transform.position;           
-            other.gameObject.transform.SetParent(null);
-            
-           
-            //other.gameObject.GetComponent<Rigidbody>().isKinematic = false;
-           
-            isEmpty = true;
+            Debug.Log("Hand In Collider With item");
+            ItemInBackback.transform.position = other.gameObject.transform.position;
         }
 
     }
 
 	private void OnTriggerExit(Collider other)
-	{
-        handInBag = false;
+	{       
         if (other.gameObject == ItemInBackback)
         {
-            ItemInBackback = null;
+            isEmpty = true;
         }
     }
 
 	private void OnTriggerEnter(Collider other)
 	{
-       
-          
+        if (isEmpty == false && other.gameObject.tag == "Hand")
+        {
+            Debug.Log("Hand In Collider With item");
+            ItemInBackback.transform.position = other.gameObject.transform.position;           
+        }
 
-	}
+    }
 }
