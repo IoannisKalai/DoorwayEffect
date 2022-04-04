@@ -47,9 +47,9 @@ public class Backpack : MonoBehaviour
             ItemInBackback = other.gameObject;               
         }
         if (isEmpty == false && other.gameObject.tag == "Hand")
-        {
-            Debug.Log("Hand In Collider With item");
+        {            
             ItemInBackback.transform.position = other.gameObject.transform.position;
+            ItemInBackback.GetComponent<MeshRenderer>().enabled = false;
         }
 
     }
