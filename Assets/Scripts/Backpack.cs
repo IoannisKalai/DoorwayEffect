@@ -35,7 +35,7 @@ public class Backpack : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        if (OVRInput.GetUp(OVRInput.RawButton.RHandTrigger) && isEmpty == true && other.gameObject.tag != "Hand" && other.gameObject.tag == "GrabbableObject" )
+        if (OVRInput.GetUp(OVRInput.RawButton.RHandTrigger) && isEmpty == true && other.gameObject.tag != "Hand" && (other.gameObject.tag == "Table1" || other.gameObject.tag == "Table2"))
         {
             Debug.Log("ITEM IN BAG" + other.gameObject.name);
             isEmpty = false;

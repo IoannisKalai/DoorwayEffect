@@ -69,6 +69,7 @@ public class CreateRandomObject : MonoBehaviour
         }
 
         doorWing.transform.eulerAngles = startingRotation;
+        doorWing.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
         doorWing.GetComponent<Rigidbody>().velocity = Vector3.zero;
         hasEntered = false;       
        
