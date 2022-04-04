@@ -17,7 +17,7 @@ TagManager:
   - GrabbableHandler
   - PrefabGrabbableObjects
   - Backpack
-  - 
+  - Door
   - 
   - 
   - 
@@ -43,7 +43,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: New Layer
-    uniqueID: 2418876483
     locked: 0

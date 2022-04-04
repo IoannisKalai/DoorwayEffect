@@ -8,10 +8,12 @@ public class CreateRandomObject : MonoBehaviour
     public Color[] colors;
     public List<GameObject> createdObjects;
     private bool hasEntered;
+    public Canvas endText;
     void Start()
     {
         shapes = Resources.LoadAll<GameObject>("InteractObjects");
         colors = new Color[7] { Color.red, Color.blue, Color.green, Color.grey, Color.yellow, Color.magenta, Color.white };
+        endText.enabled = false;
         if (this.gameObject.name.Equals("Table2"))
         {
             createdObjects.Add(CreateObject());
@@ -21,7 +23,7 @@ public class CreateRandomObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+        
     }
 
     GameObject CreateObject()
@@ -51,9 +53,19 @@ public class CreateRandomObject : MonoBehaviour
             obj.gameObject.tag = "Table2";
             GameObject.Find("GameObject").GetComponent<ChangeWallColors>().roomWeAreInside = 'B';
         }
-        GameObject.Find("GameObject").GetComponent<ChangeWallColors>().ChangeColor();
-        GameObject.Find("GameObject").GetComponent<ChangeWallColors>().roomGeneratorIndex += 1;
-        GameObject.Find("GameObject").GetComponent<SpawnRoomObjects>().SpawnRoomVariation();
+
+        if (GameObject.Find("GameObject").GetComponent<ChangeWallColors>().roomGeneratorIndex < 7)
+        {
+            GameObject.Find("GameObject").GetComponent<ChangeWallColors>().ChangeColor();
+            GameObject.Find("GameObject").GetComponent<SpawnRoomObjects>().SpawnRoomVariation();
+        }
+        else
+        {
+            endText.enabled = true;
+        }
+       
+
+       
         hasEntered = false;       
        
         return obj;         
