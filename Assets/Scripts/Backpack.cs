@@ -35,7 +35,7 @@ public class Backpack : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        if (OVRInput.GetUp(OVRInput.RawButton.RHandTrigger) && isEmpty == true && other.gameObject.tag != "Hand")
+        if (OVRInput.GetUp(OVRInput.RawButton.RHandTrigger) && isEmpty == true && other.gameObject.tag != "Hand" && other.gameObject.tag == "GrabbableObject" )
         {
             Debug.Log("ITEM IN BAG" + other.gameObject.name);
             isEmpty = false;
@@ -43,6 +43,7 @@ public class Backpack : MonoBehaviour
             other.gameObject.transform.SetParent(this.gameObject.transform, true);
             other.gameObject.transform.position = this.gameObject.transform.position;
             other.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+            other.gameObject.GetComponent<MeshRenderer>().enabled = false;
             ItemInBackback = other.gameObject;               
         }
         if (isEmpty == false && other.gameObject.tag == "Hand")
@@ -58,6 +59,7 @@ public class Backpack : MonoBehaviour
         if (other.gameObject == ItemInBackback)
         {
             isEmpty = true;
+            other.gameObject.GetComponent<MeshRenderer>().enabled = true;
         }
     }
 

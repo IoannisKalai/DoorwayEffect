@@ -9,8 +9,12 @@ public class CreateRandomObject : MonoBehaviour
     public List<GameObject> createdObjects;
     private bool hasEntered;
     public Canvas endText;
+    public GameObject doorWing;
+    private Vector3 startingRotation;
     void Start()
     {
+        startingRotation = doorWing.transform.eulerAngles;
+        Debug.Log(startingRotation);
         shapes = Resources.LoadAll<GameObject>("InteractObjects");
         colors = new Color[7] { Color.red, Color.blue, Color.green, Color.grey, Color.yellow, Color.magenta, Color.white };
         endText.enabled = false;
@@ -63,9 +67,9 @@ public class CreateRandomObject : MonoBehaviour
         {
             endText.enabled = true;
         }
-       
 
-       
+        doorWing.transform.eulerAngles = startingRotation;
+        doorWing.GetComponent<Rigidbody>().velocity = Vector3.zero;
         hasEntered = false;       
        
         return obj;         

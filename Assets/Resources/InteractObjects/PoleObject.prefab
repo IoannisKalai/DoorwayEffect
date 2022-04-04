@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -8608736375468292221}
   m_Layer: 7
   m_Name: PoleObject
-  m_TagString: Untagged
+  m_TagString: GrabbableObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
