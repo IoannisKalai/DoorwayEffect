@@ -1289,6 +1289,7 @@ GameObject:
   - component: {fileID: 535784978}
   - component: {fileID: 535784977}
   - component: {fileID: 535784979}
+  - component: {fileID: 535784980}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -1370,6 +1371,19 @@ MonoBehaviour:
   - {fileID: 8556520361042223547, guid: 8bfa5f228b8a1864c99cda61d4103904, type: 3}
   roomsCreated: []
   roomIndex: 0
+--- !u!114 &535784980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 535784976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5993a8032a861f04085376d748f388dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomSequence: 
 --- !u!1 &567919996
 GameObject:
   m_ObjectHideFlags: 0
@@ -2733,7 +2747,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0.09, z: 0}
   m_Axis: {x: 0, y: -1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.04505959, y: 0.19124007, z: 0.46664003}
+  m_ConnectedAnchor: {x: -0.04505959, y: 0.19124007, z: 0.46664}
   m_UseSpring: 1
   m_Spring:
     spring: 0
