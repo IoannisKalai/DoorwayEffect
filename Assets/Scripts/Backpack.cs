@@ -35,6 +35,7 @@ public class Backpack : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
+        
         if (OVRInput.GetUp(OVRInput.RawButton.RHandTrigger) && isEmpty == true && other.gameObject.tag != "Hand" && (other.gameObject.tag == "Table1" || other.gameObject.tag == "Table2"))
         {
             Debug.Log("ITEM IN BAG" + other.gameObject.name);
@@ -46,12 +47,11 @@ public class Backpack : MonoBehaviour
             other.gameObject.GetComponent<MeshRenderer>().enabled = false;
             ItemInBackback = other.gameObject;               
         }
-        if (isEmpty == false && other.gameObject.tag == "Hand")
+        else if (isEmpty == false && other.gameObject.tag == "Hand")
         {            
             ItemInBackback.transform.position = other.gameObject.transform.position;
             ItemInBackback.GetComponent<MeshRenderer>().enabled = false;
         }
-
     }
 
 	private void OnTriggerExit(Collider other)
@@ -68,7 +68,14 @@ public class Backpack : MonoBehaviour
         if (isEmpty == false && other.gameObject.tag == "Hand")
         {
             Debug.Log("Hand In Collider With item");
-            ItemInBackback.transform.position = other.gameObject.transform.position;           
+            ItemInBackback.transform.position = other.gameObject.transform.position;
+            ItemInBackback.GetComponent<MeshRenderer>().enabled = false;
+        }
+
+        if (other.gameObject.tag == "Table1" || other.gameObject.tag == "Table2")
+        {
+            Debug.Log("Inside " + other.gameObject.name);
+            other.gameObject.GetComponent<MeshRenderer>().enabled = false;
         }
 
     }
