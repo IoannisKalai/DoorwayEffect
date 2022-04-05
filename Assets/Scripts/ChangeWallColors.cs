@@ -9,19 +9,6 @@ public class ChangeWallColors : MonoBehaviour
     public GameObject[] roomA = null;
     public GameObject[] roomB = null;
     public char roomWeAreInside = 'A';
-
-    // Start is called before the first frame update
-    void Start()
-    {
-    
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void ChangeColor()
     {
         if (roomWeAreInside == 'B')

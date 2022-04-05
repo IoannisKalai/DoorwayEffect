@@ -7,20 +7,7 @@ public class SpawnRoomObjects : MonoBehaviour
     public GameObject[] roomVariations;
     public List<GameObject> roomsCreated = new List<GameObject>();
     public int roomIndex;
-    private int removeIndex = 0;
-    //VARIABLES FOR SCALES ALSO
-    // Start is called before the first frame update
-    public void Start()
-    {
-        SpawnRoomVariation();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    private int removeIndex = 0;    
     public void SpawnRoomVariation()
     {
         Debug.Log("Spawn Room " + roomIndex);

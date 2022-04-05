@@ -24,12 +24,6 @@ public class CreateRandomObject : MonoBehaviour
         }        
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     GameObject CreateObject()
     {
         int chooseItem = Random.Range(0, shapes.Length);        
