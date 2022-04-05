@@ -5,25 +5,40 @@ using UnityEngine;
 public class DoorGrabbable : OVRGrabbable
 {
 	public Transform handler;
-
+	private Transform parent;
+	public void Start()
+	{
+		parent = this.transform.parent;
+	}
 	public override void GrabEnd(Vector3 linearVelocity, Vector3 angularVelocity)
 	{
 		base.GrabEnd(Vector3.zero, Vector3.zero);
 		transform.position = handler.transform.position;
 		transform.rotation = handler.transform.rotation;
+		gameObject.GetComponent<Rigidbody>().isKinematic = true;
 
+		
 		Rigidbody rbhandler = handler.GetComponent<Rigidbody>();
 		rbhandler.velocity = Vector3.zero;
 		rbhandler.angularVelocity = Vector3.zero;
-
+				
 	}
+
+	
 
 	private void Update()
 	{
-		if (Vector3.Distance(handler.position, transform.position) > 1.0f)
+		
+		if (Vector3.Distance(handler.position, transform.position) > 0.4f)
 		{
 			grabbedBy.ForceRelease(this);
 		}
+		
 
+		if (this.isGrabbed == false)
+		{
+			this.gameObject.transform.SetParent(parent);
+		}
+		
 	}
 }

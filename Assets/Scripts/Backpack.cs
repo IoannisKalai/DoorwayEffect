@@ -24,7 +24,7 @@ public class Backpack : MonoBehaviour
         {
             if (ItemInBackback.GetComponent<OVRGrabbable>().isGrabbed)
             {
-                ItemInBackback.GetComponent<Rigidbody>().useGravity = false;            
+                ItemInBackback.GetComponent<Rigidbody>().useGravity = false;  
             }
             else
             {                
@@ -72,11 +72,12 @@ public class Backpack : MonoBehaviour
             ItemInBackback.GetComponent<MeshRenderer>().enabled = false;
         }
 
+        /*
         if (other.gameObject.tag == "Table1" || other.gameObject.tag == "Table2")
         {
             Debug.Log("Inside " + other.gameObject.name);
             other.gameObject.GetComponent<MeshRenderer>().enabled = false;
         }
-
+        */
     }
 }

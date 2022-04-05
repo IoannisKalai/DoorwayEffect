@@ -67,10 +67,13 @@ public class CreateRandomObject : MonoBehaviour
         {
             endText.enabled = true;
         }
-
+        
         doorWing.transform.eulerAngles = startingRotation;
         doorWing.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
         doorWing.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        doorWing.GetComponent<Rigidbody>().freezeRotation = true;
+        doorWing.GetComponent<Rigidbody>().freezeRotation = false;
+        
         hasEntered = false;       
        
         return obj;         
