@@ -7,7 +7,6 @@ public class Backpack : MonoBehaviour
 
     private bool isEmpty = true;
     private GameObject ItemInBackback = null;
-    private bool handInBag = false;
     private string BackpackItemName;
     private Color BackpackItemColor;
     private GameObject Hand;
