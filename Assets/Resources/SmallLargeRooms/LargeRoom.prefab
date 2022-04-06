@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5387160046198939561}
   - component: {fileID: 5387160046198939566}
   m_Layer: 0
-  m_Name: WallRoomA1
+  m_Name: Wall3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -144,7 +144,7 @@ GameObject:
   - component: {fileID: 5387160046604971051}
   - component: {fileID: 5387160046604971048}
   m_Layer: 0
-  m_Name: Cube (1)
+  m_Name: Ceilling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -239,7 +239,7 @@ GameObject:
   - component: {fileID: 5387160047062590121}
   - component: {fileID: 5387160047062590126}
   m_Layer: 0
-  m_Name: WallRoomB1
+  m_Name: Wall4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -334,7 +334,7 @@ GameObject:
   - component: {fileID: 5387160047704568963}
   - component: {fileID: 5387160047704568960}
   m_Layer: 0
-  m_Name: Cube (3)
+  m_Name: Wall2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -429,7 +429,7 @@ GameObject:
   - component: {fileID: 5387160047801949836}
   - component: {fileID: 5387160047801949837}
   m_Layer: 0
-  m_Name: Cube (2)
+  m_Name: Wall1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

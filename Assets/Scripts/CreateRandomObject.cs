@@ -35,6 +35,11 @@ public class CreateRandomObject : MonoBehaviour
         GameObject obj = Instantiate(shapes[chooseItem], blockCentre, Quaternion.identity) as GameObject;
         obj.GetComponent<Renderer>().material.color = colors[Random.Range(0, colors.Length)];
 
+        //Spawn Small/Large Room
+        int roomInd = GameObject.Find("GameObject").GetComponent<SLRoomSpawner>().roomIndex;       
+        char roomToCreate = GameObject.Find("GameObject").GetComponent<SLRoomSpawner>().roomSequence[roomInd];
+        GameObject.Find("GameObject").GetComponent<SLRoomSpawner>().SpawnRoom(roomToCreate);
+
         if (this.gameObject.name == "Table1")
         {
            // Debug.Log("Tag set to table1");
@@ -47,23 +52,11 @@ public class CreateRandomObject : MonoBehaviour
             obj.gameObject.tag = "Table2";
             GameObject.Find("GameObject").GetComponent<ChangeWallColors>().roomWeAreInside = 'B';
         }
-        /*
-        if (GameObject.Find("GameObject").GetComponent<ChangeWallColors>().roomGeneratorIndex < 7)
-        {
-            GameObject.Find("GameObject").GetComponent<ChangeWallColors>().ChangeColor();
-            GameObject.Find("GameObject").GetComponent<SpawnRoomObjects>().SpawnRoomVariation();
-        }
-        else
-        {
-            endText.enabled = true;
-        }
-        */
-        Debug.Log("---------------");
-        int roomInd = GameObject.Find("GameObject").GetComponent<SLRoomSpawner>().roomIndex;
-        Debug.Log(GameObject.Find("GameObject").GetComponent<SLRoomSpawner>().roomSequence.Count + "---------------");
-        char roomToCreate = GameObject.Find("GameObject").GetComponent<SLRoomSpawner>().roomSequence[roomInd];
+      
+        GameObject.Find("GameObject").GetComponent<ChangeWallColors>().ChangeColor(roomToCreate);
+        GameObject.Find("GameObject").GetComponent<SpawnRoomObjects>().SpawnRoomVariation();
+     
         
-        GameObject.Find("GameObject").GetComponent<SLRoomSpawner>().SpawnRoom(roomToCreate);
         
         /*
         doorWing.transform.eulerAngles = startingRotation;
