@@ -8,6 +8,8 @@ TagManager:
   - Table2
   - Table1
   - GrabbableObject
+  - LargeRoom
+  - SmallRoom
   layers:
   - Default
   - TransparentFX

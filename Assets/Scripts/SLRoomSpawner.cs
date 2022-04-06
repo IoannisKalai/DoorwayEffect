@@ -8,10 +8,15 @@ public class SLRoomSpawner : MonoBehaviour
     private char[] largeSmallChars = { 'S', 'L' };
     private int numberOfSmallRooms = 0;
     private int numberOfLargeRooms = 0;
+    public int roomIndex;
+    private GameObject[] roomPrefabs;
+    private GameObject prevRoom;
     // Start is called before the first frame update
     void Start()
     {
-        CreateRoomSequence();
+        roomPrefabs = Resources.LoadAll<GameObject>("SmallLargeRooms");
+        roomIndex = 0;
+        CreateRoomSequence();        
     }
 
     // Update is called once per frame
@@ -33,8 +38,7 @@ public class SLRoomSpawner : MonoBehaviour
                     if (roomSequence[j] == lastChar)
                     {
                         sameChar++;                       
-                    }
-                   
+                    }                   
                 }
                 if (sameChar > 3)
                 {
@@ -71,5 +75,24 @@ public class SLRoomSpawner : MonoBehaviour
 		}
         Debug.Log("Number of small rooms: " + numberOfSmallRooms);
         Debug.Log("Number of large rooms: " + numberOfLargeRooms);
+    }
+
+    public void SpawnRoom(char roomIndicator)
+    {        
+        if (roomIndex > 0)
+        {
+            Debug.Log("Destroy Prev Room");
+            Destroy(prevRoom);
+        }        
+        if (roomIndicator == 'L')
+        {
+          prevRoom = Instantiate(roomPrefabs[0]);
+        }
+        else if (roomIndicator == 'S')
+        {
+          prevRoom = Instantiate(roomPrefabs[1]);
+        }
+       
+        roomIndex++;       
     }
 }

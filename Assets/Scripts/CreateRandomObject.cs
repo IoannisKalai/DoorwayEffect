@@ -17,7 +17,7 @@ public class CreateRandomObject : MonoBehaviour
         Debug.Log(startingRotation);
         shapes = Resources.LoadAll<GameObject>("InteractObjects");
         colors = new Color[7] { Color.red, Color.blue, Color.green, Color.grey, Color.yellow, Color.magenta, Color.white };
-        endText.enabled = false;
+        endText.enabled = false;       
         if (this.gameObject.name.Equals("Table2"))
         {
             createdObjects.Add(CreateObject());
@@ -25,7 +25,7 @@ public class CreateRandomObject : MonoBehaviour
     }
 
     GameObject CreateObject()
-    {
+    {       
         int chooseItem = Random.Range(0, shapes.Length);        
         float tableTop = this.transform.position.y + this.GetComponent<Renderer>().bounds.size.y / 2;
         
@@ -35,10 +35,6 @@ public class CreateRandomObject : MonoBehaviour
         GameObject obj = Instantiate(shapes[chooseItem], blockCentre, Quaternion.identity) as GameObject;
         obj.GetComponent<Renderer>().material.color = colors[Random.Range(0, colors.Length)];
 
-        /*
-        Debug.Log("Color" + obj.GetComponent<Renderer>().material.color);
-        Debug.Log("OBJECT CREATED");
-        */
         if (this.gameObject.name == "Table1")
         {
            // Debug.Log("Tag set to table1");
@@ -51,7 +47,7 @@ public class CreateRandomObject : MonoBehaviour
             obj.gameObject.tag = "Table2";
             GameObject.Find("GameObject").GetComponent<ChangeWallColors>().roomWeAreInside = 'B';
         }
-
+        /*
         if (GameObject.Find("GameObject").GetComponent<ChangeWallColors>().roomGeneratorIndex < 7)
         {
             GameObject.Find("GameObject").GetComponent<ChangeWallColors>().ChangeColor();
@@ -61,13 +57,22 @@ public class CreateRandomObject : MonoBehaviour
         {
             endText.enabled = true;
         }
+        */
+        Debug.Log("---------------");
+        int roomInd = GameObject.Find("GameObject").GetComponent<SLRoomSpawner>().roomIndex;
+        Debug.Log(GameObject.Find("GameObject").GetComponent<SLRoomSpawner>().roomSequence.Count + "---------------");
+        char roomToCreate = GameObject.Find("GameObject").GetComponent<SLRoomSpawner>().roomSequence[roomInd];
         
+        GameObject.Find("GameObject").GetComponent<SLRoomSpawner>().SpawnRoom(roomToCreate);
+        
+        /*
         doorWing.transform.eulerAngles = startingRotation;
         doorWing.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
         doorWing.GetComponent<Rigidbody>().velocity = Vector3.zero;
         doorWing.GetComponent<Rigidbody>().freezeRotation = true;
         doorWing.GetComponent<Rigidbody>().freezeRotation = false;
-        
+        */
+
         hasEntered = false;       
        
         return obj;         
