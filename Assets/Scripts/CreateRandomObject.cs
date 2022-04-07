@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +8,7 @@ public class CreateRandomObject : MonoBehaviour
     public List<GameObject> createdObjects;
     private bool hasEntered;
     public Canvas endText;
+ 
     //public GameObject doorWing;
     private Vector3 startingRotation;
     void Start()
@@ -19,20 +19,39 @@ public class CreateRandomObject : MonoBehaviour
         endText.enabled = false;       
         if (this.gameObject.name.Equals("Table2"))
         {
-            createdObjects.Add(CreateObject());
+            createdObjects.Add(CreateObjects());
         }        
     }
 
-    GameObject CreateObject()
+    GameObject CreateObjects()
     {       
-        int chooseItem = Random.Range(0, shapes.Length);        
+        int chooseItem = Random.Range(0, shapes.Length);
+        List<int> ItemsOnTable = new List<int>();
+        GameObject obj = null;
         float tableTop = this.transform.position.y + this.GetComponent<Renderer>().bounds.size.y / 2;
-        
-        Vector3 blockCentre = new Vector3(this.transform.position.x, tableTop + this.GetComponent<Renderer>().bounds.size.y / 2, this.transform.position.z + this.transform.right.z * this.GetComponent<Renderer>().bounds.size.z/5);
-
-        
-        GameObject obj = Instantiate(shapes[chooseItem], blockCentre, Quaternion.identity) as GameObject;
-        obj.GetComponent<Renderer>().material.color = colors[Random.Range(0, colors.Length)];
+        float posx = 0;
+        float posz = 0;
+        Vector3 blockCentre = new Vector3(this.transform.position.x - posx, tableTop, this.transform.position.z);
+       
+        for (int i = 0; i < 6; i++)
+        {
+            chooseItem = Random.Range(0, shapes.Length);
+            while (ItemsOnTable.Contains(chooseItem))
+            {
+                chooseItem = Random.Range(0, shapes.Length);
+            }
+            if (i > 3)
+            {
+                posz += 0.25f;
+                posx = 0;
+            }
+            Vector3 position = new Vector3(posx , this.GetComponent<Renderer>().bounds.size.y / 2, this.transform.right.z * this.GetComponent<Renderer>().bounds.size.z / 5 + posz);
+            obj = Instantiate(shapes[chooseItem], blockCentre + position, Quaternion.identity) as GameObject;
+            obj.GetComponent<Renderer>().material.color = colors[Random.Range(0, colors.Length)];
+            posx += 0.25f;
+            ItemsOnTable.Add(chooseItem);
+            Debug.Log("ITEMCSDC");
+        }
 
         //Spawn Small/Large Room
         int roomInd = GameObject.Find("GameObject").GetComponent<SLRoomSpawner>().roomIndex;       
@@ -78,7 +97,7 @@ public class CreateRandomObject : MonoBehaviour
         {
            // Debug.Log(collision.gameObject.tag + " COLLIDES WITH " + this.gameObject.name);
             hasEntered = true;
-            CreateObject();
+            CreateObjects();
             // FOR NOW THE OBJECT IS DESTROYED. THIS WILL CHANGE
             Destroy(collision.gameObject);
         }           
