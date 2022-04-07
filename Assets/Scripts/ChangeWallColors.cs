@@ -8,8 +8,10 @@ public class ChangeWallColors : MonoBehaviour
     public int roomGeneratorIndex;
     public List<GameObject> roomA;
     public List<GameObject> roomB;
+    public List<GameObject> LargeRoom;
     private GameObject[] roomPrefabs;
     public char roomWeAreInside = 'A';
+    public List<Color> colorsCreated;
 
     public void Start()
     {
@@ -19,19 +21,16 @@ public class ChangeWallColors : MonoBehaviour
     {
         if (roomType == 'S')
         {
-            int randomColor1 = Random.Range(0, wallColors.Length);
-            int randomColor2 = Random.Range(0, wallColors.Length);
-            while (randomColor1 == randomColor2)
-            {
-                randomColor1 = Random.Range(0, wallColors.Length);
-            }
+            Color randomColor1 = chooseColor();
+            Color randomColor2 = chooseColor();
+
             for (int i = 0; i < roomA.Count; i++)
             {
-                roomA[i].GetComponent<Renderer>().material.color = wallColors[randomColor1];
+                roomA[i].GetComponent<Renderer>().material.color = randomColor1;
             }
             for (int i = 0; i < roomB.Count; i++)
             {
-                roomB[i].GetComponent<Renderer>().material.color = wallColors[randomColor2];
+                roomB[i].GetComponent<Renderer>().material.color = randomColor2;
             }
             /*
             if (roomWeAreInside == 'B')
@@ -53,8 +52,33 @@ public class ChangeWallColors : MonoBehaviour
         }
         else if (roomType == 'L')
         {
-
+            Color randomColor = chooseColor();
+            for (int i = 0; i < LargeRoom.Count; i++)
+            {
+                LargeRoom[i].GetComponent<Renderer>().material.color = randomColor;
+            }
         }
         roomGeneratorIndex += 1;
+    }
+
+    private Color chooseColor()
+    {
+        if (colorsCreated.Count >= 2)
+        {
+            Color lastColor = colorsCreated[colorsCreated.Count - 1];
+            Color newColor = wallColors[Random.Range(0, wallColors.Length)];
+
+            while (lastColor == newColor)
+            {
+                newColor = wallColors[Random.Range(0, wallColors.Length)];
+            }
+            colorsCreated.Add(newColor);
+        }
+        else
+        {
+            colorsCreated.Add(wallColors[Random.Range(0, wallColors.Length)]);
+        }
+
+        return colorsCreated[colorsCreated.Count - 1];
     }
 }

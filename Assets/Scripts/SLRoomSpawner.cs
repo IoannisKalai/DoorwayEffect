@@ -62,7 +62,7 @@ public class SLRoomSpawner : MonoBehaviour
             {
                 int randomCharIndex = Random.Range(0,largeSmallChars.Length);
                 char randomChar = largeSmallChars[randomCharIndex];
-                roomSequence.Add('S');
+                roomSequence.Add(randomChar);
             }
             if (roomSequence[i] == 'S')
             {
@@ -87,6 +87,11 @@ public class SLRoomSpawner : MonoBehaviour
         if (roomIndicator == 'L')
         {
             prevRoom = Instantiate(roomPrefabs[0]);
+            GameObject.Find("GameObject").GetComponent<ChangeWallColors>().LargeRoom = new List<GameObject>();
+            for (int i = 0; i < 5; i++)
+            {
+                GameObject.Find("GameObject").GetComponent<ChangeWallColors>().LargeRoom.Add(prevRoom.transform.GetChild(i).gameObject);
+            }
         }
         else if (roomIndicator == 'S')
         {
@@ -100,8 +105,8 @@ public class SLRoomSpawner : MonoBehaviour
             for (int i = 7; i < 14; i++)
             {
                 GameObject.Find("GameObject").GetComponent<ChangeWallColors>().roomB.Add(prevRoom.transform.GetChild(i).gameObject);
-            }
-            roomIndex++;
+            }           
         }
+        roomIndex++;
     }
 }

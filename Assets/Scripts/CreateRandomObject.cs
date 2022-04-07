@@ -38,6 +38,7 @@ public class CreateRandomObject : MonoBehaviour
         //Spawn Small/Large Room
         int roomInd = GameObject.Find("GameObject").GetComponent<SLRoomSpawner>().roomIndex;       
         char roomToCreate = GameObject.Find("GameObject").GetComponent<SLRoomSpawner>().roomSequence[roomInd];
+        Debug.Log(roomToCreate);
         GameObject.Find("GameObject").GetComponent<SLRoomSpawner>().SpawnRoom(roomToCreate);
 
         if (this.gameObject.name == "Table1")
