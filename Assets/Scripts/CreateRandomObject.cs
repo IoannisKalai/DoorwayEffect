@@ -55,7 +55,7 @@ public class CreateRandomObject : MonoBehaviour
         }
       
         GameObject.Find("GameObject").GetComponent<ChangeWallColors>().ChangeColor(roomToCreate);
-        GameObject.Find("GameObject").GetComponent<SpawnRoomObjects>().SpawnRoomVariation();
+        GameObject.Find("GameObject").GetComponent<SpawnRoomObjects>().SpawnRoomVariation('S');
      
         
         
