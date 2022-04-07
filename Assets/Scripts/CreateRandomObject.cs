@@ -29,9 +29,9 @@ public class CreateRandomObject : MonoBehaviour
         List<int> ItemsOnTable = new List<int>();
         GameObject obj = null;
         float tableTop = this.transform.position.y + this.GetComponent<Renderer>().bounds.size.y / 2;
-        float posx = 0;
+        float posx = -0.3f;
         float posz = 0;
-        Vector3 blockCentre = new Vector3(this.transform.position.x - posx, tableTop, this.transform.position.z);
+        Vector3 blockCentre = new Vector3(this.transform.position.x, tableTop, this.transform.position.z);
        
         for (int i = 0; i < 6; i++)
         {
@@ -40,15 +40,16 @@ public class CreateRandomObject : MonoBehaviour
             {
                 chooseItem = Random.Range(0, shapes.Length);
             }
-            if (i > 3)
-            {
-                posz += 0.25f;
-                posx = 0;
-            }
-            Vector3 position = new Vector3(posx , this.GetComponent<Renderer>().bounds.size.y / 2, this.transform.right.z * this.GetComponent<Renderer>().bounds.size.z / 5 + posz);
-            obj = Instantiate(shapes[chooseItem], blockCentre + position, Quaternion.identity) as GameObject;
+          
+            Vector3 position = new Vector3(posx , this.GetComponent<Renderer>().bounds.size.y / 2, this.transform.right.z * this.GetComponent<Renderer>().bounds.size.z / 6 + posz);
+            obj = Instantiate(shapes[chooseItem], blockCentre + position, shapes[chooseItem].transform.rotation) as GameObject;
             obj.GetComponent<Renderer>().material.color = colors[Random.Range(0, colors.Length)];
-            posx += 0.25f;
+            posx += 0.26f;
+            if (i == 2)
+            {
+                posz = -0.25f;
+                posx = -0.3f;
+            }
             ItemsOnTable.Add(chooseItem);
             Debug.Log("ITEMCSDC");
         }
