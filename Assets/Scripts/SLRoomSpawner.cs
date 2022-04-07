@@ -84,6 +84,7 @@ public class SLRoomSpawner : MonoBehaviour
             Debug.Log("Destroy Prev Room");
             Destroy(prevRoom);
         }
+        Debug.Log(roomIndicator);
         if (roomIndicator == 'L')
         {
             prevRoom = Instantiate(roomPrefabs[0]);

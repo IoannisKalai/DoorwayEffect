@@ -9,12 +9,11 @@ public class CreateRandomObject : MonoBehaviour
     public List<GameObject> createdObjects;
     private bool hasEntered;
     public Canvas endText;
-    public GameObject doorWing;
+    //public GameObject doorWing;
     private Vector3 startingRotation;
     void Start()
     {
-        startingRotation = doorWing.transform.eulerAngles;
-        Debug.Log(startingRotation);
+        //startingRotation = doorWing.transform.eulerAngles;
         shapes = Resources.LoadAll<GameObject>("InteractObjects");
         colors = new Color[7] { Color.red, Color.blue, Color.green, Color.grey, Color.yellow, Color.magenta, Color.white };
         endText.enabled = false;       
@@ -55,7 +54,7 @@ public class CreateRandomObject : MonoBehaviour
         }
       
         GameObject.Find("GameObject").GetComponent<ChangeWallColors>().ChangeColor(roomToCreate);
-        GameObject.Find("GameObject").GetComponent<SpawnRoomObjects>().SpawnRoomVariation('S');
+       // GameObject.Find("GameObject").GetComponent<SpawnRoomObjects>().SpawnRoomVariation('S');
      
         
         
