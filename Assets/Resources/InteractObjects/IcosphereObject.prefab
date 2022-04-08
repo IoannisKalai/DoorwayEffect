@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5273065196088941282}
   - component: {fileID: 5273065196088941283}
   - component: {fileID: 5273065196088941280}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: IcosphereObject
   m_TagString: GrabbableObject
   m_Icon: {fileID: 0}

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4106828067992814797}
   - component: {fileID: 2272496639400768322}
   - component: {fileID: 857660397977980555}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RectangularBoxObject
   m_TagString: GrabbableObject
   m_Icon: {fileID: 0}
