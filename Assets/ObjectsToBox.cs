@@ -5,8 +5,6 @@ using UnityEngine;
 public class ObjectsToBox : MonoBehaviour
 {
     public List<GameObject> objectsInsideBox;
-    public List<string> objectType;
-    public List<Color> objectColor;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +14,7 @@ public class ObjectsToBox : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if
     }
 
 	void OnTriggerEnter(Collider other)
@@ -26,12 +24,10 @@ public class ObjectsToBox : MonoBehaviour
         {
             if (!objectsInsideBox.Contains(other.gameObject))
             {
-                objectsInsideBox.Add(other.gameObject);
-               
-                objectType.Add(other.gameObject.name);
-                objectColor.Add(other.gameObject.GetComponent<Renderer>().material.color);
-                Destroy(other.gameObject);
-                Debug.Log("Object Type: " + objectType[objectType.Count - 1] + " Object Color: " + objectColor[objectColor.Count - 1]);
+                objectsInsideBox.Add(other.gameObject);              
+                Destroy(other.gameObject);                
+                Debug.Log("Object : " + objectsInsideBox[objectsInsideBox.Count - 1].GetComponent<Renderer>().material.color);
+
                /*
                 other.gameObject.GetComponent<Renderer>().enabled = true;
                 other.gameObject.transform.localScale = new Vector3(0.008f, 0.008f, 0.008f);
