@@ -8,6 +8,8 @@ public class CreateRandomObject : MonoBehaviour
     public List<GameObject> createdObjects;
     private bool hasEntered;
     public Canvas endText;
+    public GameObject boxObject;
+    private GameObject box;
  
     //public GameObject doorWing;
     private Vector3 startingRotation;
@@ -15,6 +17,7 @@ public class CreateRandomObject : MonoBehaviour
     {
         //startingRotation = doorWing.transform.eulerAngles;
         shapes = Resources.LoadAll<GameObject>("InteractObjects");
+        boxObject = Resources.Load<GameObject>("Box/Box");
         colors = new Color[7] { Color.red, Color.blue, Color.green, Color.grey, Color.yellow, Color.magenta, Color.white };
         endText.enabled = false;       
         if (this.gameObject.name.Equals("Table2"))
@@ -27,7 +30,7 @@ public class CreateRandomObject : MonoBehaviour
     {       
         int chooseItem = Random.Range(0, shapes.Length);
         List<int> ItemsOnTable = new List<int>();
-        GameObject obj = null;
+        GameObject obj = null; 
         float tableTop = this.transform.position.y + this.GetComponent<Renderer>().bounds.size.y / 2;
         float posx = -0.25f;
         float posz = 0;
@@ -54,6 +57,9 @@ public class CreateRandomObject : MonoBehaviour
             Debug.Log("ITEMCSDC");
         }
 
+        Vector3 boxPosition = new Vector3(-0.1f, this.GetComponent<Renderer>().bounds.size.y / 2, this.transform.right.z * this.GetComponent<Renderer>().bounds.size.z / 6 + 0.5f);
+        box = Instantiate(boxObject, blockCentre + boxPosition, boxObject.transform.rotation);
+
         //Spawn Small/Large Room
         int roomInd = GameObject.Find("GameObject").GetComponent<SLRoomSpawner>().roomIndex;       
         char roomToCreate = GameObject.Find("GameObject").GetComponent<SLRoomSpawner>().roomSequence[roomInd];
@@ -75,7 +81,7 @@ public class CreateRandomObject : MonoBehaviour
       
         GameObject.Find("GameObject").GetComponent<ChangeWallColors>().ChangeColor(roomToCreate);
         GameObject.Find("GameObject").GetComponent<SpawnRoomObjects>().SpawnRoomVariation(roomToCreate);
-     
+        
         
         
         /*

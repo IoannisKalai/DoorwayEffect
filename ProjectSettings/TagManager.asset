@@ -10,6 +10,7 @@ TagManager:
   - GrabbableObject
   - LargeRoom
   - SmallRoom
+  - Box
   layers:
   - Default
   - TransparentFX

@@ -14,7 +14,7 @@ public class ObjectsToBox : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+        PlayParticleEffect();
     }
 
 	void OnTriggerEnter(Collider other)
@@ -35,4 +35,11 @@ public class ObjectsToBox : MonoBehaviour
             }
         }
 	}
+
+    void PlayParticleEffect()
+    {
+        
+     this.GetComponent<ParticleSystem>().Emit(100);
+      
+    }
 }
