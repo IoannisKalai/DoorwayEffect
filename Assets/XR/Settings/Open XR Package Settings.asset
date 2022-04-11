@@ -135,7 +135,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5a1f07dc5afe854f9f12a4194aca3fb, type: 3}
   m_Name: WSA
   m_EditorClassIdentifier: 
-  features: []
+  features:
+  - {fileID: 7216581465259897488}
+  - {fileID: 3530976625771117736}
+  - {fileID: -8801368165028991558}
+  - {fileID: -8371110813625133193}
+  - {fileID: -2823895749082519479}
+  - {fileID: 6219310774620489723}
+  - {fileID: -3904829894080384674}
+  - {fileID: 9175567508965757619}
+  - {fileID: 8727198358297390334}
   m_renderMode: 1
   m_depthSubmissionMode: 0
 --- !u!114 &-4819606335906066991
