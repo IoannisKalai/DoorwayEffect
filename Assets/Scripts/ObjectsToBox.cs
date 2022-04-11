@@ -5,7 +5,7 @@ using UnityEngine;
 public class ObjectsToBox : MonoBehaviour
 {
     public List<GameObject> objectsInsideBox;
-    private bool playedEffect = false;
+    private bool playedEffect = false;   
     // Start is called before the first frame update
     void Start()
     {
@@ -44,7 +44,7 @@ public class ObjectsToBox : MonoBehaviour
     void PlayParticleEffect()
     {
         
-     this.GetComponent<ParticleSystem>().Emit(100);
+        this.GetComponent<ParticleSystem>().Emit(100);
       
     }
 

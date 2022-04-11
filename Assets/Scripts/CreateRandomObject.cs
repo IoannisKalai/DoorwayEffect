@@ -11,12 +11,12 @@ public class CreateRandomObject : MonoBehaviour
     public GameObject boxObject;
     private GameObject box;
     private List<GameObject> objectInBox;
+    private bool doorRotation = false;
  
-    //public GameObject doorWing;
+    public GameObject doorWing;
     private Vector3 startingRotation;
     void Start()
-    {
-        //startingRotation = doorWing.transform.eulerAngles;
+    {        
         shapes = Resources.LoadAll<GameObject>("InteractObjects");
         boxObject = Resources.Load<GameObject>("Box/Box");
         colors = new Color[7] { Color.red, Color.blue, Color.green, Color.grey, Color.yellow, Color.magenta, Color.white };
@@ -24,10 +24,26 @@ public class CreateRandomObject : MonoBehaviour
         if (this.gameObject.name.Equals("Table2"))
         {
             createdObjects.Add(CreateObjects());
-        }        
+        } 
+   
     }
 
-    GameObject CreateObjects()
+    void Update()
+	{
+        
+        if (GameObject.Find("Box(Clone)").GetComponentInChildren<ObjectsToBox>().objectsInsideBox.Count == 6)
+        {
+            if(doorWing != null && doorRotation == true)
+            {
+                Debug.Log("Door Open");
+                doorWing.transform.eulerAngles = new Vector3(0, -180, 0);
+                doorRotation = false;
+            }
+        }
+        
+    }
+
+	GameObject CreateObjects()
     {       
         int chooseItem = Random.Range(0, shapes.Length);
         List<int> ItemsOnTable = new List<int>();
@@ -100,14 +116,20 @@ public class CreateRandomObject : MonoBehaviour
         int roomInd = GameObject.Find("GameObject").GetComponent<SLRoomSpawner>().roomIndex;       
         char roomToCreate = GameObject.Find("GameObject").GetComponent<SLRoomSpawner>().roomSequence[roomInd];
         Debug.Log(roomToCreate);
-        GameObject.Find("GameObject").GetComponent<SLRoomSpawner>().SpawnRoom(roomToCreate);
+        GameObject.Find("GameObject").GetComponent<SLRoomSpawner>().SpawnRoom('S');
+        if(roomToCreate == 'S')
+        {
+            Debug.Log("Door Close");
+            doorWing = GameObject.Find("SmallRoom(Clone)").transform.GetChild(15).GetChild(0).gameObject;
+            doorWing.transform.eulerAngles = new Vector3(0, -90, 0);
+            doorWing.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+            doorWing.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            doorRotation = true;
+        }
 
-       
-      
+
         GameObject.Find("GameObject").GetComponent<ChangeWallColors>().ChangeColor(roomToCreate);
         GameObject.Find("GameObject").GetComponent<SpawnRoomObjects>().SpawnRoomVariation(roomToCreate);
-
-        
 
         /*
         doorWing.transform.eulerAngles = startingRotation;
@@ -129,7 +151,18 @@ public class CreateRandomObject : MonoBehaviour
         {
            // Debug.Log(collision.gameObject.tag + " COLLIDES WITH " + this.gameObject.name);
             hasEntered = true;
+            /*
+            if (collision.gameObject.GetComponentInChildren<ObjectsToBox>().objectsInsideBox.Count == 6)
+            {
+                
+                if(doorWing != null)
+                {
+                    doorWing.transform.eulerAngles = new Vector3(0, 0, 0);
+                    Debug.Log("IELA");
+                }
+            }*/
             collision.gameObject.GetComponentInChildren<ObjectsToBox>().DestroyObjects();
+
             Destroy(collision.gameObject);
             CreateObjects();
             
