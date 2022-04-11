@@ -5,6 +5,7 @@ using UnityEngine;
 public class ObjectsToBox : MonoBehaviour
 {
     public List<GameObject> objectsInsideBox;
+    private bool playedEffect = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,13 +15,17 @@ public class ObjectsToBox : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        PlayParticleEffect();
+        if (objectsInsideBox.Count == 6 && playedEffect == false)
+        {
+            PlayParticleEffect();
+            playedEffect = true;
+        }
     }
 
 	void OnTriggerEnter(Collider other)
 	{
         Debug.Log(other.gameObject);
-        if (other.gameObject.tag == "GrabbableObject")
+        if (other.gameObject.tag == "Table1" || other.gameObject.tag == "Table2")
         {
             if (!objectsInsideBox.Contains(other.gameObject))
             {

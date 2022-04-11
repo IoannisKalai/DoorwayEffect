@@ -55,6 +55,18 @@ public class CreateRandomObject : MonoBehaviour
             }
             ItemsOnTable.Add(chooseItem);
             Debug.Log("ITEMCSDC");
+            if (this.gameObject.name == "Table1")
+            {
+                // Debug.Log("Tag set to table1");
+                obj.gameObject.tag = "Table1";
+                GameObject.Find("GameObject").GetComponent<ChangeWallColors>().roomWeAreInside = 'A';
+            }
+            else if (this.gameObject.name == "Table2")
+            {
+                // Debug.Log("Tag set to table2");
+                obj.gameObject.tag = "Table2";
+                GameObject.Find("GameObject").GetComponent<ChangeWallColors>().roomWeAreInside = 'B';
+            }
         }
 
         Vector3 boxPosition = new Vector3(-0.1f, this.GetComponent<Renderer>().bounds.size.y / 2, this.transform.right.z * this.GetComponent<Renderer>().bounds.size.z / 6 + 0.5f);
@@ -66,18 +78,7 @@ public class CreateRandomObject : MonoBehaviour
         Debug.Log(roomToCreate);
         GameObject.Find("GameObject").GetComponent<SLRoomSpawner>().SpawnRoom(roomToCreate);
 
-        if (this.gameObject.name == "Table1")
-        {
-           // Debug.Log("Tag set to table1");
-            obj.gameObject.tag = "Table1";
-            GameObject.Find("GameObject").GetComponent<ChangeWallColors>().roomWeAreInside = 'A';           
-        }
-        else if(this.gameObject.name == "Table2")
-        {
-           // Debug.Log("Tag set to table2");
-            obj.gameObject.tag = "Table2";
-            GameObject.Find("GameObject").GetComponent<ChangeWallColors>().roomWeAreInside = 'B';
-        }
+       
       
         GameObject.Find("GameObject").GetComponent<ChangeWallColors>().ChangeColor(roomToCreate);
         GameObject.Find("GameObject").GetComponent<SpawnRoomObjects>().SpawnRoomVariation(roomToCreate);
