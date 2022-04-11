@@ -29,10 +29,10 @@ public class ObjectsToBox : MonoBehaviour
         {
             if (!objectsInsideBox.Contains(other.gameObject))
             {
-                objectsInsideBox.Add(other.gameObject);              
-                Destroy(other.gameObject);                
-                Debug.Log("Object : " + objectsInsideBox[objectsInsideBox.Count - 1].GetComponent<Renderer>().material.color);
-
+                objectsInsideBox.Add(other.gameObject);
+                // Destroy(other.gameObject);                
+                //Debug.Log("Object : " + objectsInsideBox[objectsInsideBox.Count - 1].GetComponent<Renderer>().material.color);
+                other.gameObject.SetActive(false);
                /*
                 other.gameObject.GetComponent<Renderer>().enabled = true;
                 other.gameObject.transform.localScale = new Vector3(0.008f, 0.008f, 0.008f);
