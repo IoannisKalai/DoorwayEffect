@@ -47,4 +47,13 @@ public class ObjectsToBox : MonoBehaviour
      this.GetComponent<ParticleSystem>().Emit(100);
       
     }
+
+    public void DestroyObjects()
+    {
+        foreach(GameObject i in objectsInsideBox)
+        {
+            Destroy(i);
+        }
+
+    }
 }

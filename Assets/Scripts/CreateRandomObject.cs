@@ -10,6 +10,7 @@ public class CreateRandomObject : MonoBehaviour
     public Canvas endText;
     public GameObject boxObject;
     private GameObject box;
+    private List<GameObject> objectInBox;
  
     //public GameObject doorWing;
     private Vector3 startingRotation;
@@ -35,9 +36,9 @@ public class CreateRandomObject : MonoBehaviour
         float posx = -0.25f;
         float posz = 0;
         Vector3 blockCentre = new Vector3(this.transform.position.x, tableTop, this.transform.position.z);
-
+        
         // Box Object creation
-        Vector3 boxPosition = new Vector3(-0.1f, this.GetComponent<Renderer>().bounds.size.y / 2, this.transform.right.z * this.GetComponent<Renderer>().bounds.size.z / 6 + 0.5f);
+        Vector3 boxPosition = new Vector3(0, this.GetComponent<Renderer>().bounds.size.y / 2, this.transform.right.z * this.GetComponent<Renderer>().bounds.size.z / 6 + 0.5f);
         box = Instantiate(boxObject, blockCentre + boxPosition, boxObject.transform.rotation);
 
 
@@ -73,6 +74,10 @@ public class CreateRandomObject : MonoBehaviour
                 obj.gameObject.tag = "Table1";
                 GameObject.Find("GameObject").GetComponent<ChangeWallColors>().roomWeAreInside = 'A';
                 box.gameObject.tag = "Table1";
+                foreach(Transform t in box.transform)
+                {
+                    t.gameObject.tag = "Table1";
+                }
             }
             else if (this.gameObject.name == "Table2")
             {
@@ -80,9 +85,17 @@ public class CreateRandomObject : MonoBehaviour
                 obj.gameObject.tag = "Table2";
                 GameObject.Find("GameObject").GetComponent<ChangeWallColors>().roomWeAreInside = 'B';
                 box.gameObject.tag = "Table2";
+                foreach (Transform t in box.transform)
+                {
+                    t.gameObject.tag = "Table2";
+                }
             }
         }
 
+        if(box.gameObject.tag == "Table1")
+        {
+            box.transform.position += new Vector3(0, 0, -1.0f);
+        }
         //Spawn Small/Large Room
         int roomInd = GameObject.Find("GameObject").GetComponent<SLRoomSpawner>().roomIndex;       
         char roomToCreate = GameObject.Find("GameObject").GetComponent<SLRoomSpawner>().roomSequence[roomInd];
@@ -94,14 +107,7 @@ public class CreateRandomObject : MonoBehaviour
         GameObject.Find("GameObject").GetComponent<ChangeWallColors>().ChangeColor(roomToCreate);
         GameObject.Find("GameObject").GetComponent<SpawnRoomObjects>().SpawnRoomVariation(roomToCreate);
 
-        if (GameObject.Find("Box").GetComponent<ObjectsToBox>().objectsInsideBox.Count == 6)
-        {
-            for (int i = 0; i < 6; i++)
-            {
-                Destroy(GameObject.Find("Box").GetComponent<ObjectsToBox>().objectsInsideBox[i]);
-            }
-            GameObject.Find("Box").GetComponent<ObjectsToBox>().objectsInsideBox.Clear();
-        }
+        
 
         /*
         doorWing.transform.eulerAngles = startingRotation;
@@ -123,8 +129,10 @@ public class CreateRandomObject : MonoBehaviour
         {
            // Debug.Log(collision.gameObject.tag + " COLLIDES WITH " + this.gameObject.name);
             hasEntered = true;
-            CreateObjects();
+            collision.gameObject.GetComponentInChildren<ObjectsToBox>().DestroyObjects();
             Destroy(collision.gameObject);
+            CreateObjects();
+            
         }           
 	}
 }
