@@ -35,7 +35,12 @@ public class CreateRandomObject : MonoBehaviour
         float posx = -0.25f;
         float posz = 0;
         Vector3 blockCentre = new Vector3(this.transform.position.x, tableTop, this.transform.position.z);
-       
+
+        // Box Object creation
+        Vector3 boxPosition = new Vector3(-0.1f, this.GetComponent<Renderer>().bounds.size.y / 2, this.transform.right.z * this.GetComponent<Renderer>().bounds.size.z / 6 + 0.5f);
+        box = Instantiate(boxObject, blockCentre + boxPosition, boxObject.transform.rotation);
+
+
         for (int i = 0; i < 6; i++)
         {
             chooseItem = Random.Range(0, shapes.Length);
@@ -50,7 +55,14 @@ public class CreateRandomObject : MonoBehaviour
             posx += 0.25f;
             if (i == 2)
             {
-                posz = -0.25f;
+                if (this.gameObject.name == "Table2")
+                {
+                    posz = -0.25f;
+                }
+                else
+                {
+                    posz = 0.25f;
+                }
                 posx = -0.25f;
             }
             ItemsOnTable.Add(chooseItem);
@@ -60,17 +72,16 @@ public class CreateRandomObject : MonoBehaviour
                 // Debug.Log("Tag set to table1");
                 obj.gameObject.tag = "Table1";
                 GameObject.Find("GameObject").GetComponent<ChangeWallColors>().roomWeAreInside = 'A';
+                box.gameObject.tag = "Table1";
             }
             else if (this.gameObject.name == "Table2")
             {
                 // Debug.Log("Tag set to table2");
                 obj.gameObject.tag = "Table2";
                 GameObject.Find("GameObject").GetComponent<ChangeWallColors>().roomWeAreInside = 'B';
+                box.gameObject.tag = "Table2";
             }
         }
-
-        Vector3 boxPosition = new Vector3(-0.1f, this.GetComponent<Renderer>().bounds.size.y / 2, this.transform.right.z * this.GetComponent<Renderer>().bounds.size.z / 6 + 0.5f);
-        box = Instantiate(boxObject, blockCentre + boxPosition, boxObject.transform.rotation);
 
         //Spawn Small/Large Room
         int roomInd = GameObject.Find("GameObject").GetComponent<SLRoomSpawner>().roomIndex;       
@@ -82,9 +93,16 @@ public class CreateRandomObject : MonoBehaviour
       
         GameObject.Find("GameObject").GetComponent<ChangeWallColors>().ChangeColor(roomToCreate);
         GameObject.Find("GameObject").GetComponent<SpawnRoomObjects>().SpawnRoomVariation(roomToCreate);
-        
-        
-        
+
+        if (GameObject.Find("Box").GetComponent<ObjectsToBox>().objectsInsideBox.Count == 6)
+        {
+            for (int i = 0; i < 6; i++)
+            {
+                Destroy(GameObject.Find("Box").GetComponent<ObjectsToBox>().objectsInsideBox[i]);
+            }
+            GameObject.Find("Box").GetComponent<ObjectsToBox>().objectsInsideBox.Clear();
+        }
+
         /*
         doorWing.transform.eulerAngles = startingRotation;
         doorWing.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
@@ -101,7 +119,7 @@ public class CreateRandomObject : MonoBehaviour
     //Create new object when touching grabbed object to the opposite table. 
 	private void OnCollisionEnter(Collision collision)
 	{
-        if (!hasEntered && (collision.gameObject.tag != this.gameObject.name) && (collision.gameObject.tag =="Box"))
+        if (!hasEntered && (collision.gameObject.tag != this.gameObject.name) && (collision.gameObject.tag =="Table1" || collision.gameObject.tag == "Table2"))
         {
            // Debug.Log(collision.gameObject.tag + " COLLIDES WITH " + this.gameObject.name);
             hasEntered = true;
