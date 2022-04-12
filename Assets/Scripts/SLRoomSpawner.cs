@@ -77,7 +77,7 @@ public class SLRoomSpawner : MonoBehaviour
         Debug.Log("Number of large rooms: " + numberOfLargeRooms);
     }
 
-    public void SpawnRoom(char roomIndicator)
+    public GameObject SpawnRoom(char roomIndicator)
     {        
         if (roomIndex > 0)
         {
@@ -109,5 +109,6 @@ public class SLRoomSpawner : MonoBehaviour
             }           
         }
         roomIndex++;
+        return prevRoom;
     }
 }
