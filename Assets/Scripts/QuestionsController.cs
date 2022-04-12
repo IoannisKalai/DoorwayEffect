@@ -13,7 +13,7 @@ public class QuestionsController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        this.gameObject.SetActive(false);
+        this.gameObject.GetComponent<Canvas>().enabled = false;
         //objectsInsideBox = GameObject.Find("Box(Clone)").gameObject.GetComponentInChildren<ObjectsToBox>().objectsInsideBox;
     }
 
@@ -29,17 +29,19 @@ public class QuestionsController : MonoBehaviour
         if(associatedPrompts.Count == 6)
         {
             question.text = associatedPrompts[Random.Range(0, associatedPrompts.Count)];
+            this.gameObject.GetComponent<Canvas>().enabled = true;           
         }        
     }
 
-    IEnumerator WaitSomeSeconds(float seconds)
+    public IEnumerator WaitSomeSeconds(float seconds)
     {
+        Debug.Log("WAIT");
         yield return new WaitForSeconds(seconds);
+        CreateQuestionPrompt();
     }
 
     public void AppearPromptOnScreen()
     {
-        WaitSomeSeconds(2f);
-        CreateQuestionPrompt();
+        StartCoroutine(WaitSomeSeconds(2.0f));       
     }
 }

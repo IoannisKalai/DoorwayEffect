@@ -22,9 +22,7 @@ public class AppearPrompt : MonoBehaviour
         
 		if(other.gameObject.name == "Box(Clone)")
         {
-            promptCanvas.gameObject.GetComponent<QuestionsController>().AppearPromptOnScreen();
-            Debug.Log("TRIGGER " + other.gameObject);
-            promptCanvas.gameObject.SetActive(true);
+            promptCanvas.gameObject.GetComponent<QuestionsController>().AppearPromptOnScreen();           
         }
     }
 }
