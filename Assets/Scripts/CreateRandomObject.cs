@@ -18,7 +18,7 @@ public class CreateRandomObject : MonoBehaviour
     {        
         shapes = Resources.LoadAll<GameObject>("InteractObjects");
         boxObject = Resources.Load<GameObject>("Box/Box");
-        colors = new Color[7] { Color.red, Color.blue, Color.green, Color.grey, Color.yellow, Color.magenta, Color.white };
+        colors = new Color[9] { Color.red, Color.blue, Color.green, Color.grey, Color.yellow, Color.magenta, Color.white, Color.black, new Color( 110f / 255f, 38f / 255f, 14f / 255f) };
         endText.enabled = false;       
         if (this.gameObject.name.Equals("Table2"))
         {
@@ -39,9 +39,7 @@ public class CreateRandomObject : MonoBehaviour
                 Debug.Log(doorWing.transform.eulerAngles);
                 doorRotation = false;
             }
-        }
-        
-        
+        }       
     }
 
 	GameObject CreateObjects()
@@ -125,31 +123,14 @@ public class CreateRandomObject : MonoBehaviour
        
         if (roomToCreate == 'S')
         {
-            Debug.Log("Door Close");
-            /*
-            doorWing = GameObject.Find("SmallRoom(Clone)").transform.GetChild(15).GetChild(0).gameObject;
-            doorWing.transform.eulerAngles = new Vector3(0, -90, 0);
-            Debug.Log(doorWing);
-            doorWing.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-            doorWing.GetComponent<Rigidbody>().velocity = Vector3.zero;
-            */            
-            //doorWing = GameObject.FindWithTag("SmallRoom").transform.GetChild(15).GetChild(0).gameObject;
+            Debug.Log("Door Close");            
             doorWing = newRoom.transform.GetChild(15).GetChild(0).gameObject;
             doorWing.transform.eulerAngles = new Vector3(0, -90, 0);
             Debug.Log(doorWing);
             doorWing.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
             doorWing.GetComponent<Rigidbody>().velocity = Vector3.zero;
             doorRotation = true;
-        }        
-
-        /*
-        doorWing.transform.eulerAngles = startingRotation;
-        doorWing.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-        doorWing.GetComponent<Rigidbody>().velocity = Vector3.zero;
-        doorWing.GetComponent<Rigidbody>().freezeRotation = true;
-        doorWing.GetComponent<Rigidbody>().freezeRotation = false;
-        */
-
+        } 
         hasEntered = false;       
        
         return obj;         
