@@ -6,26 +6,40 @@ using UnityEngine.UI;
 
 public class QuestionsController : MonoBehaviour
 {
-    public List<GameObject> objectsInsideBox;
+    public List<string> associatedPrompts;
     public Text question;
+    public Button yesButton;
+    public Button noButton;
     // Start is called before the first frame update
     void Start()
     {
+        this.gameObject.SetActive(false);
         //objectsInsideBox = GameObject.Find("Box(Clone)").gameObject.GetComponentInChildren<ObjectsToBox>().objectsInsideBox;
     }
 
     // Update is called once per frame
     void Update()
     {
-        objectsInsideBox = GameObject.Find("Box(Clone)").gameObject.GetComponentInChildren<ObjectsToBox>().objectsInsideBox;
-        CreateQuestionPrompt();
+        associatedPrompts = GameObject.Find("Box(Clone)").gameObject.GetComponentInChildren<ObjectsToBox>().getAssociatedPrompts();
+        
     }
 
-    void CreateQuestionPrompt()
+    public void CreateQuestionPrompt()
     {
-        if(objectsInsideBox.Count > 0)
+        if(associatedPrompts.Count == 6)
         {
-            question.text  = objectsInsideBox[0].gameObject.name + " " + objectsInsideBox[0].gameObject.GetComponent<Renderer>().material.color.ToString();
-        }
+            question.text = associatedPrompts[Random.Range(0, associatedPrompts.Count)];
+        }        
+    }
+
+    IEnumerator WaitSomeSeconds(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+    }
+
+    public void AppearPromptOnScreen()
+    {
+        WaitSomeSeconds(2f);
+        CreateQuestionPrompt();
     }
 }

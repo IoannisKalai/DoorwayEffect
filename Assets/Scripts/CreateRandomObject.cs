@@ -14,11 +14,18 @@ public class CreateRandomObject : MonoBehaviour
     private bool doorRotation = false;
     public GameObject doorWing;
     private Vector3 startingRotation;
+
+    public List<string> colorNames;
+    public List<string> shapeNames;
+
+    public List<string> associatedPrompts;
     void Start()
     {        
         shapes = Resources.LoadAll<GameObject>("InteractObjects");
+        shapeNames = new List<string> { "cone", "cross", "cube", "disk", "sphere", "pole", "rectangular box", "wedge" };
         boxObject = Resources.Load<GameObject>("Box/Box");
         colors = new Color[9] { Color.red, Color.blue, Color.green, Color.grey, Color.yellow, Color.magenta, Color.white, Color.black, new Color( 110f / 255f, 38f / 255f, 14f / 255f) };
+        colorNames = new List<string> { "Red", "Blue", "Green", "Grey", "Yellow", "Purple", "White", "Black", "Brown" };
         endText.enabled = false;       
         if (this.gameObject.name.Equals("Table2"))
         {
@@ -51,15 +58,16 @@ public class CreateRandomObject : MonoBehaviour
         float posx = -0.25f;
         float posz = 0;
         Vector3 blockCentre = new Vector3(this.transform.position.x, tableTop, this.transform.position.z);
-        
+        int randomColor;
         // Box Object creation
         Vector3 boxPosition = new Vector3(0, this.GetComponent<Renderer>().bounds.size.y / 2, this.transform.right.z * this.GetComponent<Renderer>().bounds.size.z / 6 + 0.5f);
         box = Instantiate(boxObject, blockCentre + boxPosition, boxObject.transform.rotation);
-
-
+        associatedPrompts = new List<string>();
         for (int i = 0; i < 6; i++)
         {
+
             chooseItem = Random.Range(0, shapes.Length);
+            randomColor = Random.Range(0, colors.Length);
             while (ItemsOnTable.Contains(chooseItem))
             {
                 chooseItem = Random.Range(0, shapes.Length);
@@ -67,7 +75,9 @@ public class CreateRandomObject : MonoBehaviour
           
             Vector3 position = new Vector3(posx , this.GetComponent<Renderer>().bounds.size.y / 2, this.transform.right.z * this.GetComponent<Renderer>().bounds.size.z / 6 + posz);
             obj = Instantiate(shapes[chooseItem], blockCentre + position, shapes[chooseItem].transform.rotation) as GameObject;
-            obj.GetComponent<Renderer>().material.color = colors[Random.Range(0, colors.Length)];
+            
+            obj.GetComponent<Renderer>().material.color = colors[randomColor];
+            associatedPrompts.Add(colorNames[randomColor] + " " + shapeNames[chooseItem]);
             posx += 0.25f;
             if (i == 2)
             {
@@ -113,14 +123,12 @@ public class CreateRandomObject : MonoBehaviour
         }
         //Spawn Small/Large Room
         int roomInd = GameObject.Find("GameObject").GetComponent<SLRoomSpawner>().roomIndex;       
-        //char roomToCreate = GameObject.Find("GameObject").GetComponent<SLRoomSpawner>().roomSequence[roomInd];
-        char roomToCreate = 'S';
-        Debug.Log(roomToCreate);
+        char roomToCreate = GameObject.Find("GameObject").GetComponent<SLRoomSpawner>().roomSequence[roomInd];
         GameObject newRoom;
         newRoom = GameObject.Find("GameObject").GetComponent<SLRoomSpawner>().SpawnRoom(roomToCreate);
         GameObject.Find("GameObject").GetComponent<ChangeWallColors>().ChangeColor(roomToCreate);
         GameObject.Find("GameObject").GetComponent<SpawnRoomObjects>().SpawnRoomVariation(roomToCreate);
-       
+        GameObject.Find("Box(Clone)").GetComponentInChildren<ObjectsToBox>().SetAssociatedPrompts(associatedPrompts);
         if (roomToCreate == 'S')
         {
             Debug.Log("Door Close");            
@@ -131,8 +139,8 @@ public class CreateRandomObject : MonoBehaviour
             doorWing.GetComponent<Rigidbody>().velocity = Vector3.zero;
             doorRotation = true;
         } 
-        hasEntered = false;       
-       
+        hasEntered = false;
+        
         return obj;         
     }
 
@@ -146,5 +154,10 @@ public class CreateRandomObject : MonoBehaviour
             Destroy(collision.gameObject);
             CreateObjects();            
         }           
-	}
+	}   
+
+    List<string> getAssociatedObjectList()
+    {
+        return associatedPrompts;      
+    }
 }

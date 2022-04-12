@@ -5,6 +5,7 @@ using UnityEngine;
 public class ObjectsToBox : MonoBehaviour
 {
     public List<GameObject> objectsInsideBox = new List<GameObject>();
+    public List<string> associatedPrompts;
     private bool playedEffect = false;   
     // Start is called before the first frame update
     void Start()
@@ -55,5 +56,15 @@ public class ObjectsToBox : MonoBehaviour
             Destroy(i);
         }
 
+    }
+
+    public void SetAssociatedPrompts(List<string> associatedList)
+    {
+        associatedPrompts = associatedList;
+    }
+
+    public List<string> getAssociatedPrompts()
+    {
+        return associatedPrompts;
     }
 }
