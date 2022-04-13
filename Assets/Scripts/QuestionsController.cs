@@ -10,6 +10,8 @@ public class QuestionsController : MonoBehaviour
     public Text question;
     public Button yesButton;
     public Button noButton;
+    public Camera camera;
+    public float distanceFromCamera = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +31,7 @@ public class QuestionsController : MonoBehaviour
         if(associatedPrompts.Count == 6)
         {
             question.text = associatedPrompts[Random.Range(0, associatedPrompts.Count)];
-            this.gameObject.GetComponent<Canvas>().enabled = true;           
+            this.gameObject.GetComponent<Canvas>().enabled = true;
         }        
     }
 
@@ -38,6 +40,8 @@ public class QuestionsController : MonoBehaviour
         Debug.Log("WAIT");
         yield return new WaitForSeconds(seconds);
         CreateQuestionPrompt();
+        this.transform.position = camera.transform.position + (camera.transform.forward * distanceFromCamera);
+        this.transform.rotation = camera.transform.rotation;
     }
 
     public void AppearPromptOnScreen()
