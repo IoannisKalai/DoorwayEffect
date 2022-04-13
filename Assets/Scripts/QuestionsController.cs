@@ -20,15 +20,40 @@ public class QuestionsController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
         associatedPrompts = GameObject.Find("Box(Clone)").gameObject.GetComponentInChildren<ObjectsToBox>().getAssociatedPrompts();
-        
+        if(this.gameObject.GetComponent<Canvas>().enabled == true)
+        {
+            if(OVRInput.Get(OVRInput.RawButton.X))
+            {
+                Debug.Log("Answered Yes");
+                yesButton.GetComponent<Image>().color = Color.red;               
+            }
+            else if(OVRInput.Get(OVRInput.RawButton.A))
+            {
+                Debug.Log("Answered No");
+                this.gameObject.GetComponent<Canvas>().enabled = false;
+                noButton.GetComponent<Image>().color = Color.red;
+            }
+
+            if (OVRInput.GetUp(OVRInput.RawButton.X))
+            {
+                yesButton.GetComponent<Image>().color = Color.white;
+                this.gameObject.GetComponent<Canvas>().enabled = false;                
+            }
+            else if (OVRInput.GetUp(OVRInput.RawButton.A))
+            {
+                noButton.GetComponent<Image>().color = Color.white;
+                this.gameObject.GetComponent<Canvas>().enabled = false;               
+            }
+
+        }
     }
 
     public void CreateQuestionPrompt()
     {
-        if(associatedPrompts.Count == 6)
+        if(associatedPrompts.Count > 1)
         {
             question.text = associatedPrompts[Random.Range(0, associatedPrompts.Count)];
             this.gameObject.GetComponent<Canvas>().enabled = true;

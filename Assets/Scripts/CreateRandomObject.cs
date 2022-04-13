@@ -128,7 +128,7 @@ public class CreateRandomObject : MonoBehaviour
         newRoom = GameObject.Find("GameObject").GetComponent<SLRoomSpawner>().SpawnRoom(roomToCreate);
         GameObject.Find("GameObject").GetComponent<ChangeWallColors>().ChangeColor(roomToCreate);
         GameObject.Find("GameObject").GetComponent<SpawnRoomObjects>().SpawnRoomVariation(roomToCreate);
-        GameObject.Find("Box(Clone)").GetComponentInChildren<ObjectsToBox>().SetAssociatedPrompts(associatedPrompts);
+        box.gameObject.GetComponentInChildren<ObjectsToBox>().SetAssociatedPrompts(associatedPrompts);
         if (roomToCreate == 'S')
         {
             Debug.Log("Door Close");            
