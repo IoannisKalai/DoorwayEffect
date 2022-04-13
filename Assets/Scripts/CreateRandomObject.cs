@@ -22,10 +22,10 @@ public class CreateRandomObject : MonoBehaviour
     void Start()
     {        
         shapes = Resources.LoadAll<GameObject>("InteractObjects");
-        shapeNames = new List<string> { "cone", "cross", "cube", "disk", "sphere", "pole", "rectangular box", "wedge" };
+        shapeNames = new List<string> { "cone", "cross", "cube", "disk", "sphere", "pole", "pyramid", "beam","star", "wedge" };
         boxObject = Resources.Load<GameObject>("Box/Box");
         colors = new Color[9] { Color.red, Color.blue, Color.green, Color.grey, Color.yellow, Color.magenta, Color.white, Color.black, new Color( 110f / 255f, 38f / 255f, 14f / 255f) };
-        colorNames = new List<string> { "Red", "Blue", "Green", "Grey", "Yellow", "Purple", "White", "Black", "Brown" };
+        colorNames = new List<string> { "red", "blue", "green", "grey", "yellow", "purple", "white", "Black", "Brown" };
         endText.enabled = false;       
         if (this.gameObject.name.Equals("Table2"))
         {
@@ -74,7 +74,7 @@ public class CreateRandomObject : MonoBehaviour
             }
           
             Vector3 position = new Vector3(posx , this.GetComponent<Renderer>().bounds.size.y / 2, this.transform.right.z * this.GetComponent<Renderer>().bounds.size.z / 6 + posz);
-            obj = Instantiate(shapes[chooseItem], blockCentre + position, shapes[chooseItem].transform.rotation) as GameObject;
+            obj = Instantiate(shapes[chooseItem], blockCentre + position, Quaternion.identity) as GameObject;
             
             obj.GetComponent<Renderer>().material.color = colors[randomColor];
             associatedPrompts.Add(colorNames[randomColor] + " " + shapeNames[chooseItem]);

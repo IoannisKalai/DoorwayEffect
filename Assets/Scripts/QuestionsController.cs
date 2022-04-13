@@ -12,6 +12,7 @@ public class QuestionsController : MonoBehaviour
     public Button noButton;
     public Camera camera;
     public float distanceFromCamera = 1;
+    public float secondsForPromptToAppear;
     // Start is called before the first frame update
     void Start()
     {
@@ -55,7 +56,7 @@ public class QuestionsController : MonoBehaviour
     {
         if(associatedPrompts.Count > 1)
         {
-            question.text = associatedPrompts[Random.Range(0, associatedPrompts.Count)];
+            question.text = "Is there a " + associatedPrompts[Random.Range(0, associatedPrompts.Count)] + " in the box?";
             this.gameObject.GetComponent<Canvas>().enabled = true;
         }        
     }
@@ -71,6 +72,6 @@ public class QuestionsController : MonoBehaviour
 
     public void AppearPromptOnScreen()
     {
-        StartCoroutine(WaitSomeSeconds(2.0f));       
+        StartCoroutine(WaitSomeSeconds(secondsForPromptToAppear));       
     }
 }
