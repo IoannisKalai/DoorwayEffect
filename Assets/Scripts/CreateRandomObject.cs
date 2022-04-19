@@ -19,7 +19,7 @@ public class CreateRandomObject : MonoBehaviour
     public List<string> shapeNames;
 
     public List<string> associatedPrompts;
-    public string negativePrompt;
+    public List<string> negativePrompts;
     public int trialNumber;
     public string doorNodoor;
     void Start()
@@ -30,7 +30,6 @@ public class CreateRandomObject : MonoBehaviour
         colors = new Color[10] { Color.red, Color.blue, Color.green, Color.grey, Color.yellow, Color.magenta, Color.white, Color.black, new Color( 110f / 255f, 38f / 255f, 14f / 255f), Color.cyan };
         colorNames = new List<string> { "red", "blue", "green", "grey", "yellow", "purple", "white", "black", "brown", "cyan" };
         endText.enabled = false;
-        trialNumber = 0;
         if (this.gameObject.name.Equals("Table2"))
         {
             createdObjects.Add(CreateObjects());
@@ -68,6 +67,7 @@ public class CreateRandomObject : MonoBehaviour
         Vector3 boxPosition = new Vector3(0, this.GetComponent<Renderer>().bounds.size.y / 2, this.transform.right.z * this.GetComponent<Renderer>().bounds.size.z / 6 + 0.5f);
         box = Instantiate(boxObject, blockCentre + boxPosition, boxObject.transform.rotation);
         associatedPrompts = new List<string>();
+        negativePrompts =  new List<string>();
         for (int i = 0; i < 6; i++)
         {
 
@@ -126,7 +126,21 @@ public class CreateRandomObject : MonoBehaviour
                     t.gameObject.tag = "Table2";
                 }
             }
-        }       
+        }
+
+        for(int i = 0; i < 6; i++)
+        {
+            int randomColorNegative = Random.Range(0, colors.Length);
+            int randomShapeNegative = Random.Range(0, shapes.Length);            
+            while (associatedPrompts.Contains(colorNames[randomColorNegative] + " " + shapeNames[randomShapeNegative]))
+            {
+                randomColorNegative = Random.Range(0, colors.Length);
+                randomShapeNegative = Random.Range(0, shapes.Length);                
+            }
+            negativePrompts.Add(colorNames[randomColorNegative] + " " + shapeNames[randomShapeNegative]);
+
+        }
+        
 
         if (box.gameObject.tag == "Table1")
         {
@@ -140,6 +154,8 @@ public class CreateRandomObject : MonoBehaviour
         GameObject.Find("GameObject").GetComponent<ChangeWallColors>().ChangeColor(roomToCreate);
         GameObject.Find("GameObject").GetComponent<SpawnRoomObjects>().SpawnRoomVariation(roomToCreate);
         box.gameObject.GetComponentInChildren<ObjectsToBox>().SetAssociatedPrompts(associatedPrompts);
+        box.gameObject.GetComponentInChildren<ObjectsToBox>().SetNegativePrompts(negativePrompts);
+        
         if (roomToCreate == 'S')
         {
             Debug.Log("Door Close");            
@@ -148,13 +164,9 @@ public class CreateRandomObject : MonoBehaviour
             Debug.Log(doorWing);
             doorWing.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
             doorWing.GetComponent<Rigidbody>().velocity = Vector3.zero;
-            doorRotation = true;
-            doorNodoor = "D";
+            doorRotation = true;           
         } 
-        else
-        {
-            doorNodoor = "ND";
-        }
+       
         hasEntered = false;
 
         trialNumber += 1;        
@@ -177,19 +189,6 @@ public class CreateRandomObject : MonoBehaviour
     {
         return associatedPrompts;      
     }
-
-    public string negativePromptCreate()
-    {
-        int randomColorNegative = Random.Range(0, colors.Length);
-        int randomShapeNegative = Random.Range(0, shapes.Length);
-        negativePrompt = colorNames[randomColorNegative] + " " + shapeNames[randomShapeNegative];
-        while(associatedPrompts.Contains(negativePrompt))
-        {
-            randomColorNegative = Random.Range(0, colors.Length);
-            randomShapeNegative = Random.Range(0, shapes.Length);
-            negativePrompt = colorNames[randomColorNegative] + " " + shapeNames[randomShapeNegative];
-        }
-        return negativePrompt;
-    }
+    
 
 }

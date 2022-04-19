@@ -162,7 +162,7 @@ MonoBehaviour:
   colorNames: []
   shapeNames: []
   associatedPrompts: []
-  negativePrompt: 
+  negativePrompts: []
   trialNumber: 0
   doorNodoor: 
 --- !u!1 &201069939
@@ -628,7 +628,7 @@ Canvas:
   m_GameObject: {fileID: 426727285}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 1919744498}
   m_PlaneDistance: 1
   m_PixelPerfect: 0
@@ -772,7 +772,7 @@ MonoBehaviour:
   colorNames: []
   shapeNames: []
   associatedPrompts: []
-  negativePrompt: 
+  negativePrompts: []
   trialNumber: 0
   doorNodoor: 
 --- !u!1 &535784976
@@ -900,6 +900,7 @@ MonoBehaviour:
   participantID: 
   inputField: {fileID: 596445383}
   startingCanvas: {fileID: 426727288}
+  technique: 
 --- !u!114 &535784982
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -939,7 +940,7 @@ RectTransform:
   m_GameObject: {fileID: 596445383}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8931953, y: 0.8931953, z: 0.8931953}
+  m_LocalScale: {x: 0.51273876, y: 0.51273876, z: 0.51273876}
   m_Children: []
   m_Father: {fileID: 651146182}
   m_RootOrder: 1
@@ -2007,7 +2008,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -66.12366}
+  m_AnchoredPosition: {x: 0, y: -78.6}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1068115107
@@ -2833,15 +2834,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4926590347846174690, guid: 522b89d0f09cc834db5f015f40e578f3, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.8
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 4926590347846174690, guid: 522b89d0f09cc834db5f015f40e578f3, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.8
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 4926590347846174690, guid: 522b89d0f09cc834db5f015f40e578f3, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.8
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 4926590347846174690, guid: 522b89d0f09cc834db5f015f40e578f3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11237,9 +11238,7 @@ MonoBehaviour:
   distanceFromCamera: 1
   secondsForPromptToAppear: 1.5
   promptNumber: 0
-  promptAnswer: 0
-  associatedOrNot: 0
-  rowData: []
+  negativePrompts: []
 --- !u!1001 &1887611453
 PrefabInstance:
   m_ObjectHideFlags: 0

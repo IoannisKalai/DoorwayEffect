@@ -6,7 +6,9 @@ public class ObjectsToBox : MonoBehaviour
 {
     public List<GameObject> objectsInsideBox = new List<GameObject>();
     public List<string> associatedPrompts;
-    private bool playedEffect = false;   
+    private bool playedEffect = false;
+
+    public List<string> negativePrompts;
     // Start is called before the first frame update
     void Start()
     {
@@ -66,5 +68,15 @@ public class ObjectsToBox : MonoBehaviour
     public List<string> getAssociatedPrompts()
     {
         return associatedPrompts;
+    }
+
+    public void SetNegativePrompts(List<string> negativeList)
+    {
+        negativePrompts = negativeList;
+    }
+
+    public List<string> getNegativePrompts()
+    {
+        return negativePrompts;
     }
 }

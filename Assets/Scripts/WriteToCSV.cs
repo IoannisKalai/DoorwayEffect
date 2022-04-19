@@ -13,7 +13,52 @@ public class WriteToCSV : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
+        string[] rowDataTemp = new string[6];
+        if (!File.Exists(filePath))
+        {
+            rowDataTemp[0] = "Participant";
+            rowDataTemp[1] = "Technique";
+            rowDataTemp[2] = "Trial";
+            rowDataTemp[3] = "Condition";
+            rowDataTemp[4] = "Associated";
+            rowDataTemp[5] = "Response";
+            rowData.Add(rowDataTemp);
+            string[][] output = new string[rowData.Count][];
+
+            for (int i = 0; i < output.Length; i++)
+            {
+                output[i] = rowData[i];
+            }
+
+            int length = output.GetLength(0);
+            string delimiter = ",";
+
+            StringBuilder sb = new StringBuilder();
+
+            for (int index = 0; index < length; index++)
+            {
+                if (index == length - 1)
+                {
+                    sb.Append(string.Join(delimiter, output[index]));
+                }
+                else
+                {
+                    sb.AppendLine(string.Join(delimiter, output[index]));
+                }
+            }
+
+
+            if (!File.Exists(filePath))
+            {
+                outStream = System.IO.File.CreateText(filePath);
+            }
+            else
+            {
+                outStream = System.IO.File.AppendText(filePath);
+            }           
+            outStream.WriteLine(sb);
+            outStream.Close();
+        }
     }
 
     // Update is called once per frame
@@ -22,21 +67,9 @@ public class WriteToCSV : MonoBehaviour
         
     }
 
-    public void Save()
+    public void Save(List<string[]> data)
     {
-        string[] rowDataTemp = new string[3];
-        if (!File.Exists(filePath))
-        {            
-            rowDataTemp[0] = "Participant";
-            rowDataTemp[1] = "Technique";
-            rowDataTemp[2] = "Trial";
-            rowDataTemp[3] = "Condition";
-            rowDataTemp[4] = "Associated";
-            rowDataTemp[5] = "Response";
-            rowData.Add(rowDataTemp);
-        }
-
-
+        rowData = data;
         string[][] output = new string[rowData.Count][];
 
         for (int i = 0; i < output.Length; i++)
@@ -76,8 +109,4 @@ public class WriteToCSV : MonoBehaviour
 
     }
 
-    public void setRowData(List<string[]> data)
-    {
-        rowData = data;
-    }
 }

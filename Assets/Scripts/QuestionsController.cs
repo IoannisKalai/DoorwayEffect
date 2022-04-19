@@ -13,72 +13,72 @@ public class QuestionsController : MonoBehaviour
     public Camera camera;
     public float distanceFromCamera = 1;
     public float secondsForPromptToAppear;    
-    public int promptNumber = 0;
-    public string associated;
-    public string response;
+    public int promptNumber;
+    private string associated;
+    private string response;
 
-    private string[] rowDataTemp;
-    public  List<string[]> rowData;
+    private string[] rowDataTemp = new string[6];
+    public  List<string[]> rowData = new List<string[]>();
+    public List<string> negativePrompts;
 
     // Start is called before the first frame update
     void Start()
     {
         this.gameObject.GetComponent<Canvas>().enabled = false;
         //objectsInsideBox = GameObject.Find("Box(Clone)").gameObject.GetComponentInChildren<ObjectsToBox>().objectsInsideBox;
+        promptNumber = 0;
     }
 
     // Update is called once per frame
     public void Update()
     {
-        associatedPrompts = GameObject.Find("Box(Clone)").gameObject.GetComponentInChildren<ObjectsToBox>().getAssociatedPrompts();
-        if(this.gameObject.GetComponent<Canvas>().enabled == true)
+        associatedPrompts = GameObject.Find("Box(Clone)").gameObject.GetComponentInChildren<ObjectsToBox>().getAssociatedPrompts(); 
+        negativePrompts = GameObject.Find("Box(Clone)").gameObject.GetComponentInChildren<ObjectsToBox>().getNegativePrompts();
+
+        if (this.gameObject.GetComponent<Canvas>().enabled == true)
         {
             if(OVRInput.Get(OVRInput.RawButton.X))
-            {
-                Debug.Log("Answered Yes");
-                yesButton.GetComponent<Image>().color = Color.red;               
+            {                
+                yesButton.GetComponent<Image>().color = Color.red;
+                response = "TRUE";
             }
             else if(OVRInput.Get(OVRInput.RawButton.A))
-            {
-                Debug.Log("Answered No");
-                this.gameObject.GetComponent<Canvas>().enabled = false;
+            {                              
                 noButton.GetComponent<Image>().color = Color.red;
+                response = "FALSE";
             }
 
             if (OVRInput.GetUp(OVRInput.RawButton.X))
             {
-                yesButton.GetComponent<Image>().color = Color.white;
-                this.gameObject.GetComponent<Canvas>().enabled = false;
-                response = "TRUE";
+                yesButton.GetComponent<Image>().color = Color.white;              
                 writeRowData();
                 promptNumber++;
+                this.gameObject.GetComponent<Canvas>().enabled = false;
                 if (promptNumber < 6)
                 {
+                    Debug.Log("NEXT PROMPT");
                     CreateQuestionPrompts();
                 }
                 else
                 {
-                    promptNumber = 0;
-                    GameObject.Find("GameObject").gameObject.GetComponent<WriteToCSV>().setRowData(rowData);
-                    GameObject.Find("GameObject").gameObject.GetComponent<WriteToCSV>().Save();
+                    promptNumber = 0;                   
+                    GameObject.Find("GameObject").gameObject.GetComponent<WriteToCSV>().Save(rowData);
                 }
             }
             else if (OVRInput.GetUp(OVRInput.RawButton.A))
             {
                 noButton.GetComponent<Image>().color = Color.white;
-                this.gameObject.GetComponent<Canvas>().enabled = false;
-                response = "FALSE";
                 writeRowData();
                 promptNumber++;
+                this.gameObject.GetComponent<Canvas>().enabled = false;
                 if (promptNumber < 6)
                 {
                     CreateQuestionPrompts();
                 }
                 else
                 {
-                    promptNumber = 0;
-                    GameObject.Find("GameObject").gameObject.GetComponent<WriteToCSV>().setRowData(rowData);
-                    GameObject.Find("GameObject").gameObject.GetComponent<WriteToCSV>().Save();
+                    promptNumber = 0;                   
+                    GameObject.Find("GameObject").gameObject.GetComponent<WriteToCSV>().Save(rowData);
                 }
             }
             
@@ -88,28 +88,29 @@ public class QuestionsController : MonoBehaviour
 
     public void CreateQuestionPrompts()
     {
-        float negativePromptChance = Random.Range(0, 1);
+        float negativePromptChance = Random.Range(0.0f, 1.0f);
         if(associatedPrompts.Count > 1)
         {
-            if(negativePromptChance >= 0.4)
+            Debug.Log(negativePromptChance);
+            if(negativePromptChance <= 0.4)
             {
-                question.text = "Is there a " + GameObject.Find("GameObject").gameObject.GetComponent<CreateRandomObject>().negativePromptCreate() + " in the box?";
-                this.gameObject.GetComponent<Canvas>().enabled = true;
-                Debug.Log("Negatiiive PROBE");
+                string negativePrompt = negativePrompts[promptNumber];
+                question.text = "Is there a " + negativePrompt + " in the box?";
                 associated = "FALSE";
+                this.gameObject.GetComponent<Canvas>().enabled = true;                  
             }
             else
             {
                 question.text = "Is there a " + associatedPrompts[promptNumber] + " in the box?";
-                this.gameObject.GetComponent<Canvas>().enabled = true;
                 associated = "TRUE";
+                this.gameObject.GetComponent<Canvas>().enabled = true;
+               
             }
-        }        
+        }       
     }
 
     public IEnumerator WaitSomeSeconds(float seconds)
     {
-        Debug.Log("WAIT");
         yield return new WaitForSeconds(seconds);        
         CreateQuestionPrompts();
         this.transform.position = camera.transform.position + (camera.transform.forward * distanceFromCamera);
@@ -124,12 +125,23 @@ public class QuestionsController : MonoBehaviour
 
     void writeRowData()
     {
+        rowDataTemp = new string[6];
         rowDataTemp[0] = GameObject.Find("GameObject").gameObject.GetComponent<ParticipandTransfer>().participantID;
         rowDataTemp[1] = GameObject.Find("GameObject").gameObject.GetComponent<ParticipandTransfer>().technique;
-        rowDataTemp[2] = GameObject.Find("GameObject").gameObject.GetComponent<CreateRandomObject>().trialNumber.ToString();
-        rowDataTemp[3] = GameObject.Find("GameObject").gameObject.GetComponent<CreateRandomObject>().doorNodoor;
+        rowDataTemp[2] = (GameObject.Find("GameObject").GetComponent<SLRoomSpawner>().roomIndex).ToString();
+        char roomLetter = GameObject.Find("GameObject").GetComponent<SLRoomSpawner>().roomSequence[GameObject.Find("GameObject").GetComponent<SLRoomSpawner>().roomIndex - 1];       
+       
+        if(roomLetter == 'S')
+        {
+            rowDataTemp[3] = "D";
+        }
+        else if(roomLetter == 'L')
+        {
+            rowDataTemp[3] = "ND";
+        }
         rowDataTemp[4] = associated;
         rowDataTemp[5] = response;
         rowData.Add(rowDataTemp);
+        Debug.Log(rowData);
     }
 }
