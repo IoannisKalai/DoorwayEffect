@@ -19,14 +19,16 @@ public class CreateRandomObject : MonoBehaviour
     public List<string> shapeNames;
 
     public List<string> associatedPrompts;
+    public int trialNumber;
     void Start()
     {        
         shapes = Resources.LoadAll<GameObject>("InteractObjects");
         shapeNames = new List<string> { "cone", "cross", "cube", "disk", "sphere", "pole", "pyramid", "beam","star", "wedge" };
         boxObject = Resources.Load<GameObject>("Box/Box");
-        colors = new Color[9] { Color.red, Color.blue, Color.green, Color.grey, Color.yellow, Color.magenta, Color.white, Color.black, new Color( 110f / 255f, 38f / 255f, 14f / 255f) };
-        colorNames = new List<string> { "red", "blue", "green", "grey", "yellow", "purple", "white", "Black", "Brown" };
-        endText.enabled = false;       
+        colors = new Color[10] { Color.red, Color.blue, Color.green, Color.grey, Color.yellow, Color.magenta, Color.white, Color.black, new Color( 110f / 255f, 38f / 255f, 14f / 255f), Color.cyan };
+        colorNames = new List<string> { "red", "blue", "green", "grey", "yellow", "purple", "white", "black", "brown", "cyan" };
+        endText.enabled = false;
+        trialNumber = 1;
         if (this.gameObject.name.Equals("Table2"))
         {
             createdObjects.Add(CreateObjects());
@@ -53,6 +55,7 @@ public class CreateRandomObject : MonoBehaviour
     {       
         int chooseItem = Random.Range(0, shapes.Length);
         List<int> ItemsOnTable = new List<int>();
+        List<int> ColorsOnTable = new List<int>();
         GameObject obj = null; 
         float tableTop = this.transform.position.y + this.GetComponent<Renderer>().bounds.size.y / 2;
         float posx = -0.25f;
@@ -72,7 +75,11 @@ public class CreateRandomObject : MonoBehaviour
             {
                 chooseItem = Random.Range(0, shapes.Length);
             }
-          
+            while (ColorsOnTable.Contains(randomColor))
+            {
+                randomColor = Random.Range(0, colors.Length);
+            }
+
             Vector3 position = new Vector3(posx , this.GetComponent<Renderer>().bounds.size.y / 2, this.transform.right.z * this.GetComponent<Renderer>().bounds.size.z / 6 + posz);
             obj = Instantiate(shapes[chooseItem], blockCentre + position, Quaternion.identity) as GameObject;
             
@@ -92,7 +99,8 @@ public class CreateRandomObject : MonoBehaviour
                 posx = -0.25f;
             }
             ItemsOnTable.Add(chooseItem);
-            Debug.Log("ITEMCSDC");
+            ColorsOnTable.Add(randomColor);
+            
             if (this.gameObject.name == "Table1")
             {
                 // Debug.Log("Tag set to table1");
