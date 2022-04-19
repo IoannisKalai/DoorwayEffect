@@ -19,7 +19,9 @@ public class CreateRandomObject : MonoBehaviour
     public List<string> shapeNames;
 
     public List<string> associatedPrompts;
+    public string negativePrompt;
     public int trialNumber;
+    public string doorNodoor;
     void Start()
     {        
         shapes = Resources.LoadAll<GameObject>("InteractObjects");
@@ -28,7 +30,7 @@ public class CreateRandomObject : MonoBehaviour
         colors = new Color[10] { Color.red, Color.blue, Color.green, Color.grey, Color.yellow, Color.magenta, Color.white, Color.black, new Color( 110f / 255f, 38f / 255f, 14f / 255f), Color.cyan };
         colorNames = new List<string> { "red", "blue", "green", "grey", "yellow", "purple", "white", "black", "brown", "cyan" };
         endText.enabled = false;
-        trialNumber = 1;
+        trialNumber = 0;
         if (this.gameObject.name.Equals("Table2"))
         {
             createdObjects.Add(CreateObjects());
@@ -85,6 +87,7 @@ public class CreateRandomObject : MonoBehaviour
             
             obj.GetComponent<Renderer>().material.color = colors[randomColor];
             associatedPrompts.Add(colorNames[randomColor] + " " + shapeNames[chooseItem]);
+           
             posx += 0.25f;
             if (i == 2)
             {
@@ -146,9 +149,15 @@ public class CreateRandomObject : MonoBehaviour
             doorWing.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
             doorWing.GetComponent<Rigidbody>().velocity = Vector3.zero;
             doorRotation = true;
+            doorNodoor = "D";
         } 
+        else
+        {
+            doorNodoor = "ND";
+        }
         hasEntered = false;
-        
+
+        trialNumber += 1;        
         return obj;         
     }
 
@@ -168,4 +177,19 @@ public class CreateRandomObject : MonoBehaviour
     {
         return associatedPrompts;      
     }
+
+    public string negativePromptCreate()
+    {
+        int randomColorNegative = Random.Range(0, colors.Length);
+        int randomShapeNegative = Random.Range(0, shapes.Length);
+        negativePrompt = colorNames[randomColorNegative] + " " + shapeNames[randomShapeNegative];
+        while(associatedPrompts.Contains(negativePrompt))
+        {
+            randomColorNegative = Random.Range(0, colors.Length);
+            randomShapeNegative = Random.Range(0, shapes.Length);
+            negativePrompt = colorNames[randomColorNegative] + " " + shapeNames[randomShapeNegative];
+        }
+        return negativePrompt;
+    }
+
 }
