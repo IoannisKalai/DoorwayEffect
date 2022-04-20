@@ -67,6 +67,7 @@ public class QuestionsController : MonoBehaviour
                 {
                     promptNumber = 0;                   
                     GameObject.Find("GameObject").gameObject.GetComponent<WriteToCSV>().Save(rowData);
+                    rowData = new List<string[]>();
                 }
             }
             else if (OVRInput.GetUp(OVRInput.RawButton.A))
@@ -85,6 +86,7 @@ public class QuestionsController : MonoBehaviour
                 {
                     promptNumber = 0;                   
                     GameObject.Find("GameObject").gameObject.GetComponent<WriteToCSV>().Save(rowData);
+                    rowData = new List<string[]>();
                 }
             }
             
@@ -148,7 +150,7 @@ public class QuestionsController : MonoBehaviour
         }
         rowDataTemp[4] = associated;
         rowDataTemp[5] = response;
-        rowDataTemp[6] = responseTime.ToString();
+        rowDataTemp[6] = responseTime.ToString() + " ms";
         rowData.Add(rowDataTemp);        
     }
 }
