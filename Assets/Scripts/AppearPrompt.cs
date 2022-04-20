@@ -5,10 +5,11 @@ using UnityEngine;
 public class AppearPrompt : MonoBehaviour
 {
     public Canvas promptCanvas;
+    public bool promptsAppearing;
     // Start is called before the first frame update
     void Start()
     {
-        
+        promptsAppearing = true;
     }
 
     // Update is called once per frame
@@ -19,10 +20,13 @@ public class AppearPrompt : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
-        
-		if(other.gameObject.name == "Box(Clone)")
+        if(promptsAppearing == true)
         {
-            promptCanvas.gameObject.GetComponent<QuestionsController>().AppearPromptOnScreen();           
+		    if(other.gameObject.name == "Box(Clone)")
+            {
+                promptCanvas.gameObject.GetComponent<QuestionsController>().AppearPromptOnScreen();
+                promptsAppearing = false;
+            }
         }
     }
 }
