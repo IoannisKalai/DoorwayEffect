@@ -7,15 +7,16 @@ public class ParticipandTransfer : MonoBehaviour
 {
 
     public string participantID;
-    public GameObject inputField;
+    public GameObject inputFieldParticipant;
+    public GameObject inputFieldTechnique;
     public Canvas startingCanvas;
 
     public string technique;
 
-    public void StoreID()
+    public void StoreIDandTechnique()
     {
-        participantID = inputField.GetComponent<Text>().text;
-        technique = "W";
+        participantID = inputFieldParticipant.GetComponent<Text>().text;
+        technique = inputFieldTechnique.GetComponent<Text>().text;
         startingCanvas.gameObject.SetActive(false);
     }
 }

@@ -9,8 +9,7 @@ public class SpawnRoomObjects : MonoBehaviour
     public GameObject[] largeRoomVariations;
     public List<GameObject> roomsCreated = new List<GameObject>();
     public int roomIndex;
-    private int largeRoomIndex = 0;
-    private int removeIndex = 0;
+    private int largeRoomIndex = 0;   
 
 	public void Start()
 	{

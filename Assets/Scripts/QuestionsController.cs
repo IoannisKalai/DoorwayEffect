@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Diagnostics;
 
 public class QuestionsController : MonoBehaviour
 {
@@ -17,9 +18,11 @@ public class QuestionsController : MonoBehaviour
     private string associated;
     private string response;
 
-    private string[] rowDataTemp = new string[6];
+    private string[] rowDataTemp = new string[7];
     public  List<string[]> rowData = new List<string[]>();
     public List<string> negativePrompts;
+    private Stopwatch responseTimer = new Stopwatch();
+    private float responseTime;
 
     // Start is called before the first frame update
     void Start()
@@ -50,13 +53,14 @@ public class QuestionsController : MonoBehaviour
 
             if (OVRInput.GetUp(OVRInput.RawButton.X))
             {
-                yesButton.GetComponent<Image>().color = Color.white;              
+                yesButton.GetComponent<Image>().color = Color.white;
+                responseTimer.Stop();
+                responseTime = responseTimer.ElapsedMilliseconds;
                 writeRowData();
                 promptNumber++;
                 this.gameObject.GetComponent<Canvas>().enabled = false;
                 if (promptNumber < 6)
                 {
-                    Debug.Log("NEXT PROMPT");
                     CreateQuestionPrompts();
                 }
                 else
@@ -68,6 +72,8 @@ public class QuestionsController : MonoBehaviour
             else if (OVRInput.GetUp(OVRInput.RawButton.A))
             {
                 noButton.GetComponent<Image>().color = Color.white;
+                responseTimer.Stop();
+                responseTime = responseTimer.ElapsedMilliseconds;
                 writeRowData();
                 promptNumber++;
                 this.gameObject.GetComponent<Canvas>().enabled = false;
@@ -89,22 +95,23 @@ public class QuestionsController : MonoBehaviour
     public void CreateQuestionPrompts()
     {
         float negativePromptChance = Random.Range(0.0f, 1.0f);
+        responseTimer.Reset();
         if(associatedPrompts.Count > 1)
-        {
-            Debug.Log(negativePromptChance);
+        {           
             if(negativePromptChance <= 0.4)
             {
                 string negativePrompt = negativePrompts[promptNumber];
                 question.text = "Is there a " + negativePrompt + " in the box?";
                 associated = "FALSE";
-                this.gameObject.GetComponent<Canvas>().enabled = true;                  
+                this.gameObject.GetComponent<Canvas>().enabled = true;
+                responseTimer.Start();
             }
             else
             {
                 question.text = "Is there a " + associatedPrompts[promptNumber] + " in the box?";
                 associated = "TRUE";
                 this.gameObject.GetComponent<Canvas>().enabled = true;
-               
+                responseTimer.Start();
             }
         }       
     }
@@ -125,7 +132,7 @@ public class QuestionsController : MonoBehaviour
 
     void writeRowData()
     {
-        rowDataTemp = new string[6];
+        rowDataTemp = new string[7];
         rowDataTemp[0] = GameObject.Find("GameObject").gameObject.GetComponent<ParticipandTransfer>().participantID;
         rowDataTemp[1] = GameObject.Find("GameObject").gameObject.GetComponent<ParticipandTransfer>().technique;
         rowDataTemp[2] = (GameObject.Find("GameObject").GetComponent<SLRoomSpawner>().roomIndex).ToString();
@@ -141,7 +148,7 @@ public class QuestionsController : MonoBehaviour
         }
         rowDataTemp[4] = associated;
         rowDataTemp[5] = response;
-        rowData.Add(rowDataTemp);
-        Debug.Log(rowData);
+        rowDataTemp[6] = responseTime.ToString();
+        rowData.Add(rowDataTemp);        
     }
 }

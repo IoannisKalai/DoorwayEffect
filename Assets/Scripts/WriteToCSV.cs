@@ -13,7 +13,7 @@ public class WriteToCSV : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        string[] rowDataTemp = new string[6];
+        string[] rowDataTemp = new string[7];
         if (!File.Exists(filePath))
         {
             rowDataTemp[0] = "Participant";
@@ -22,6 +22,7 @@ public class WriteToCSV : MonoBehaviour
             rowDataTemp[3] = "Condition";
             rowDataTemp[4] = "Associated";
             rowDataTemp[5] = "Response";
+            rowDataTemp[6] = "Response Time";
             rowData.Add(rowDataTemp);
             string[][] output = new string[rowData.Count][];
 
