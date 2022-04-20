@@ -27,7 +27,7 @@ public class SLRoomSpawner : MonoBehaviour
 
     void CreateRoomSequence()
     {
-        for (int i = 0; i < 50; i++)
+        for (int i = 0; i < 60; i++)
         {
             if (roomSequence.Count >= 4)
             {              
@@ -73,6 +73,35 @@ public class SLRoomSpawner : MonoBehaviour
                 numberOfLargeRooms++;
             }
 		}
+        
+        while(numberOfLargeRooms > numberOfSmallRooms)
+        {
+            int randomRoom = Random.Range(0, roomSequence.Count);
+            if(roomSequence[randomRoom] == 'L')
+            {
+                roomSequence[randomRoom] = 'S';
+            }
+
+            if (numberOfLargeRooms == numberOfSmallRooms)
+            {
+                break;
+            }
+        }
+
+        while (numberOfLargeRooms < numberOfSmallRooms)
+        {
+            int randomRoom = Random.Range(0, roomSequence.Count);
+            if (roomSequence[randomRoom] == 'S')
+            {
+                roomSequence[randomRoom] = 'L';
+            }
+
+            if(numberOfLargeRooms == numberOfSmallRooms)
+            {
+                break;
+            }
+        }
+
         Debug.Log("Number of small rooms: " + numberOfSmallRooms);
         Debug.Log("Number of large rooms: " + numberOfLargeRooms);
     }
