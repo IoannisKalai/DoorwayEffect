@@ -176,16 +176,14 @@ public class CreateRandomObject : MonoBehaviour
     //Create new object when touching grabbed object to the opposite table. 
 	private void OnCollisionEnter(Collision collision)
 	{
-        if (!hasEntered && (collision.gameObject.tag != this.gameObject.name) && (collision.gameObject.tag =="Table1" || collision.gameObject.tag == "Table2"))
-        {    
-            if(collision.gameObject.name == "Box(Clone)")
-            {
-                hasEntered = true;              
-                collision.gameObject.GetComponentInChildren<ObjectsToBox>().DestroyObjects();
-                Destroy(collision.gameObject);
-                GameObject.Find("PromptTrigger").gameObject.GetComponent<AppearPrompt>().promptsAppearing = true;
-                CreateObjects();
-            }
+        if (!hasEntered && (collision.gameObject.tag != this.gameObject.name) && (collision.gameObject.name == "Box(Clone)"))
+        {  
+            hasEntered = true;              
+            collision.gameObject.GetComponentInChildren<ObjectsToBox>().DestroyObjects();
+            Destroy(collision.gameObject);
+            GameObject.Find("PromptTrigger").gameObject.GetComponent<AppearPrompt>().promptsAppearing = true;
+            CreateObjects();
+            
         }           
 	}   
 

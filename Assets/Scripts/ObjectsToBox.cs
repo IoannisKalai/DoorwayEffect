@@ -28,7 +28,7 @@ public class ObjectsToBox : MonoBehaviour
 	void OnTriggerEnter(Collider other)
 	{
         Debug.Log(other.gameObject);
-        if (other.gameObject.tag == "Table1" || other.gameObject.tag == "Table2")
+        if ((other.gameObject.tag == "Table1" || other.gameObject.tag == "Table2") && other.gameObject.name != "Box(Clone)")
         {
             if (!objectsInsideBox.Contains(other.gameObject))
             {
