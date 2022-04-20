@@ -98,6 +98,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectsInsideBox: []
+  associatedPrompts: []
+  negativePrompts: []
 --- !u!65 &5466026208042487352
 BoxCollider:
   m_ObjectHideFlags: 0
