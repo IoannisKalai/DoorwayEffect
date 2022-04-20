@@ -122,7 +122,7 @@ public class QuestionsController : MonoBehaviour
     {
         yield return new WaitForSeconds(seconds);        
         CreateQuestionPrompts();
-        this.transform.position = camera.transform.position ;
+        this.transform.position = camera.transform.position + (camera.transform.forward * distanceFromCamera); ;
         this.transform.rotation = camera.transform.rotation;
         seconds = 0;
     }

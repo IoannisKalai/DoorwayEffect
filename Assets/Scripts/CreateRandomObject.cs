@@ -177,12 +177,15 @@ public class CreateRandomObject : MonoBehaviour
 	private void OnCollisionEnter(Collision collision)
 	{
         if (!hasEntered && (collision.gameObject.tag != this.gameObject.name) && (collision.gameObject.tag =="Table1" || collision.gameObject.tag == "Table2"))
-        {           
-            hasEntered = true;            
-            collision.gameObject.GetComponentInChildren<ObjectsToBox>().DestroyObjects();
-            Destroy(collision.gameObject);
-            GameObject.Find("PromptTrigger").gameObject.GetComponent<AppearPrompt>().promptsAppearing = true;
-            CreateObjects();            
+        {    
+            if(collision.gameObject.name == "Box(Clone)")
+            {
+                hasEntered = true;              
+                collision.gameObject.GetComponentInChildren<ObjectsToBox>().DestroyObjects();
+                Destroy(collision.gameObject);
+                GameObject.Find("PromptTrigger").gameObject.GetComponent<AppearPrompt>().promptsAppearing = true;
+                CreateObjects();
+            }
         }           
 	}   
 
