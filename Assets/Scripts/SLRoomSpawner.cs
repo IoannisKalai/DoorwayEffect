@@ -73,35 +73,31 @@ public class SLRoomSpawner : MonoBehaviour
                 numberOfLargeRooms++;
             }
 		}
+         
+        //Create same number of large and small rooms
+        while (!(numberOfLargeRooms == numberOfSmallRooms))
+        {
+            int randomRoom = Random.Range(0, roomSequence.Count);
+            if(numberOfLargeRooms > numberOfSmallRooms)
+            {
+                if (roomSequence[randomRoom] == 'L')
+                {
+                    roomSequence[randomRoom] = 'S';
+                }
+                numberOfSmallRooms++;
+                numberOfLargeRooms--;
+            }
+            else if(numberOfLargeRooms < numberOfSmallRooms)
+            {
+                if (roomSequence[randomRoom] == 'S')
+                {
+                    roomSequence[randomRoom] = 'L';
+                }
+                numberOfSmallRooms--;
+                numberOfLargeRooms++;
+            }
+        }
         
-        while(numberOfLargeRooms > numberOfSmallRooms)
-        {
-            int randomRoom = Random.Range(0, roomSequence.Count);
-            if(roomSequence[randomRoom] == 'L')
-            {
-                roomSequence[randomRoom] = 'S';
-            }
-
-            if (numberOfLargeRooms == numberOfSmallRooms)
-            {
-                break;
-            }
-        }
-
-        while (numberOfLargeRooms < numberOfSmallRooms)
-        {
-            int randomRoom = Random.Range(0, roomSequence.Count);
-            if (roomSequence[randomRoom] == 'S')
-            {
-                roomSequence[randomRoom] = 'L';
-            }
-
-            if(numberOfLargeRooms == numberOfSmallRooms)
-            {
-                break;
-            }
-        }
-
         Debug.Log("Number of small rooms: " + numberOfSmallRooms);
         Debug.Log("Number of large rooms: " + numberOfLargeRooms);
     }
