@@ -187,10 +187,10 @@ public class CreateRandomObject : MonoBehaviour
         {  
             hasEntered = true;              
             collision.gameObject.GetComponentInChildren<ObjectsToBox>().DestroyObjects();
-            Destroy(collision.gameObject);
+            ///Destroy(collision.gameObject);
+            collision.gameObject.GetComponent<Destroy>().destroyThis();
             GameObject.Find("PromptTrigger").gameObject.GetComponent<AppearPrompt>().promptsAppearing = true;
-            CreateObjects();
-            
+            CreateObjects();            
         }           
 	}   
 
