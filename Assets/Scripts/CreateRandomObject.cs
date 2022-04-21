@@ -103,7 +103,7 @@ public class CreateRandomObject : MonoBehaviour
             }
             ItemsOnTable.Add(chooseItem);
             ColorsOnTable.Add(randomColor);
-            
+           
             if (this.gameObject.name == "Table1")
             {
                 // Debug.Log("Tag set to table1");
@@ -127,7 +127,9 @@ public class CreateRandomObject : MonoBehaviour
                 }
             }
         }
-
+        ItemsOnTable = new List<int>();
+        ColorsOnTable = new List<int>();
+       
         for(int i = 0; i < 6; i++)
         {
             int randomColorNegative = Random.Range(0, colors.Length);
@@ -146,26 +148,31 @@ public class CreateRandomObject : MonoBehaviour
         {
             box.transform.position += new Vector3(0, 0, -1.0f);
         }
+        
         //Spawn Small/Large Room
         int roomInd = GameObject.Find("GameObject").GetComponent<SLRoomSpawner>().roomIndex;       
         char roomToCreate = GameObject.Find("GameObject").GetComponent<SLRoomSpawner>().roomSequence[roomInd];
+       
         GameObject newRoom;
-        newRoom = GameObject.Find("GameObject").GetComponent<SLRoomSpawner>().SpawnRoom(roomToCreate);
-        GameObject.Find("GameObject").GetComponent<ChangeWallColors>().ChangeColor(roomToCreate);
-        GameObject.Find("GameObject").GetComponent<SpawnRoomObjects>().SpawnRoomVariation(roomToCreate);
+        newRoom = GameObject.Find("GameObject").GetComponent<SLRoomSpawner>().SpawnRoom(roomToCreate);        
+        GameObject.Find("GameObject").GetComponent<ChangeWallColors>().ChangeColor(roomToCreate);       
+        GameObject.Find("GameObject").GetComponent<SpawnRoomObjects>().SpawnRoomVariation(roomToCreate);         
         box.gameObject.GetComponentInChildren<ObjectsToBox>().SetAssociatedPrompts(associatedPrompts);
         box.gameObject.GetComponentInChildren<ObjectsToBox>().SetNegativePrompts(negativePrompts);
+        
         
         if (roomToCreate == 'S')
         {
             Debug.Log("Door Close");            
-            doorWing = newRoom.transform.GetChild(15).GetChild(0).gameObject;
+           doorWing = newRoom.transform.GetChild(15).GetChild(0).gameObject;
             doorWing.transform.eulerAngles = new Vector3(0, -90, 0);
             Debug.Log(doorWing);
             doorWing.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
             doorWing.GetComponent<Rigidbody>().velocity = Vector3.zero;
             doorRotation = true;           
         } 
+        
+        
        
         hasEntered = false;
 

@@ -63,6 +63,7 @@ public class ChangeWallColors : MonoBehaviour
 
     private Color chooseColor()
     {
+        /*
         if (colorsCreated.Count >= 3)
         {
             Color lastColor = colorsCreated[colorsCreated.Count - 1];
@@ -78,7 +79,8 @@ public class ChangeWallColors : MonoBehaviour
         {
             colorsCreated.Add(wallColors[Random.Range(0, wallColors.Length)]);
         }
-
+        */
+        colorsCreated.Add(wallColors[Random.Range(0, wallColors.Length)]);
         return colorsCreated[colorsCreated.Count - 1];
     }
 }
