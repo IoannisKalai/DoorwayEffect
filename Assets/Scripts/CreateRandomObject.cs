@@ -22,6 +22,8 @@ public class CreateRandomObject : MonoBehaviour
     public List<string> negativePrompts;
     public int trialNumber;
     public string doorNodoor;
+
+    public OVRGrabber myGrabber;
     void Start()
     {        
         shapes = Resources.LoadAll<GameObject>("InteractObjects");
@@ -49,7 +51,8 @@ public class CreateRandomObject : MonoBehaviour
                 Debug.Log(doorWing.transform.eulerAngles);
                 doorRotation = false;
             }
-        }       
+        }
+        
     }
 
 	GameObject CreateObjects()
@@ -181,14 +184,15 @@ public class CreateRandomObject : MonoBehaviour
     }
 
     //Create new object when touching grabbed object to the opposite table. 
-	private void OnCollisionEnter(Collision collision)
-	{
+	public void OnCollisionEnter(Collision collision)
+	{                
         if (!hasEntered && (collision.gameObject.tag != this.gameObject.name) && (collision.gameObject.name == "Box(Clone)"))
         {  
             hasEntered = true;              
             collision.gameObject.GetComponentInChildren<ObjectsToBox>().DestroyObjects();
             ///Destroy(collision.gameObject);
-            collision.gameObject.GetComponent<Destroy>().destroyThis();
+            Debug.Log(collision.gameObject);
+            destroyBox(collision.gameObject);
             GameObject.Find("PromptTrigger").gameObject.GetComponent<AppearPrompt>().promptsAppearing = true;
             CreateObjects();            
         }           
@@ -198,6 +202,32 @@ public class CreateRandomObject : MonoBehaviour
     {
         return associatedPrompts;      
     }
-    
+
+    public void destroyBox(GameObject box)
+
+    {
+       
+
+        //this turns off the OVRGrabbable script
+        box.GetComponent<OVRGrabbable>().enabled = false;
+
+        //this gets the hand that's grabbing it
+
+        myGrabber = box.GetComponent<OVRGrabbable>().m_grabbedBy;
+        // if(myGrabber != null)
+        // {
+        myGrabber = box.GetComponent<OVRGrabbable>().m_grabbedBy;
+        Debug.Log("grabber " + myGrabber);
+
+        //use ForceRelease method in the OVRGrabber to release object
+
+        myGrabber.ForceRelease(box.GetComponent<OVRGrabbable>());
+        // }
+       
+        //destroy object
+        Debug.Log("destroy " + box.gameObject.name);
+        Destroy(box.gameObject);
+
+    }
 
 }
