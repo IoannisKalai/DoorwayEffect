@@ -4958,7 +4958,6 @@ GameObject:
   - component: {fileID: 5466026209035101471}
   - component: {fileID: 5466026209035101470}
   - component: {fileID: 5466026209035101469}
-  - component: {fileID: 892415112830065986}
   m_Layer: 0
   m_Name: Box
   m_TagString: Box
@@ -5093,15 +5092,3 @@ MonoBehaviour:
   m_snapOffset: {fileID: 0}
   m_grabPoints: []
   m_grabbedBy: {fileID: 0}
---- !u!114 &892415112830065986
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5466026209035068346}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: face17cf3577e8e4cbd2026f30be9790, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

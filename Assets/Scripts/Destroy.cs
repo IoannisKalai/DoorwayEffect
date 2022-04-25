@@ -8,7 +8,10 @@ public class Destroy : MonoBehaviour
 
 	public void Update()
 	{
-       
+        if (this.gameObject.GetComponent<OVRGrabbable>().isGrabbed == true)
+        {
+            myGrabber = this.gameObject.GetComponent<OVRGrabbable>().m_grabbedBy;
+        }       
     }
 	public void destroyThis()
 
@@ -18,17 +21,12 @@ public class Destroy : MonoBehaviour
         this.GetComponent<OVRGrabbable>().enabled = false;
 
         //this gets the hand that's grabbing it
-        
         myGrabber = this.GetComponent<OVRGrabbable>().m_grabbedBy;
-       // if(myGrabber != null)
-       // {
+        
         Debug.Log("grabber " + myGrabber);
-
         //use ForceRelease method in the OVRGrabber to release object
-
         myGrabber.ForceRelease(this.gameObject.GetComponent<OVRGrabbable>());
-        // }
-        this.GetComponent<OVRGrabbable>().enabled = false;
+        
         //destroy object
         Debug.Log("destroy " + this.gameObject.name);
         Destroy(this.gameObject);
