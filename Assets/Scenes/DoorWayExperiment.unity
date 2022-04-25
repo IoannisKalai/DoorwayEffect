@@ -165,7 +165,6 @@ MonoBehaviour:
   negativePrompts: []
   trialNumber: 0
   doorNodoor: 
-  myGrabber: {fileID: 0}
 --- !u!1 &201069939
 GameObject:
   m_ObjectHideFlags: 0
@@ -777,7 +776,6 @@ MonoBehaviour:
   negativePrompts: []
   trialNumber: 0
   doorNodoor: 
-  myGrabber: {fileID: 0}
 --- !u!1 &535784976
 GameObject:
   m_ObjectHideFlags: 0
@@ -3461,6 +3459,11 @@ Transform:
   m_Father: {fileID: 1337018111}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1583125371 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4926590347846174712, guid: 522b89d0f09cc834db5f015f40e578f3, type: 3}
+  m_PrefabInstance: {fileID: 1492571579}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1705845378
 GameObject:
   m_ObjectHideFlags: 0
@@ -3584,6 +3587,7 @@ MonoBehaviour:
   yesButton: {fileID: 1497086273}
   noButton: {fileID: 1919046483}
   camera: {fileID: 1919744498}
+  player: {fileID: 1583125371}
   distanceFromCamera: 1.5
   secondsForPromptToAppear: 1
   promptNumber: 0

@@ -171,10 +171,7 @@ public class CreateRandomObject : MonoBehaviour
             doorWing.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
             doorWing.GetComponent<Rigidbody>().velocity = Vector3.zero;
             doorRotation = true;           
-        } 
-        
-        
-       
+        }
         hasEntered = false;
 
         trialNumber += 1;        
@@ -183,8 +180,7 @@ public class CreateRandomObject : MonoBehaviour
 
     //Create new object when touching grabbed object to the opposite table. 
 	public void OnCollisionEnter(Collision collision)
-	{
-        
+	{        
         if (!hasEntered && (collision.gameObject.tag != this.gameObject.name) && (collision.gameObject.name == "Box(Clone)"))
         {  
             hasEntered = true;              

@@ -12,6 +12,7 @@ public class QuestionsController : MonoBehaviour
     public Button yesButton;
     public Button noButton;
     public Camera camera;
+    public GameObject player;
     public float distanceFromCamera = 1;
     public float secondsForPromptToAppear;    
     public int promptNumber;
@@ -122,8 +123,9 @@ public class QuestionsController : MonoBehaviour
     {
         yield return new WaitForSeconds(seconds);        
         CreateQuestionPrompts();
-        this.transform.position = camera.transform.position + (camera.transform.forward * distanceFromCamera); ;
-        this.transform.rotation = camera.transform.rotation;
+        //this.transform.position = camera.transform.position + (camera.transform.forward * distanceFromCamera); ;
+        this.transform.position = new Vector3(player.transform.position.x + (player.transform.forward.x * distanceFromCamera), 0f, 0f); 
+        //this.transform.rotation = player.transform.rotation;
         seconds = 0;
     }
 
