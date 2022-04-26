@@ -3554,8 +3554,8 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1705845378}
-  m_LocalRotation: {x: -0, y: -0.7071068, z: 0, w: -0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: -0.07452506}
+  m_LocalRotation: {x: -0, y: -0.7071069, z: -0, w: -0.7071067}
+  m_LocalPosition: {x: 0, y: 0, z: -0.0745251}
   m_LocalScale: {x: 0.00090763933, y: 0.00090763933, z: 0.00090763933}
   m_Children:
   - {fileID: 1928067174}
@@ -3588,7 +3588,7 @@ MonoBehaviour:
   noButton: {fileID: 1919046483}
   camera: {fileID: 1919744498}
   player: {fileID: 1583125371}
-  distanceFromCamera: 1.5
+  distanceFromCamera: 2
   secondsForPromptToAppear: 1
   promptNumber: 0
   negativePrompts: []
