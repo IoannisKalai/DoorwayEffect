@@ -26,10 +26,10 @@ public class CreateRandomObject : MonoBehaviour
     void Start()
     {        
         shapes = Resources.LoadAll<GameObject>("InteractObjects");
-        shapeNames = new List<string> { "cone", "cross", "cube", "disk", "sphere", "pole", "pyramid", "beam","star", "wedge" };
+        shapeNames = new List<string> { "cone", "cross", "cube", "disk", "sphere", "pole", "pyramid", "block","star", "wedge" };
         boxObject = Resources.Load<GameObject>("Box/Box");
-        colors = new Color[10] { Color.red, Color.blue, Color.green, Color.grey, Color.yellow, Color.magenta, Color.white, Color.black, new Color( 110f / 255f, 38f / 255f, 14f / 255f), Color.cyan };
-        colorNames = new List<string> { "red", "blue", "green", "grey", "yellow", "purple", "white", "black", "brown", "cyan" };
+        colors = new Color[10] { new Color(226f / 255f, 53f / 255f, 53f / 255f), new Color(46f / 255f, 64f / 255f, 219f / 255f), new Color(102f / 255f, 204f / 255f, 0f / 255f), Color.grey, new Color(238f / 255f, 238f / 255f, 73f / 255f), new Color(230f / 255f, 41f / 255f, 230f / 255f), Color.white, Color.black, new Color( 110f / 255f, 38f / 255f, 14f / 255f), new Color(220f / 255f, 135f / 255f, 49f / 255f) };
+        colorNames = new List<string> { "red", "blue", "green", "grey", "yellow", "magenta", "white", "black", "brown", "orange" };
         endText.enabled = false;
         if (this.gameObject.name.Equals("Table2"))
         {
@@ -85,7 +85,20 @@ public class CreateRandomObject : MonoBehaviour
 
             Vector3 position = new Vector3(posx , this.GetComponent<Renderer>().bounds.size.y / 2, this.transform.right.z * this.GetComponent<Renderer>().bounds.size.z / 6 + posz);
             obj = Instantiate(shapes[chooseItem], blockCentre + position, Quaternion.identity) as GameObject;
-            
+
+            if(obj.gameObject.name == "StarObject(Clone)")
+            {
+                obj.transform.Rotate(0f, 90f, 0f);
+            }
+            else if(obj.gameObject.name == "CrossObject(Clone)")
+            {
+                obj.transform.Rotate(45f, 0f, 0f);
+            }
+            else if(obj.gameObject.name == "RectangularBoxObject(Clone)")
+            {
+                obj.transform.Rotate(90f, 0f, 0f);
+            }
+
             obj.GetComponent<Renderer>().material.color = colors[randomColor];
             associatedPrompts.Add(colorNames[randomColor] + " " + shapeNames[chooseItem]);
            
