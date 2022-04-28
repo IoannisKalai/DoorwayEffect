@@ -136,8 +136,8 @@ public class QuestionsController : MonoBehaviour
     void writeRowData()
     {
         rowDataTemp = new string[7];
-        rowDataTemp[0] = GameObject.Find("GameObject").gameObject.GetComponent<ParticipandTransfer>().participantID;
-        rowDataTemp[1] = GameObject.Find("GameObject").gameObject.GetComponent<ParticipandTransfer>().technique;
+        rowDataTemp[0] = GameObject.Find("GameObject").gameObject.GetComponent<MenuController>().participantID;
+        rowDataTemp[1] = GameObject.Find("GameObject").gameObject.GetComponent<MenuController>().locomotionTechnique;
         rowDataTemp[2] = (GameObject.Find("GameObject").GetComponent<SLRoomSpawner>().roomIndex).ToString();
         char roomLetter = GameObject.Find("GameObject").GetComponent<SLRoomSpawner>().roomSequence[GameObject.Find("GameObject").GetComponent<SLRoomSpawner>().roomIndex - 1];       
        

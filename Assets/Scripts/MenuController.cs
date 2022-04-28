@@ -7,51 +7,63 @@ using UnityEngine.EventSystems;
 public class MenuController : MonoBehaviour
 {
 
-    public char locomotionTechnique;
+    public string locomotionTechnique;
     public Button walking;
     public Button teleportation;
     public string participantID = "";
     public GameObject inputFieldParticipant;
     public TouchScreenKeyboard overlayKeyboard;
     public InputField inputfield;
-
-    public Text tryText;
+    public Canvas mainCanvas;
     private bool keyboardOpen = true;
 	public void Start()
 	{
-       
+        mainCanvas.gameObject.SetActive(false);
     }
 	public void Update()
-	{       
-        if (inputfield.isFocused && keyboardOpen)
-        {            
-            overlayKeyboard = TouchScreenKeyboard.Open("", TouchScreenKeyboardType.Default);           
-            keyboardOpen = false;               
-        }
-        if (overlayKeyboard != null)
+	{
+        if(OVRInput.GetDown(OVRInput.RawButton.RThumbstick))
         {
-            inputfield.text = overlayKeyboard.text;
-            tryText.text = overlayKeyboard.text;
-            participantID = inputfield.text;
+            if (mainCanvas.gameObject.active == true)
+            {
+               mainCanvas.gameObject.SetActive(false);
+            }
+            else if(mainCanvas.gameObject.active == false)
+            {
+                mainCanvas.gameObject.SetActive(true);
+            }
         }
-        if (inputfield.isFocused == false && overlayKeyboard != null)
+        if (mainCanvas.gameObject.active == true)
         {
-            participantID = overlayKeyboard.text;
-            overlayKeyboard.active = false;
-            keyboardOpen = true;
+            if (inputfield.isFocused && keyboardOpen)
+            {            
+                overlayKeyboard = TouchScreenKeyboard.Open("", TouchScreenKeyboardType.Default);           
+                keyboardOpen = false;               
+            }
+            if (overlayKeyboard != null)
+            {
+                inputfield.text = overlayKeyboard.text;           
+                participantID = inputfield.text;
+            }
+            if (inputfield.isFocused == false && overlayKeyboard != null)
+            {
+                participantID = overlayKeyboard.text;
+                overlayKeyboard.active = false;
+                keyboardOpen = true;
+            }
         }
     }
     public void ChooseTechnique()
     {        
         if(EventSystem.current.currentSelectedGameObject.name == "WalkingButton")
         {
-            locomotionTechnique = 'W';
+            locomotionTechnique = "W";
             walking.GetComponent<Image>().color = Color.red;
             teleportation.GetComponent<Image>().color = Color.white;
         }
         else if (EventSystem.current.currentSelectedGameObject.name == "TeleportationButton")
         {
-            locomotionTechnique = 'T';
+            locomotionTechnique = "T";
             walking.GetComponent<Image>().color = Color.white;
             teleportation.GetComponent<Image>().color = Color.red;
         }
@@ -59,13 +71,12 @@ public class MenuController : MonoBehaviour
 
     public void StoreParticipantID()
     {
-        tryText.text = overlayKeyboard.text;
+       
     }
 
     public void OpenKeyboard()
     {
-        overlayKeyboard = TouchScreenKeyboard.Open("", TouchScreenKeyboardType.Default);
-        Debug.Log(TouchScreenKeyboard.isSupported);
+        overlayKeyboard = TouchScreenKeyboard.Open("", TouchScreenKeyboardType.Default);        
         if (overlayKeyboard != null)
         {
             participantID = overlayKeyboard.text;
