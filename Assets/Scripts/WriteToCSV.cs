@@ -101,7 +101,7 @@ public class WriteToCSV : MonoBehaviour
     {
         string dateTime = System.DateTime.Now.ToString("yyyy-MM-dd");
         string participantID = GameObject.Find("GameObject").gameObject.GetComponent<MenuController>().participantID;
-        string fileName = dateTime + "-" + participantID + ".csv";
+        string fileName = dateTime + " " + participantID + ".csv";
         return (Application.persistentDataPath + fileName);
     }
 
