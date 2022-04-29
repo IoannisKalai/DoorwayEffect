@@ -9,7 +9,9 @@ public class CreateRandomObject : MonoBehaviour
     private bool hasEntered;
     public Canvas endText;
     public GameObject boxObject;
-    private GameObject box;
+    public GameObject boxObjectClosed;
+    public GameObject box;
+    private GameObject closedBox;
     private List<GameObject> objectInBox;
     private bool doorRotation = false;
     public GameObject doorWing;
@@ -28,6 +30,7 @@ public class CreateRandomObject : MonoBehaviour
         shapes = Resources.LoadAll<GameObject>("InteractObjects");
         shapeNames = new List<string> { "cone", "cross", "cube", "disk", "sphere", "pole", "pyramid", "block","star", "wedge" };
         boxObject = Resources.Load<GameObject>("Box/Box");
+        boxObjectClosed = Resources.Load<GameObject>("Box/Box_closed");
         colors = new Color[10] { new Color(226f / 255f, 53f / 255f, 53f / 255f), new Color(46f / 255f, 64f / 255f, 219f / 255f), new Color(102f / 255f, 204f / 255f, 0f / 255f), Color.grey, new Color(238f / 255f, 238f / 255f, 73f / 255f), new Color(230f / 255f, 41f / 255f, 230f / 255f), Color.white, Color.black, new Color( 110f / 255f, 38f / 255f, 14f / 255f), new Color(220f / 255f, 135f / 255f, 49f / 255f) };
         colorNames = new List<string> { "red", "blue", "green", "grey", "yellow", "magenta", "white", "black", "brown", "orange" };
         endText.enabled = false;
@@ -40,17 +43,25 @@ public class CreateRandomObject : MonoBehaviour
 
     void Update()
 	{
-       
-        if (GameObject.Find("Box(Clone)").GetComponentInChildren<ObjectsToBox>().objectsInsideBox.Count == 6)
-        {
-            if(doorWing != null && doorRotation == true)
+       if (box != null)
+       {
+            if (box.GetComponentInChildren<ObjectsToBox>().objectsInsideBox.Count == 6)
             {
-                Debug.Log("Door Open");
-                doorWing.transform.eulerAngles = new Vector3(0, -180, 0);
-                Debug.Log(doorWing.transform.eulerAngles);
-                doorRotation = false;
+                if(doorWing != null && doorRotation == true)
+                {
+                    Debug.Log("Door Open");
+                    doorWing.transform.eulerAngles = new Vector3(0, -180, 0);
+                    Debug.Log(doorWing.transform.eulerAngles);
+                    doorRotation = false;
+                }
+            
+                closedBox = Instantiate(boxObjectClosed, box.gameObject.transform.position, box.gameObject.transform.rotation);
+                closedBox.gameObject.tag = box.gameObject.tag;
+                box.gameObject.GetComponentInChildren<ObjectsToBox>().DestroyObjects(); 
+                Destroy(box.gameObject);
+            
             }
-        }       
+       }
     }
 
 	GameObject CreateObjects()
@@ -187,17 +198,20 @@ public class CreateRandomObject : MonoBehaviour
         }
         hasEntered = false;
 
-        trialNumber += 1;        
+        trialNumber += 1;
+
+        GameObject.Find("PromptsCanvas").GetComponent<QuestionsController>().setBoxObject(box);
         return obj;         
     }
 
     //Create new object when touching grabbed object to the opposite table. 
 	public void OnCollisionEnter(Collision collision)
 	{        
-        if (!hasEntered && (collision.gameObject.tag != this.gameObject.name) && (collision.gameObject.name == "Box(Clone)"))
-        {  
+        if (!hasEntered && (collision.gameObject.tag != this.gameObject.name) && (collision.gameObject.name == "Box_closed(Clone)"))
+        {
+            Debug.Log(collision.gameObject.tag + " " + this.gameObject.name + " --- " + collision.gameObject.name);
             hasEntered = true;              
-            collision.gameObject.GetComponentInChildren<ObjectsToBox>().DestroyObjects();                    
+            //collision.gameObject.GetComponentInChildren<ObjectsToBox>().DestroyObjects();                    
             GameObject.Find("PromptTrigger").gameObject.GetComponent<AppearPrompt>().promptsAppearing = true;
             Destroy(collision.gameObject);
             CreateObjects();            
@@ -207,5 +221,14 @@ public class CreateRandomObject : MonoBehaviour
     List<string> getAssociatedObjectList()
     {
         return associatedPrompts;      
+    }
+
+    public GameObject getBoxObject()
+    {
+        return box;
+    }
+    public void setBoxObject(GameObject boxObj)
+    {
+        boxObj = box;
     }
 }

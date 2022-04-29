@@ -24,7 +24,7 @@ public class QuestionsController : MonoBehaviour
     public List<string> negativePrompts;
     private Stopwatch responseTimer = new Stopwatch();
     private float responseTime;
-
+    public GameObject box;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,10 +35,12 @@ public class QuestionsController : MonoBehaviour
 
     // Update is called once per frame
     public void Update()
-    {
-        associatedPrompts = GameObject.Find("Box(Clone)").gameObject.GetComponentInChildren<ObjectsToBox>().getAssociatedPrompts(); 
-        negativePrompts = GameObject.Find("Box(Clone)").gameObject.GetComponentInChildren<ObjectsToBox>().getNegativePrompts();
-
+    {       
+        if (box != null)
+        {
+            associatedPrompts = GameObject.Find("Box(Clone)").gameObject.GetComponentInChildren<ObjectsToBox>().getAssociatedPrompts(); 
+            negativePrompts = GameObject.Find("Box(Clone)").gameObject.GetComponentInChildren<ObjectsToBox>().getNegativePrompts();
+        }
         if (this.gameObject.GetComponent<Canvas>().enabled == true)
         {
             if(OVRInput.Get(OVRInput.RawButton.X))
@@ -153,5 +155,15 @@ public class QuestionsController : MonoBehaviour
         rowDataTemp[5] = response;
         rowDataTemp[6] = responseTime.ToString() + " ms";
         rowData.Add(rowDataTemp);        
+    }
+
+
+    public GameObject getBoxObject()
+    {
+        return box;
+    }
+    public void setBoxObject(GameObject boxObj)
+    {
+        box = boxObj;
     }
 }
