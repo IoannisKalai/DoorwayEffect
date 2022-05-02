@@ -3823,7 +3823,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc84e0d401659194a903ecc6f7fa694b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeDuration: 0.5
+  fadeDuration: 3
   fadeColor: {r: 0, g: 0, b: 0, a: 0}
   fader: {fileID: 2115041397}
 --- !u!1 &1705845378

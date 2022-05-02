@@ -25,20 +25,28 @@ public class Teleport : MonoBehaviour
 
     public void TeleportToLocation(int ButtonPressed)
     {
-        if(ButtonPressed == 2)
-        {            
-            FadeOut();
-            player.transform.position = new Vector3(-0.7f, player.transform.position.y, player.transform.position.z);
-            FadeIn();
-        }
-        else if(ButtonPressed == 1)
-        {
-            FadeOut();
-            player.transform.position = new Vector3(0.7f, player.transform.position.y, player.transform.position.z);
-            FadeIn();
-        }
+        StartCoroutine(FadeTeleport(ButtonPressed));
     }
 
+    public IEnumerator FadeTeleport(int ButtonPressed)
+    {
+        if (ButtonPressed == 2)
+        {
+            FadeOut();
+            yield return new WaitForSeconds(fadeDuration);
+            player.transform.position = new Vector3(-0.7f, player.transform.position.y, player.transform.position.z);
+            FadeIn();
+            yield return new WaitForSeconds(fadeDuration);
+        }
+        else if (ButtonPressed == 1)
+        {
+            FadeOut();
+            yield return new WaitForSeconds(fadeDuration);
+            player.transform.position = new Vector3(0.7f, player.transform.position.y, player.transform.position.z);
+            FadeIn();
+            yield return new WaitForSeconds(fadeDuration);
+        }
+    }
     public void FadeIn()
     {
         Fade(1, 0);
