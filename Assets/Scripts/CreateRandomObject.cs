@@ -25,6 +25,8 @@ public class CreateRandomObject : MonoBehaviour
     public int trialNumber;
     public string doorNodoor;
 
+    public GameObject buttonPole1;
+    public GameObject buttonPole2;
     void Start()
     {        
         shapes = Resources.LoadAll<GameObject>("InteractObjects");
@@ -34,6 +36,8 @@ public class CreateRandomObject : MonoBehaviour
         colors = new Color[10] { new Color(226f / 255f, 53f / 255f, 53f / 255f), new Color(46f / 255f, 64f / 255f, 219f / 255f), new Color(102f / 255f, 204f / 255f, 0f / 255f), Color.grey, new Color(238f / 255f, 238f / 255f, 73f / 255f), new Color(230f / 255f, 41f / 255f, 230f / 255f), Color.white, Color.black, new Color( 110f / 255f, 38f / 255f, 14f / 255f), new Color(220f / 255f, 135f / 255f, 49f / 255f) };
         colorNames = new List<string> { "red", "blue", "green", "grey", "yellow", "magenta", "white", "black", "brown", "orange" };
         endText.enabled = false;
+        buttonPole2.SetActive(false);
+        buttonPole1.SetActive(false);
         if (this.gameObject.name.Equals("Table2"))
         {
             createdObjects.Add(CreateObjects());
@@ -59,7 +63,16 @@ public class CreateRandomObject : MonoBehaviour
                 closedBox.gameObject.tag = box.gameObject.tag;
                 box.gameObject.GetComponentInChildren<ObjectsToBox>().DestroyObjects(); 
                 Destroy(box.gameObject);
-            
+
+                if (this.gameObject.name.Equals("Table2"))
+                {
+                    buttonPole2.SetActive(true);
+                }
+                else if(this.gameObject.name.Equals("Table1"))
+                {
+                    buttonPole1.SetActive(true);
+                }
+
             }
        }
     }

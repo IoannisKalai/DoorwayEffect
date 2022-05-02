@@ -10,6 +10,12 @@ public class Teleport : MonoBehaviour
     public Color fadeColor;
     public GameObject fader;
     private Renderer rend;
+
+    public GameObject buttonPole1;
+    public GameObject buttonPole2;
+
+    public Canvas promptCanvas;
+ 
     // Start is called before the first frame update
     void Start()
     {
@@ -35,16 +41,29 @@ public class Teleport : MonoBehaviour
             FadeOut();
             yield return new WaitForSeconds(fadeDuration);
             player.transform.position = new Vector3(-0.7f, player.transform.position.y, player.transform.position.z);
+            buttonPole2.SetActive(false);
             FadeIn();
             yield return new WaitForSeconds(fadeDuration);
+            if (GameObject.Find("PromptTrigger").gameObject.GetComponent<AppearPrompt>().promptsAppearing == true)
+            {                
+                promptCanvas.gameObject.GetComponent<QuestionsController>().AppearPromptOnScreen();
+                GameObject.Find("PromptTrigger").gameObject.GetComponent<AppearPrompt>().promptsAppearing = false;                
+            }
+            
         }
         else if (ButtonPressed == 1)
         {
             FadeOut();
             yield return new WaitForSeconds(fadeDuration);
             player.transform.position = new Vector3(0.7f, player.transform.position.y, player.transform.position.z);
+            buttonPole1.SetActive(false);
             FadeIn();
             yield return new WaitForSeconds(fadeDuration);
+            if (GameObject.Find("PromptTrigger").gameObject.GetComponent<AppearPrompt>().promptsAppearing == true)
+            {
+                promptCanvas.gameObject.GetComponent<QuestionsController>().AppearPromptOnScreen();
+                GameObject.Find("PromptTrigger").gameObject.GetComponent<AppearPrompt>().promptsAppearing = false;
+            }
         }
     }
     public void FadeIn()

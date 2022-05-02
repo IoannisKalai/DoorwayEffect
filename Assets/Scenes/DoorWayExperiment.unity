@@ -167,6 +167,8 @@ MonoBehaviour:
   negativePrompts: []
   trialNumber: 0
   doorNodoor: 
+  buttonPole1: {fileID: 687491069}
+  buttonPole2: {fileID: 1953240895}
 --- !u!1 &46059000 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1038146256242982, guid: a9d2de84afb308a4796cc671d3432b4d, type: 3}
@@ -1147,6 +1149,8 @@ MonoBehaviour:
   negativePrompts: []
   trialNumber: 0
   doorNodoor: 
+  buttonPole1: {fileID: 687491069}
+  buttonPole2: {fileID: 1953240895}
 --- !u!1 &535784976
 GameObject:
   m_ObjectHideFlags: 0
@@ -1288,6 +1292,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92eac79084f1a864981ba6bbd8271761, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &687491069 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7393846891396943837, guid: 17d75a03b897f3e45b5133a48f6ed760, type: 3}
+  m_PrefabInstance: {fileID: 2008460695}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &709403375
 GameObject:
   m_ObjectHideFlags: 0
@@ -3823,9 +3832,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc84e0d401659194a903ecc6f7fa694b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeDuration: 3
+  fadeDuration: 0.5
   fadeColor: {r: 0, g: 0, b: 0, a: 0}
   fader: {fileID: 2115041397}
+  buttonPole1: {fileID: 687491069}
+  buttonPole2: {fileID: 1953240895}
+  promptCanvas: {fileID: 1705845381}
 --- !u!1 &1705845378
 GameObject:
   m_ObjectHideFlags: 0
@@ -4633,6 +4645,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1928067173}
   m_CullTransparentMesh: 1
+--- !u!1 &1953240895 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7393846891396943837, guid: 17d75a03b897f3e45b5133a48f6ed760, type: 3}
+  m_PrefabInstance: {fileID: 1569600998}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1980782726
 GameObject:
   m_ObjectHideFlags: 0
