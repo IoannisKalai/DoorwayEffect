@@ -1165,6 +1165,7 @@ GameObject:
   - component: {fileID: 535784980}
   - component: {fileID: 535784982}
   - component: {fileID: 535784981}
+  - component: {fileID: 535784983}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -1290,6 +1291,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 92eac79084f1a864981ba6bbd8271761, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &535784983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 535784976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a990d1f9686a0334eb3868497e6821cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &687491069 stripped
@@ -3206,7 +3219,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4926590347846174690, guid: 522b89d0f09cc834db5f015f40e578f3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.706
+      value: 2.257
       objectReference: {fileID: 0}
     - target: {fileID: 4926590347846174690, guid: 522b89d0f09cc834db5f015f40e578f3, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3963,7 +3976,7 @@ MonoBehaviour:
   camera: {fileID: 1919744498}
   player: {fileID: 1583125371}
   distanceFromCamera: 2
-  secondsForPromptToAppear: 1
+  secondsForPromptToAppear: 0.5
   promptNumber: 0
   negativePrompts: []
   box: {fileID: 0}

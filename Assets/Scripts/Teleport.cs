@@ -6,7 +6,7 @@ public class Teleport : MonoBehaviour
 {
     private GameObject player;
 
-    public float fadeDuration = 1;
+    public float fadeDuration = 0.5f;
     public Color fadeColor;
     public GameObject fader;
     private Renderer rend;

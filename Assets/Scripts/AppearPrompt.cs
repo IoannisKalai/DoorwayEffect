@@ -22,7 +22,7 @@ public class AppearPrompt : MonoBehaviour
 	{
         if(promptsAppearing == true)
         {
-		    if(other.gameObject.name == "Box(Clone)")
+		    if(other.gameObject.name == "Box_closed(Clone)")
             {
                 promptCanvas.gameObject.GetComponent<QuestionsController>().AppearPromptOnScreen();
                 promptsAppearing = false;

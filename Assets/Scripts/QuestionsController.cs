@@ -35,7 +35,7 @@ public class QuestionsController : MonoBehaviour
 
     // Update is called once per frame
     public void Update()
-    {       
+    {              
         if (box != null)
         {
             associatedPrompts = GameObject.Find("Box(Clone)").gameObject.GetComponentInChildren<ObjectsToBox>().getAssociatedPrompts(); 
@@ -57,8 +57,9 @@ public class QuestionsController : MonoBehaviour
             if (OVRInput.GetUp(OVRInput.RawButton.X))
             {
                 yesButton.GetComponent<Image>().color = Color.white;
-                responseTimer.Stop();
+                responseTimer.Stop();				
                 responseTime = responseTimer.ElapsedMilliseconds;
+                UnityEngine.Debug.Log(responseTime);
                 writeRowData();
                 promptNumber++;
                 this.gameObject.GetComponent<Canvas>().enabled = false;
@@ -78,6 +79,7 @@ public class QuestionsController : MonoBehaviour
                 noButton.GetComponent<Image>().color = Color.white;
                 responseTimer.Stop();
                 responseTime = responseTimer.ElapsedMilliseconds;
+                UnityEngine.Debug.Log(responseTime);
                 writeRowData();
                 promptNumber++;
                 this.gameObject.GetComponent<Canvas>().enabled = false;

@@ -64,15 +64,17 @@ public class CreateRandomObject : MonoBehaviour
                 box.gameObject.GetComponentInChildren<ObjectsToBox>().DestroyObjects(); 
                 Destroy(box.gameObject);
 
-                if (this.gameObject.name.Equals("Table2"))
+                if(GameObject.Find("GameObject").GetComponent<MenuController>().locomotionTechnique == "T")
                 {
-                    buttonPole2.SetActive(true);
+                    if (this.gameObject.name.Equals("Table2"))
+                    {
+                        buttonPole2.SetActive(true);
+                    }
+                    else if(this.gameObject.name.Equals("Table1"))
+                    {
+                        buttonPole1.SetActive(true);
+                    }
                 }
-                else if(this.gameObject.name.Equals("Table1"))
-                {
-                    buttonPole1.SetActive(true);
-                }
-
             }
        }
     }
