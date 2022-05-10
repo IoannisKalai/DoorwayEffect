@@ -45,12 +45,12 @@ public class QuestionsController : MonoBehaviour
         {
             if(OVRInput.Get(OVRInput.RawButton.X))
             {                
-                yesButton.GetComponent<Image>().color = Color.red;
+                yesButton.GetComponent<Image>().color = Color.grey;
                 response = "TRUE";
             }
             else if(OVRInput.Get(OVRInput.RawButton.A))
             {                              
-                noButton.GetComponent<Image>().color = Color.red;
+                noButton.GetComponent<Image>().color = Color.grey;
                 response = "FALSE";
             }
 
