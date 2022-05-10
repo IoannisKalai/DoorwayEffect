@@ -11,6 +11,7 @@ permissions and limitations under the License.
 ************************************************************************************/
 
 using System;
+using System.Diagnostics;
 using UnityEngine;
 
 /// <summary>
@@ -33,10 +34,22 @@ public class OVRGrabbable : MonoBehaviour
     protected Collider m_grabbedCollider = null;
     public OVRGrabber m_grabbedBy = null;
 
+    public Stopwatch travelTimer = new Stopwatch();
+    public Stopwatch promptTimer = new Stopwatch();
+    public bool timerStart = true;
+    public void Update()
+	{
+		if(m_grabbedBy != null && timerStart && this.gameObject.name == "Box_closed(Clone)")
+        {
+            promptTimer.Start();
+            travelTimer.Start();
+            timerStart = false;
+        }
+    }
 	/// <summary>
 	/// If true, the object can currently be grabbed.
 	/// </summary>
-    public bool allowOffhandGrab
+	public bool allowOffhandGrab
     {
         get { return m_allowOffhandGrab; }
     }

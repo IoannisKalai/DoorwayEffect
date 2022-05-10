@@ -9,7 +9,7 @@ public class WriteToCSV : MonoBehaviour
 {
     public List<string[]> rowData = new List<string[]>();
     private string filePath;
-    private StreamWriter outStream;
+    public StreamWriter outStream;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +25,7 @@ public class WriteToCSV : MonoBehaviour
     {        
         if (!File.Exists(filePath))
         {
-            string[] rowDataTemp = new string[7];
+            string[] rowDataTemp = new string[9];
             filePath = getFilePath();
             rowDataTemp[0] = "Participant";
             rowDataTemp[1] = "Technique";
@@ -34,6 +34,8 @@ public class WriteToCSV : MonoBehaviour
             rowDataTemp[4] = "Associated";
             rowDataTemp[5] = "Response";
             rowDataTemp[6] = "Response Time";
+            rowDataTemp[7] = "Prompt Time";
+            rowDataTemp[8] = "Travel Time";
             rowData.Add(rowDataTemp);
             string[][] output1 = new string[rowData.Count][];
 
@@ -63,9 +65,12 @@ public class WriteToCSV : MonoBehaviour
             if (!File.Exists(filePath))
             {
                 outStream = System.IO.File.CreateText(filePath);
-            }            
-            outStream.WriteLine(sb1);
-            outStream.Close();
+            }    
+            if(outStream != null)
+            {
+                outStream.WriteLine(sb1);
+                outStream.Close();
+            }
         }
         rowData = data;
         string[][] output = new string[rowData.Count][];
@@ -92,9 +97,9 @@ public class WriteToCSV : MonoBehaviour
             }
         }       
         outStream = System.IO.File.AppendText(filePath);        
-        Debug.Log("data saved");
+        Debug.Log("data saved");       
         outStream.WriteLine(sb);
-        outStream.Close();
+        outStream.Close();        
     }
 
     public string getFilePath()
@@ -102,7 +107,11 @@ public class WriteToCSV : MonoBehaviour
         string dateTime = System.DateTime.Now.ToString("yyyy-MM-dd");
         string participantID = GameObject.Find("GameObject").gameObject.GetComponent<MenuController>().participantID;
         string fileName = dateTime + " " + participantID + ".csv";
+        #if UNITY_EDITOR
+        return (Application.dataPath + "/DataFileFolder/" + fileName);
+        #elif UNITY_ANDROID
         return (Application.persistentDataPath + fileName);
+        #endif
     }
 
 }

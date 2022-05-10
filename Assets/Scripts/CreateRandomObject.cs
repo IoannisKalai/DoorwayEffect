@@ -27,6 +27,11 @@ public class CreateRandomObject : MonoBehaviour
 
     public GameObject buttonPole1;
     public GameObject buttonPole2;
+
+
+    public List<string[]> finalData = new List<string[]>();
+
+    public Canvas promptCanvas;
     void Start()
     {        
         shapes = Resources.LoadAll<GameObject>("InteractObjects");
@@ -228,6 +233,20 @@ public class CreateRandomObject : MonoBehaviour
             hasEntered = true;              
             //collision.gameObject.GetComponentInChildren<ObjectsToBox>().DestroyObjects();                    
             GameObject.Find("PromptTrigger").gameObject.GetComponent<AppearPrompt>().promptsAppearing = true;
+            collision.gameObject.GetComponent<OVRGrabbable>().timerStart = true;
+            collision.gameObject.GetComponent<OVRGrabbable>().travelTimer.Stop();
+           
+            string travelTime =  collision.gameObject.GetComponent<OVRGrabbable>().travelTimer.ElapsedMilliseconds.ToString() ;
+                        
+            finalData = promptCanvas.gameObject.GetComponent<QuestionsController>().rowDataToSent; 
+            for(int i = 0; i < finalData.Count; i ++)
+            {
+                finalData[i][8] = travelTime +" ms";
+            }           
+            promptCanvas.gameObject.GetComponent<QuestionsController>().rowDataToSent = new List<string[]>();
+            
+            GameObject.Find("GameObject").gameObject.GetComponent<WriteToCSV>().Save(finalData);
+            finalData = new List<string[]>();
             Destroy(collision.gameObject);
             CreateObjects();            
         }           
@@ -246,4 +265,5 @@ public class CreateRandomObject : MonoBehaviour
     {
         boxObj = box;
     }
+
 }

@@ -25,6 +25,8 @@ public class QuestionsController : MonoBehaviour
     private Stopwatch responseTimer = new Stopwatch();
     private float responseTime;
     public GameObject box;
+
+    public List<string[]>  rowDataToSent = new List<string[]>();
     // Start is called before the first frame update
     void Start()
     {
@@ -69,8 +71,9 @@ public class QuestionsController : MonoBehaviour
                 }
                 else
                 {
-                    promptNumber = 0;                   
-                    GameObject.Find("GameObject").gameObject.GetComponent<WriteToCSV>().Save(rowData);
+                    promptNumber = 0;
+                    rowDataToSent = rowData;
+                    //GameObject.Find("GameObject").gameObject.GetComponent<WriteToCSV>().Save(rowData);
                     rowData = new List<string[]>();
                 }
             }
@@ -89,8 +92,9 @@ public class QuestionsController : MonoBehaviour
                 }
                 else
                 {
-                    promptNumber = 0;                   
-                    GameObject.Find("GameObject").gameObject.GetComponent<WriteToCSV>().Save(rowData);
+                    promptNumber = 0;
+                    rowDataToSent = rowData;
+                    //GameObject.Find("GameObject").gameObject.GetComponent<WriteToCSV>().Save(rowData);
                     rowData = new List<string[]>();
                 }
             }
@@ -134,12 +138,13 @@ public class QuestionsController : MonoBehaviour
 
     public void AppearPromptOnScreen()
     {
+        GameObject.Find("Box_closed(Clone)").GetComponent<OVRGrabbable>().promptTimer.Stop();
         StartCoroutine(WaitSomeSeconds(secondsForPromptToAppear));       
     }
 
-    void writeRowData()
+    public void writeRowData()
     {
-        rowDataTemp = new string[7];
+        rowDataTemp = new string[9];
         rowDataTemp[0] = GameObject.Find("GameObject").gameObject.GetComponent<MenuController>().participantID;
         rowDataTemp[1] = GameObject.Find("GameObject").gameObject.GetComponent<MenuController>().locomotionTechnique;
         rowDataTemp[2] = (GameObject.Find("GameObject").GetComponent<SLRoomSpawner>().roomIndex).ToString();
@@ -156,9 +161,20 @@ public class QuestionsController : MonoBehaviour
         rowDataTemp[4] = associated;
         rowDataTemp[5] = response;
         rowDataTemp[6] = responseTime.ToString() + " ms";
+        rowDataTemp[7] = GameObject.Find("Box_closed(Clone)").GetComponent<OVRGrabbable>().promptTimer.ElapsedMilliseconds.ToString()+ " ms";
+        rowDataTemp[8] = " ";
         rowData.Add(rowDataTemp);        
     }
 
+    public List<string[]> getRowData()
+    {
+        return rowDataToSent;
+    }
+
+    public void setRowData(List<string[]> rowDataTemp)
+    {
+
+    }
 
     public GameObject getBoxObject()
     {
