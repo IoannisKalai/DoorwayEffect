@@ -163,12 +163,15 @@ MonoBehaviour:
   doorWing: {fileID: 0}
   colorNames: []
   shapeNames: []
+  objectsInBox1: ' '
+  objectsInBox2: ' '
   associatedPrompts: []
   negativePrompts: []
   trialNumber: 0
   doorNodoor: 
   buttonPole1: {fileID: 687491069}
   buttonPole2: {fileID: 1953240895}
+  promptCanvas: {fileID: 1705845381}
 --- !u!1 &46059000 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1038146256242982, guid: a9d2de84afb308a4796cc671d3432b4d, type: 3}
@@ -1145,12 +1148,15 @@ MonoBehaviour:
   doorWing: {fileID: 0}
   colorNames: []
   shapeNames: []
+  objectsInBox1: ' '
+  objectsInBox2: ' '
   associatedPrompts: []
   negativePrompts: []
   trialNumber: 0
   doorNodoor: 
   buttonPole1: {fileID: 687491069}
   buttonPole2: {fileID: 1953240895}
+  promptCanvas: {fileID: 1705845381}
 --- !u!1 &535784976
 GameObject:
   m_ObjectHideFlags: 0
@@ -3179,7 +3185,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4926590347282153460, guid: 522b89d0f09cc834db5f015f40e578f3, type: 3}
       propertyPath: m_parentHeldObject
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4926590347753639969, guid: 522b89d0f09cc834db5f015f40e578f3, type: 3}
       propertyPath: _trackingOriginType
@@ -3439,7 +3445,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4926590349014859441, guid: 522b89d0f09cc834db5f015f40e578f3, type: 3}
       propertyPath: m_parentHeldObject
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 522b89d0f09cc834db5f015f40e578f3, type: 3}

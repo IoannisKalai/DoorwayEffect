@@ -60,8 +60,7 @@ public class QuestionsController : MonoBehaviour
             {
                 yesButton.GetComponent<Image>().color = Color.white;
                 responseTimer.Stop();				
-                responseTime = responseTimer.ElapsedMilliseconds;
-                UnityEngine.Debug.Log(responseTime);
+                responseTime = responseTimer.ElapsedMilliseconds;               
                 writeRowData();
                 promptNumber++;
                 this.gameObject.GetComponent<Canvas>().enabled = false;
@@ -81,8 +80,7 @@ public class QuestionsController : MonoBehaviour
             {
                 noButton.GetComponent<Image>().color = Color.white;
                 responseTimer.Stop();
-                responseTime = responseTimer.ElapsedMilliseconds;
-                UnityEngine.Debug.Log(responseTime);
+                responseTime = responseTimer.ElapsedMilliseconds;                
                 writeRowData();
                 promptNumber++;
                 this.gameObject.GetComponent<Canvas>().enabled = false;
@@ -144,7 +142,7 @@ public class QuestionsController : MonoBehaviour
 
     public void writeRowData()
     {
-        rowDataTemp = new string[9];
+        rowDataTemp = new string[10];
         rowDataTemp[0] = GameObject.Find("GameObject").gameObject.GetComponent<MenuController>().participantID;
         rowDataTemp[1] = GameObject.Find("GameObject").gameObject.GetComponent<MenuController>().locomotionTechnique;
         rowDataTemp[2] = (GameObject.Find("GameObject").GetComponent<SLRoomSpawner>().roomIndex).ToString();
@@ -163,6 +161,7 @@ public class QuestionsController : MonoBehaviour
         rowDataTemp[6] = responseTime.ToString() + " ms";
         rowDataTemp[7] = GameObject.Find("Box_closed(Clone)").GetComponent<OVRGrabbable>().promptTimer.ElapsedMilliseconds.ToString()+ " ms";
         rowDataTemp[8] = " ";
+        rowDataTemp[9] = " ";
         rowData.Add(rowDataTemp);        
     }
 

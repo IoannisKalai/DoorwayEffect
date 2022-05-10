@@ -12,7 +12,6 @@ public class CreateRandomObject : MonoBehaviour
     public GameObject boxObjectClosed;
     public GameObject box;
     private GameObject closedBox;
-    private List<GameObject> objectInBox;
     private bool doorRotation = false;
     public GameObject doorWing;
     private Vector3 startingRotation;
@@ -20,6 +19,9 @@ public class CreateRandomObject : MonoBehaviour
     public List<string> colorNames;
     public List<string> shapeNames;
 
+    public string objectsInBox1 = " ";
+    public string objectsInBox = " ";
+    public string objectsInBox2 = " ";
     public List<string> associatedPrompts;
     public List<string> negativePrompts;
     public int trialNumber;
@@ -30,6 +32,7 @@ public class CreateRandomObject : MonoBehaviour
 
 
     public List<string[]> finalData = new List<string[]>();
+
 
     public Canvas promptCanvas;
     void Start()
@@ -63,13 +66,15 @@ public class CreateRandomObject : MonoBehaviour
                     Debug.Log(doorWing.transform.eulerAngles);
                     doorRotation = false;
                 }
-            
+                for(int i = 0; i< box.GetComponentInChildren<ObjectsToBox>().getAssociatedPrompts().Count; i++)
+				{
+					objectsInBox += box.GetComponentInChildren<ObjectsToBox>().getAssociatedPrompts()[i] + "+";
+                }
                 closedBox = Instantiate(boxObjectClosed, box.gameObject.transform.position, box.gameObject.transform.rotation);
                 closedBox.gameObject.tag = box.gameObject.tag;
                 box.gameObject.GetComponentInChildren<ObjectsToBox>().DestroyObjects(); 
-                Destroy(box.gameObject);
-
-                if(GameObject.Find("GameObject").GetComponent<MenuController>().locomotionTechnique == "T")
+                Destroy(box.gameObject);            
+                if (GameObject.Find("GameObject").GetComponent<MenuController>().locomotionTechnique == "T")
                 {
                     if (this.gameObject.name.Equals("Table2"))
                     {
@@ -80,8 +85,9 @@ public class CreateRandomObject : MonoBehaviour
                         buttonPole1.SetActive(true);
                     }
                 }
-            }
+            }    
        }
+        Debug.Log(objectsInBox + this.gameObject.name) ;
     }
 
 	GameObject CreateObjects()
@@ -132,7 +138,7 @@ public class CreateRandomObject : MonoBehaviour
 
             obj.GetComponent<Renderer>().material.color = colors[randomColor];
             associatedPrompts.Add(colorNames[randomColor] + " " + shapeNames[chooseItem]);
-           
+
             posx += 0.25f;
             if (i == 2)
             {
@@ -149,6 +155,7 @@ public class CreateRandomObject : MonoBehaviour
             ItemsOnTable.Add(chooseItem);
             ColorsOnTable.Add(randomColor);
            
+
             if (this.gameObject.name == "Table1")
             {
                 // Debug.Log("Tag set to table1");
@@ -171,11 +178,29 @@ public class CreateRandomObject : MonoBehaviour
                     t.gameObject.tag = "Table2";
                 }
             }
-        }
+        }       
         ItemsOnTable = new List<int>();
         ColorsOnTable = new List<int>();
-       
-        for(int i = 0; i < 6; i++)
+        if(this.gameObject.name == "Table1")
+        {
+            for(int i = 0; i < associatedPrompts.Count; i++)
+            {
+                objectsInBox1 += associatedPrompts[i] + "+";
+            }
+            objectsInBox1.ToString();
+        }
+        else if (this.gameObject.name == "Table2")
+        {
+            for (int i = 0; i < associatedPrompts.Count; i++)
+            {
+                objectsInBox2 += associatedPrompts[i] + "+";
+            }
+            objectsInBox2.ToString();
+        }
+
+        Debug.Log(objectsInBox1 + "1");
+        Debug.Log(objectsInBox2 + "2");
+        for (int i = 0; i < 6; i++)
         {
             int randomColorNegative = Random.Range(0, colors.Length);
             int randomShapeNegative = Random.Range(0, shapes.Length);            
@@ -186,8 +211,7 @@ public class CreateRandomObject : MonoBehaviour
             }
             negativePrompts.Add(colorNames[randomColorNegative] + " " + shapeNames[randomShapeNegative]);
 
-        }
-        
+        }       
 
         if (box.gameObject.tag == "Table1")
         {
@@ -221,15 +245,19 @@ public class CreateRandomObject : MonoBehaviour
         trialNumber += 1;
 
         GameObject.Find("PromptsCanvas").GetComponent<QuestionsController>().setBoxObject(box);
+
         return obj;         
     }
 
     //Create new object when touching grabbed object to the opposite table. 
 	public void OnCollisionEnter(Collision collision)
-	{        
+	{
+       
+
         if (!hasEntered && (collision.gameObject.tag != this.gameObject.name) && (collision.gameObject.name == "Box_closed(Clone)"))
         {
             Debug.Log(collision.gameObject.tag + " " + this.gameObject.name + " --- " + collision.gameObject.name);
+            
             hasEntered = true;              
             //collision.gameObject.GetComponentInChildren<ObjectsToBox>().DestroyObjects();                    
             GameObject.Find("PromptTrigger").gameObject.GetComponent<AppearPrompt>().promptsAppearing = true;
@@ -242,7 +270,19 @@ public class CreateRandomObject : MonoBehaviour
             for(int i = 0; i < finalData.Count; i ++)
             {
                 finalData[i][8] = travelTime +" ms";
-            }           
+                finalData[i][9] = objectsInBox;
+                Debug.Log(objectsInBox + this.gameObject.name +"KATW");
+                if (this.gameObject.name == "Table2")
+                {
+                    finalData[i][9] = objectsInBox1;
+                    Debug.Log(objectsInBox1 + "KATW1");
+                }
+                else if(this.gameObject.name == "Table1")
+                {
+                    finalData[i][9] = objectsInBox2;
+                    Debug.Log(objectsInBox2 + "KATW2");
+                }                
+            }
             promptCanvas.gameObject.GetComponent<QuestionsController>().rowDataToSent = new List<string[]>();
             
             GameObject.Find("GameObject").gameObject.GetComponent<WriteToCSV>().Save(finalData);

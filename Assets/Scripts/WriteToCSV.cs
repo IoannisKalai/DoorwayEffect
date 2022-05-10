@@ -25,7 +25,7 @@ public class WriteToCSV : MonoBehaviour
     {        
         if (!File.Exists(filePath))
         {
-            string[] rowDataTemp = new string[9];
+            string[] rowDataTemp = new string[10];
             filePath = getFilePath();
             rowDataTemp[0] = "Participant";
             rowDataTemp[1] = "Technique";
@@ -36,6 +36,7 @@ public class WriteToCSV : MonoBehaviour
             rowDataTemp[6] = "Response Time";
             rowDataTemp[7] = "Prompt Time";
             rowDataTemp[8] = "Travel Time";
+            rowDataTemp[9] = "Objects In Box";
             rowData.Add(rowDataTemp);
             string[][] output1 = new string[rowData.Count][];
 

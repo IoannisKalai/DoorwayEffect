@@ -32,6 +32,7 @@ public class ObjectsToBox : MonoBehaviour
             if (!objectsInsideBox.Contains(other.gameObject))
             {
                 objectsInsideBox.Add(other.gameObject);
+
                 // Destroy(other.gameObject);                
                 //Debug.Log("Object : " + objectsInsideBox[objectsInsideBox.Count - 1].GetComponent<Renderer>().material.color);
                 other.gameObject.SetActive(false);
