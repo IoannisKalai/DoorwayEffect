@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Teleport : MonoBehaviour
 {
@@ -15,18 +16,29 @@ public class Teleport : MonoBehaviour
     public GameObject buttonPole2;
 
     public Canvas promptCanvas;
- 
+
+
+    public Text countdown1;
+    public Text countdown2;
+    public float countTimer = 4;
+    public int ButtonPressedGlobal = 0;
+    public bool countdownOnce = false;
     // Start is called before the first frame update
     void Start()
     {
         player = this.gameObject;
-        rend = fader.GetComponent<Renderer>();        
+        rend = fader.GetComponent<Renderer>();
+        countdown1.gameObject.SetActive(false);
+        countdown2.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(countdownOnce)
+        {
+            Countdown();
+        }
     }
 
     public void TeleportToLocation(int ButtonPressed)
@@ -38,6 +50,11 @@ public class Teleport : MonoBehaviour
     {
         if (ButtonPressed == 2)
         {
+            countdown2.gameObject.SetActive(true);
+            countTimer = 4;
+            ButtonPressedGlobal = 2;
+            countdownOnce = true;
+            yield return new WaitForSeconds(4);
             FadeOut();
             yield return new WaitForSeconds(fadeDuration);
             player.transform.position = new Vector3(-0.7f, player.transform.position.y, player.transform.position.z);
@@ -53,6 +70,11 @@ public class Teleport : MonoBehaviour
         }
         else if (ButtonPressed == 1)
         {
+            countdown1.gameObject.SetActive(true);
+            countTimer = 4;
+            ButtonPressedGlobal = 1;
+            countdownOnce = true;
+            yield return new WaitForSeconds(4);
             FadeOut();
             yield return new WaitForSeconds(fadeDuration);
             player.transform.position = new Vector3(0.7f, player.transform.position.y, player.transform.position.z);
@@ -101,5 +123,25 @@ public class Teleport : MonoBehaviour
         Color newColor2 = fadeColor;
         newColor2.a = alphaOut;
         rend.material.SetColor("_Color", newColor2);
+    }
+
+    public void Countdown()
+    {
+        countTimer -= Time.deltaTime;
+        if (ButtonPressedGlobal == 1)
+        {
+            countdown1.text = countTimer.ToString("0.0");
+        }
+        else if (ButtonPressedGlobal == 2)
+        {
+            countdown2.text = countTimer.ToString("0.0");
+        }
+
+        if (countTimer < 0)
+        {
+            countdown2.gameObject.SetActive(false);
+            countdown1.gameObject.SetActive(false);
+            countdownOnce = false;
+        }       
     }
 }
