@@ -66,10 +66,6 @@ public class CreateRandomObject : MonoBehaviour
                     Debug.Log(doorWing.transform.eulerAngles);
                     doorRotation = false;
                 }
-                for(int i = 0; i< box.GetComponentInChildren<ObjectsToBox>().getAssociatedPrompts().Count; i++)
-				{
-					objectsInBox += box.GetComponentInChildren<ObjectsToBox>().getAssociatedPrompts()[i] + "+";
-                }
                 closedBox = Instantiate(boxObjectClosed, box.gameObject.transform.position, box.gameObject.transform.rotation);
                 closedBox.gameObject.tag = box.gameObject.tag;
                 box.gameObject.GetComponentInChildren<ObjectsToBox>().DestroyObjects(); 
@@ -87,7 +83,6 @@ public class CreateRandomObject : MonoBehaviour
                 }
             }    
        }
-        Debug.Log(objectsInBox + this.gameObject.name) ;
     }
 
 	GameObject CreateObjects()
@@ -269,19 +264,7 @@ public class CreateRandomObject : MonoBehaviour
             finalData = promptCanvas.gameObject.GetComponent<QuestionsController>().rowDataToSent; 
             for(int i = 0; i < finalData.Count; i ++)
             {
-                finalData[i][8] = travelTime +" ms";
-                finalData[i][9] = objectsInBox;
-                Debug.Log(objectsInBox + this.gameObject.name +"KATW");
-                if (this.gameObject.name == "Table2")
-                {
-                    finalData[i][9] = objectsInBox1;
-                    Debug.Log(objectsInBox1 + "KATW1");
-                }
-                else if(this.gameObject.name == "Table1")
-                {
-                    finalData[i][9] = objectsInBox2;
-                    Debug.Log(objectsInBox2 + "KATW2");
-                }                
+                finalData[i][8] = travelTime +" ms"; 
             }
             promptCanvas.gameObject.GetComponent<QuestionsController>().rowDataToSent = new List<string[]>();
             

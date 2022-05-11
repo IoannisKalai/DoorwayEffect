@@ -164,6 +164,7 @@ MonoBehaviour:
   colorNames: []
   shapeNames: []
   objectsInBox1: ' '
+  objectsInBox: ' '
   objectsInBox2: ' '
   associatedPrompts: []
   negativePrompts: []
@@ -1149,6 +1150,7 @@ MonoBehaviour:
   colorNames: []
   shapeNames: []
   objectsInBox1: ' '
+  objectsInBox: ' '
   objectsInBox2: ' '
   associatedPrompts: []
   negativePrompts: []
@@ -3884,7 +3886,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1705845378}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7aaf960227867044282d921171d2d7ac, type: 3}
   m_Name: 

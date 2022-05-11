@@ -107,7 +107,7 @@ public class WriteToCSV : MonoBehaviour
     {
         string dateTime = System.DateTime.Now.ToString("yyyy-MM-dd");
         string participantID = GameObject.Find("GameObject").gameObject.GetComponent<MenuController>().participantID;
-        string fileName = dateTime + " " + participantID + ".csv";
+        string fileName = dateTime + " ID" + participantID + ".csv";
         #if UNITY_EDITOR
         return (Application.dataPath + "/DataFileFolder/" + fileName);
         #elif UNITY_ANDROID

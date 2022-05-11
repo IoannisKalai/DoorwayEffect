@@ -1,0 +1,7 @@
+Participant,Technique,Trial,Condition,Associated,Response,Response Time,Prompt Time,Travel Time,Objects In Box
+,,1,D,TRUE,TRUE,960 ms,4108 ms,16939 ms, orange wedge+magenta cross+grey disk+white cone+black pyramid+red cube+
+,,1,D,TRUE,FALSE,903 ms,4108 ms,16939 ms, orange wedge+magenta cross+grey disk+white cone+black pyramid+red cube+
+,,1,D,TRUE,TRUE,820 ms,4108 ms,16939 ms, orange wedge+magenta cross+grey disk+white cone+black pyramid+red cube+
+,,1,D,FALSE,FALSE,641 ms,4108 ms,16939 ms, orange wedge+magenta cross+grey disk+white cone+black pyramid+red cube+
+,,1,D,TRUE,TRUE,583 ms,4108 ms,16939 ms, orange wedge+magenta cross+grey disk+white cone+black pyramid+red cube+
+,,1,D,FALSE,TRUE,459 ms,4108 ms,16939 ms, orange wedge+magenta cross+grey disk+white cone+black pyramid+red cube+

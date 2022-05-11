@@ -143,6 +143,7 @@ public class QuestionsController : MonoBehaviour
     public void writeRowData()
     {
         rowDataTemp = new string[10];
+        string objectsInBox = " ";
         rowDataTemp[0] = GameObject.Find("GameObject").gameObject.GetComponent<MenuController>().participantID;
         rowDataTemp[1] = GameObject.Find("GameObject").gameObject.GetComponent<MenuController>().locomotionTechnique;
         rowDataTemp[2] = (GameObject.Find("GameObject").GetComponent<SLRoomSpawner>().roomIndex).ToString();
@@ -161,7 +162,12 @@ public class QuestionsController : MonoBehaviour
         rowDataTemp[6] = responseTime.ToString() + " ms";
         rowDataTemp[7] = GameObject.Find("Box_closed(Clone)").GetComponent<OVRGrabbable>().promptTimer.ElapsedMilliseconds.ToString()+ " ms";
         rowDataTemp[8] = " ";
-        rowDataTemp[9] = " ";
+
+        for(int i = 0; i < associatedPrompts.Count; i++)
+        {
+            objectsInBox += associatedPrompts[i] + "+";
+        }
+        rowDataTemp[9] = objectsInBox;
         rowData.Add(rowDataTemp);        
     }
 
