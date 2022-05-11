@@ -19,9 +19,6 @@ public class CreateRandomObject : MonoBehaviour
     public List<string> colorNames;
     public List<string> shapeNames;
 
-    public string objectsInBox1 = " ";
-    public string objectsInBox = " ";
-    public string objectsInBox2 = " ";
     public List<string> associatedPrompts;
     public List<string> negativePrompts;
     public int trialNumber;
@@ -176,25 +173,7 @@ public class CreateRandomObject : MonoBehaviour
         }       
         ItemsOnTable = new List<int>();
         ColorsOnTable = new List<int>();
-        if(this.gameObject.name == "Table1")
-        {
-            for(int i = 0; i < associatedPrompts.Count; i++)
-            {
-                objectsInBox1 += associatedPrompts[i] + "+";
-            }
-            objectsInBox1.ToString();
-        }
-        else if (this.gameObject.name == "Table2")
-        {
-            for (int i = 0; i < associatedPrompts.Count; i++)
-            {
-                objectsInBox2 += associatedPrompts[i] + "+";
-            }
-            objectsInBox2.ToString();
-        }
-
-        Debug.Log(objectsInBox1 + "1");
-        Debug.Log(objectsInBox2 + "2");
+       
         for (int i = 0; i < 6; i++)
         {
             int randomColorNegative = Random.Range(0, colors.Length);
@@ -214,8 +193,14 @@ public class CreateRandomObject : MonoBehaviour
         }
         
         //Spawn Small/Large Room
-        int roomInd = GameObject.Find("GameObject").GetComponent<SLRoomSpawner>().roomIndex;       
+        int roomInd = GameObject.Find("GameObject").GetComponent<SLRoomSpawner>().roomIndex;
+        if(roomInd == GameObject.Find("GameObject").GetComponent<SLRoomSpawner>().roomSequence.Count)
+        {
+            endText.enabled = true;
+        }
         char roomToCreate = GameObject.Find("GameObject").GetComponent<SLRoomSpawner>().roomSequence[roomInd];
+
+        
        
         GameObject newRoom;
         newRoom = GameObject.Find("GameObject").GetComponent<SLRoomSpawner>().SpawnRoom(roomToCreate);        

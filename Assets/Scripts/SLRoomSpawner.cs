@@ -133,7 +133,10 @@ public class SLRoomSpawner : MonoBehaviour
                 GameObject.Find("GameObject").GetComponent<ChangeWallColors>().roomB.Add(prevRoom.transform.GetChild(i).gameObject);
             }           
         }
-        roomIndex++;
+        if (roomIndex < roomSequence.Count)
+            roomIndex++;
+        
+
         return prevRoom;
     }
 }
