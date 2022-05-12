@@ -1,0 +1,7 @@
+Participant,Technique,Trial,Condition,Associated,Response,Response Time,Prompt Time,Travel Time,Objects In Box
+,,1,ND,FALSE,TRUE,1406 ms,19659 ms,29236 ms, blue pole+grey cross+brown wedge+yellow pyramid+black block+white cone+
+,,1,ND,TRUE,FALSE,542 ms,19659 ms,29236 ms, blue pole+grey cross+brown wedge+yellow pyramid+black block+white cone+
+,,1,ND,TRUE,TRUE,459 ms,19659 ms,29236 ms, blue pole+grey cross+brown wedge+yellow pyramid+black block+white cone+
+,,1,ND,FALSE,TRUE,431 ms,19659 ms,29236 ms, blue pole+grey cross+brown wedge+yellow pyramid+black block+white cone+
+,,1,ND,TRUE,FALSE,571 ms,19659 ms,29236 ms, blue pole+grey cross+brown wedge+yellow pyramid+black block+white cone+
+,,1,ND,TRUE,TRUE,557 ms,19659 ms,29236 ms, blue pole+grey cross+brown wedge+yellow pyramid+black block+white cone+

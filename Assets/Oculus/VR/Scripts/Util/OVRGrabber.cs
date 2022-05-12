@@ -67,12 +67,17 @@ public class OVRGrabber : MonoBehaviour
     protected Quaternion m_anchorOffsetRotation;
     protected Vector3 m_anchorOffsetPosition;
     protected float m_prevFlex;
-	protected OVRGrabbable m_grabbedObj = null;
+    protected bool pressedTriggerR;
+    protected bool pressedTriggerL;
+    protected bool grabbed = false;
+    protected OVRGrabbable m_grabbedObj = null;
     protected Vector3 m_grabbedObjectPosOff;
     protected Quaternion m_grabbedObjectRotOff;
 	protected Dictionary<OVRGrabbable, int> m_grabCandidates = new Dictionary<OVRGrabbable, int>();
 	protected bool m_operatingWithoutOVRCameraRig = true;
-
+    protected bool calledThisFrame = false;
+    protected float lastFrame;
+    protected bool isBox;
     /// <summary>
     /// The currently grabbed object.
     /// </summary>
@@ -97,8 +102,8 @@ public class OVRGrabber : MonoBehaviour
     {
         m_anchorOffsetPosition = transform.localPosition;
         m_anchorOffsetRotation = transform.localRotation;
-
-        if(!m_moveHandPosition)
+       
+        if (!m_moveHandPosition)
         {
 		    // If we are being used with an OVRCameraRig, let it drive input updates, which may come from Update or FixedUpdate.
 		    OVRCameraRig rig = transform.GetComponentInParent<OVRCameraRig>();
@@ -114,7 +119,9 @@ public class OVRGrabber : MonoBehaviour
     {
         m_lastPos = transform.position;
         m_lastRot = transform.rotation;
-        if(m_parentTransform == null)
+        grabbed = false;
+        isBox = false;
+        if (m_parentTransform == null)
         {
 			m_parentTransform = gameObject.transform;
         }
@@ -162,10 +169,16 @@ public class OVRGrabber : MonoBehaviour
         m_lastRot = transform.rotation;
 
 		float prevFlex = m_prevFlex;
-		// Update values from inputs
-		m_prevFlex = OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, m_controller);
+        lastFrame = Time.frameCount;
+        calledThisFrame = false;
+        // Update values from inputs
+        m_prevFlex = OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, m_controller);
 
-		CheckForGrabOrRelease(prevFlex);
+        pressedTriggerR = OVRInput.GetDown(OVRInput.RawButton.RHandTrigger, m_controller);
+        pressedTriggerL = OVRInput.GetDown(OVRInput.RawButton.LHandTrigger, m_controller);        
+        
+        CheckForGrabOrRelease(prevFlex);
+          
     }
 
     void OnDestroy()
@@ -178,8 +191,12 @@ public class OVRGrabber : MonoBehaviour
 
     void OnTriggerEnter(Collider otherCollider)
     {
+        if(otherCollider.gameObject.name == "Box(Clone)" || otherCollider.gameObject.name == "Box_closed(Clone)")
+        {
+            isBox = true;
+        }
         // Get the grab trigger
-		OVRGrabbable grabbable = otherCollider.GetComponent<OVRGrabbable>() ?? otherCollider.GetComponentInParent<OVRGrabbable>();
+        OVRGrabbable grabbable = otherCollider.GetComponent<OVRGrabbable>() ?? otherCollider.GetComponentInParent<OVRGrabbable>();
         if (grabbable == null) return;
 
         // Add the grabbable
@@ -209,17 +226,47 @@ public class OVRGrabber : MonoBehaviour
         {
             m_grabCandidates.Remove(grabbable);
         }
+
+        isBox = false;
     }
 
     protected void CheckForGrabOrRelease(float prevFlex)
     {
-        if ((m_prevFlex >= grabBegin) && (prevFlex < grabBegin))
+        if(isBox == false)
         {
-            GrabBegin();
+            if ((m_prevFlex >= grabBegin) && (prevFlex < grabBegin))
+            {
+                GrabBegin();
+            }
+            else if ((m_prevFlex <= grabEnd) && (prevFlex > grabEnd))
+            {
+                GrabEnd();
+            }
         }
-        else if ((m_prevFlex <= grabEnd) && (prevFlex > grabEnd))
+        else
         {
-            GrabEnd();
+            if (((pressedTriggerR && this.gameObject.name == "CustomHandRight") || (pressedTriggerL && this.gameObject.name == "CustomHandLeft")) && grabbed == false && calledThisFrame == false)
+            {           
+           
+                GrabBegin();
+                grabbed = true;
+                if(lastFrame == Time.frameCount)
+                {
+                    calledThisFrame = true;
+                }
+                Debug.Log("Mesa sto Begin sto frame " + Time.frameCount + " last frame: " + lastFrame + " sto antikeimeno " + this + " Grabbed " + grabbed + " called this frame " + calledThisFrame);
+            }
+            else if (((pressedTriggerR && this.gameObject.name == "CustomHandRight") || (pressedTriggerL && this.gameObject.name == "CustomHandLeft")) && grabbed == true && calledThisFrame == false)
+            {           
+                GrabEnd();
+                
+                if (lastFrame == Time.frameCount)
+                {
+                    calledThisFrame = true;
+                }
+                Debug.Log("Mesa sto End sto frame " + Time.frameCount + " sto antikeimeno " + this + " Grabbed " + grabbed + " called this frame " + calledThisFrame);
+                grabbed = false;
+            }
         }
     }
 
