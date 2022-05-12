@@ -75,27 +75,97 @@ public class SLRoomSpawner : MonoBehaviour
 		}
          
         //Create same number of large and small rooms
+        //Check also so that no more than 3 of the same rooms appear in the same order
         while (!(numberOfLargeRooms == numberOfSmallRooms))
         {
-            int randomRoom = Random.Range(0, roomSequence.Count);
+            int randomRoom = Random.Range(3, roomSequence.Count - 4);
             if(numberOfLargeRooms > numberOfSmallRooms)
             {
                 if (roomSequence[randomRoom] == 'L')
                 {
+                    int counter1 = 0;
+                    int counter2 = 0;
                     roomSequence[randomRoom] = 'S';
+                    for (int i = randomRoom - 3; i == randomRoom; i++)
+                    {
+                        if(roomSequence[i] == roomSequence[randomRoom])
+                        {
+                            counter1++;
+                        }
+                        else if (roomSequence[i] != roomSequence[randomRoom])
+                        {
+                            counter1 = 0;
+                        }
+                    }
+
+                    for (int i = randomRoom + 3; i == randomRoom; i--)
+                    {
+                        if (roomSequence[i] == roomSequence[randomRoom])
+                        {
+                            counter2++;
+                        }
+                        else if (roomSequence[i] != roomSequence[randomRoom])
+                        {
+                            counter2 = 0;
+                        }
+                    }
+
+                    int finalcounter = counter1 + counter2;
+                    if(finalcounter >= 3)
+                    {
+                        roomSequence[randomRoom] = 'L';
+                    }
+                    else
+                    {
+                        numberOfSmallRooms++;
+                        numberOfLargeRooms--;
+                    }
                 }
-                numberOfSmallRooms++;
-                numberOfLargeRooms--;
             }
             else if(numberOfLargeRooms < numberOfSmallRooms)
             {
                 if (roomSequence[randomRoom] == 'S')
                 {
+                    int counter1 = 0;
+                    int counter2 = 0;
                     roomSequence[randomRoom] = 'L';
+                    for (int i = randomRoom - 3; i == randomRoom; i++)
+                    {
+                        if (roomSequence[i] == roomSequence[randomRoom])
+                        {
+                            counter1++;
+                        }
+                        else if (roomSequence[i] != roomSequence[randomRoom])
+                        {
+                            counter1 = 0;
+                        }
+                    }
+
+                    for (int i = randomRoom + 3; i == randomRoom; i--)
+                    {
+                        if (roomSequence[i] == roomSequence[randomRoom])
+                        {
+                            counter2++;
+                        }
+                        else if (roomSequence[i] != roomSequence[randomRoom])
+                        {
+                            counter2 = 0;
+                        }
+                    }
+
+                    int finalcounter = counter1 + counter2;
+                    if (finalcounter >= 3)
+                    {
+                        roomSequence[randomRoom] = 'S';
+                    }
+                    else
+                    {
+                        numberOfSmallRooms--;
+                        numberOfLargeRooms++;
+                    }
                 }
-                numberOfSmallRooms--;
-                numberOfLargeRooms++;
-            }
+            }           
+           
         }
         
         Debug.Log("Number of small rooms: " + numberOfSmallRooms);
