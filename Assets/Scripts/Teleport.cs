@@ -20,7 +20,7 @@ public class Teleport : MonoBehaviour
 
     public Text countdown1;
     public Text countdown2;
-    public float countTimer = 4;
+    public float countTimer = 3;
     public int ButtonPressedGlobal = 0;
     public bool countdownOnce = false;
     // Start is called before the first frame update
@@ -51,10 +51,10 @@ public class Teleport : MonoBehaviour
         if (ButtonPressed == 2)
         {
             countdown2.gameObject.SetActive(true);
-            countTimer = 4;
+            countTimer = 3;
             ButtonPressedGlobal = 2;
             countdownOnce = true;
-            yield return new WaitForSeconds(4);
+            yield return new WaitForSeconds(3);
             FadeOut();
             yield return new WaitForSeconds(fadeDuration);
             player.transform.position = new Vector3(-0.7f, player.transform.position.y, player.transform.position.z);
@@ -71,10 +71,10 @@ public class Teleport : MonoBehaviour
         else if (ButtonPressed == 1)
         {
             countdown1.gameObject.SetActive(true);
-            countTimer = 4;
+            countTimer = 3;
             ButtonPressedGlobal = 1;
             countdownOnce = true;
-            yield return new WaitForSeconds(4);
+            yield return new WaitForSeconds(3);
             FadeOut();
             yield return new WaitForSeconds(fadeDuration);
             player.transform.position = new Vector3(0.7f, player.transform.position.y, player.transform.position.z);
