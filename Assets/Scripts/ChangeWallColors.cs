@@ -64,7 +64,7 @@ public class ChangeWallColors : MonoBehaviour
     private Color chooseColor()
     {
         
-        if (colorsCreated.Count >= 2)
+        if (colorsCreated.Count >= 1)
         {
             Color lastColor = colorsCreated[colorsCreated.Count - 1];
             Color newColor = wallColors[Random.Range(0, wallColors.Length - 1)];

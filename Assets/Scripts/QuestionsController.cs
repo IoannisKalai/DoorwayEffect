@@ -96,8 +96,11 @@ public class QuestionsController : MonoBehaviour
                     rowData = new List<string[]>();
                 }
             }
-            
-            
+            if (this.gameObject.GetComponent<Canvas>().enabled == false)
+            {
+                yesButton.GetComponent<Image>().color = Color.white;
+                noButton.GetComponent<Image>().color = Color.white;
+            }
         }
     }
 

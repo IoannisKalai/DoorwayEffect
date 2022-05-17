@@ -56,7 +56,8 @@ public class CharacterCameraConstraint : MonoBehaviour
 
 	private CapsuleCollider _character;
 	private SimpleCapsuleWithStickMovement _simplePlayerController;
-
+	
+	
 	CharacterCameraConstraint()
 	{
 	}
@@ -64,8 +65,8 @@ public class CharacterCameraConstraint : MonoBehaviour
 	private void Awake ()
 	{
 		_character = GetComponent<CapsuleCollider>();
-		_simplePlayerController = GetComponent<SimpleCapsuleWithStickMovement>();
-	}
+		_simplePlayerController = GetComponent<SimpleCapsuleWithStickMovement>();		
+	}	
 
 	private void OnEnable()
 	{

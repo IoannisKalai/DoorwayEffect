@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class Teleport : MonoBehaviour
 {
-    private GameObject player;
-
+    public GameObject player;
+    public GameObject cameraRig;
     public float fadeDuration = 0.5f;
     public Color fadeColor;
     public GameObject fader;
@@ -17,6 +17,8 @@ public class Teleport : MonoBehaviour
 
     public Canvas promptCanvas;
 
+    public GameObject TeleportPoint1;
+    public GameObject TeleportPoint2;
 
     public Text countdown1;
     public Text countdown2;
@@ -57,7 +59,9 @@ public class Teleport : MonoBehaviour
             yield return new WaitForSeconds(3);
             FadeOut();
             yield return new WaitForSeconds(fadeDuration);
-            player.transform.position = new Vector3(-0.7f, player.transform.position.y, player.transform.position.z);
+            //this.transform.position = new Vector3(-0.7f, this.transform.position.y, this.transform.position.z);
+            cameraRig.transform.position = TeleportPoint1.transform.position;
+            //cameraRig.transform.position += new Vector3(-2.957f, 0, 0);
             buttonPole2.SetActive(false);
             FadeIn();
             yield return new WaitForSeconds(fadeDuration);
@@ -77,7 +81,9 @@ public class Teleport : MonoBehaviour
             yield return new WaitForSeconds(3);
             FadeOut();
             yield return new WaitForSeconds(fadeDuration);
-            player.transform.position = new Vector3(0.7f, player.transform.position.y, player.transform.position.z);
+            //this.transform.position = new Vector3(0.7f, this.transform.position.y, this.transform.position.z);
+            cameraRig.transform.position = TeleportPoint2.transform.position;
+            //this.transform.position += new Vector3(3.1f, 0, 0);
             buttonPole1.SetActive(false);
             FadeIn();
             yield return new WaitForSeconds(fadeDuration);

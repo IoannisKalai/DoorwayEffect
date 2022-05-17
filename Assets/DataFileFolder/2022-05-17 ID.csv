@@ -1,0 +1,106 @@
+Participant,Technique,Trial,Condition,Associated,Response,Response Time,Prompt Time,Travel Time,Objects In Box
+,,1,D,TRUE,TRUE,1918 ms,3371 ms,11054 ms, red star+black pole+brown block+grey cross+yellow disk+orange sphere+
+,,1,D,TRUE,FALSE,727 ms,3371 ms,11054 ms, red star+black pole+brown block+grey cross+yellow disk+orange sphere+
+,,1,D,TRUE,TRUE,235 ms,3371 ms,11054 ms, red star+black pole+brown block+grey cross+yellow disk+orange sphere+
+,,1,D,TRUE,TRUE,306 ms,3371 ms,11054 ms, red star+black pole+brown block+grey cross+yellow disk+orange sphere+
+,,1,D,TRUE,FALSE,461 ms,3371 ms,11054 ms, red star+black pole+brown block+grey cross+yellow disk+orange sphere+
+,,1,D,TRUE,TRUE,442 ms,3371 ms,11054 ms, red star+black pole+brown block+grey cross+yellow disk+orange sphere+
+,,2,D,TRUE,FALSE,3245 ms,6431 ms,15371 ms, green sphere+black pole+grey block+magenta disk+orange cube+red wedge+
+,,2,D,FALSE,TRUE,848 ms,6431 ms,15371 ms, green sphere+black pole+grey block+magenta disk+orange cube+red wedge+
+,,2,D,FALSE,TRUE,529 ms,6431 ms,15371 ms, green sphere+black pole+grey block+magenta disk+orange cube+red wedge+
+,,2,D,FALSE,TRUE,250 ms,6431 ms,15371 ms, green sphere+black pole+grey block+magenta disk+orange cube+red wedge+
+,,2,D,FALSE,FALSE,305 ms,6431 ms,15371 ms, green sphere+black pole+grey block+magenta disk+orange cube+red wedge+
+,,2,D,FALSE,TRUE,139 ms,6431 ms,15371 ms, green sphere+black pole+grey block+magenta disk+orange cube+red wedge+
+,,3,ND,TRUE,TRUE,1238 ms,3206 ms,9495 ms, red star+brown cone+yellow cube+magenta wedge+grey cross+orange pyramid+
+,,3,ND,TRUE,TRUE,560 ms,3206 ms,9495 ms, red star+brown cone+yellow cube+magenta wedge+grey cross+orange pyramid+
+,,3,ND,FALSE,TRUE,429 ms,3206 ms,9495 ms, red star+brown cone+yellow cube+magenta wedge+grey cross+orange pyramid+
+,,3,ND,TRUE,TRUE,292 ms,3206 ms,9495 ms, red star+brown cone+yellow cube+magenta wedge+grey cross+orange pyramid+
+,,3,ND,TRUE,TRUE,305 ms,3206 ms,9495 ms, red star+brown cone+yellow cube+magenta wedge+grey cross+orange pyramid+
+,,3,ND,TRUE,TRUE,279 ms,3206 ms,9495 ms, red star+brown cone+yellow cube+magenta wedge+grey cross+orange pyramid+
+,,4,ND,TRUE,TRUE,2213 ms,3230 ms,11137 ms, white cone+orange wedge+blue cross+brown star+black disk+yellow block+
+,,4,ND,TRUE,TRUE,557 ms,3230 ms,11137 ms, white cone+orange wedge+blue cross+brown star+black disk+yellow block+
+,,4,ND,TRUE,TRUE,973 ms,3230 ms,11137 ms, white cone+orange wedge+blue cross+brown star+black disk+yellow block+
+,,4,ND,FALSE,TRUE,375 ms,3230 ms,11137 ms, white cone+orange wedge+blue cross+brown star+black disk+yellow block+
+,,4,ND,FALSE,TRUE,310 ms,3230 ms,11137 ms, white cone+orange wedge+blue cross+brown star+black disk+yellow block+
+,,4,ND,TRUE,TRUE,274 ms,3230 ms,11137 ms, white cone+orange wedge+blue cross+brown star+black disk+yellow block+
+,,5,ND,TRUE,FALSE,2048 ms,2865 ms,10260 ms, blue wedge+green pole+red cone+black disk+brown star+orange sphere+
+,,5,ND,TRUE,TRUE,708 ms,2865 ms,10260 ms, blue wedge+green pole+red cone+black disk+brown star+orange sphere+
+,,5,ND,TRUE,FALSE,557 ms,2865 ms,10260 ms, blue wedge+green pole+red cone+black disk+brown star+orange sphere+
+,,5,ND,TRUE,TRUE,347 ms,2865 ms,10260 ms, blue wedge+green pole+red cone+black disk+brown star+orange sphere+
+,,5,ND,TRUE,TRUE,404 ms,2865 ms,10260 ms, blue wedge+green pole+red cone+black disk+brown star+orange sphere+
+,,5,ND,TRUE,FALSE,352 ms,2865 ms,10260 ms, blue wedge+green pole+red cone+black disk+brown star+orange sphere+
+
+
+
+
+
+
+
+
+
+,T,1,ND,TRUE,TRUE,4094 ms,9564 ms,18864 ms, grey cube+orange pole+black cross+yellow wedge+brown block+green disk+
+,T,1,ND,TRUE,FALSE,793 ms,9564 ms,18864 ms, grey cube+orange pole+black cross+yellow wedge+brown block+green disk+
+,T,1,ND,TRUE,TRUE,667 ms,9564 ms,18864 ms, grey cube+orange pole+black cross+yellow wedge+brown block+green disk+
+,T,1,ND,FALSE,TRUE,305 ms,9564 ms,18864 ms, grey cube+orange pole+black cross+yellow wedge+brown block+green disk+
+,T,1,ND,TRUE,TRUE,154 ms,9564 ms,18864 ms, grey cube+orange pole+black cross+yellow wedge+brown block+green disk+
+,T,1,ND,TRUE,TRUE,166 ms,9564 ms,18864 ms, grey cube+orange pole+black cross+yellow wedge+brown block+green disk+
+,T,1,D,FALSE,TRUE,1989 ms,6138 ms,12169 ms, blue sphere+red pyramid+green cross+grey disk+black wedge+white pole+
+,T,1,D,FALSE,TRUE,207 ms,6138 ms,12169 ms, blue sphere+red pyramid+green cross+grey disk+black wedge+white pole+
+,T,1,D,TRUE,FALSE,196 ms,6138 ms,12169 ms, blue sphere+red pyramid+green cross+grey disk+black wedge+white pole+
+,T,1,D,FALSE,TRUE,97 ms,6138 ms,12169 ms, blue sphere+red pyramid+green cross+grey disk+black wedge+white pole+
+,T,1,D,TRUE,TRUE,123 ms,6138 ms,12169 ms, blue sphere+red pyramid+green cross+grey disk+black wedge+white pole+
+,T,1,D,FALSE,TRUE,237 ms,6138 ms,12169 ms, blue sphere+red pyramid+green cross+grey disk+black wedge+white pole+
+,T,1,D,TRUE,TRUE,1960 ms,5819 ms,26449 ms, yellow cone+red pyramid+orange pole+green cube+white star+magenta disk+
+,T,1,D,TRUE,TRUE,180 ms,5819 ms,26449 ms, yellow cone+red pyramid+orange pole+green cube+white star+magenta disk+
+,T,1,D,FALSE,TRUE,334 ms,5819 ms,26449 ms, yellow cone+red pyramid+orange pole+green cube+white star+magenta disk+
+,T,1,D,TRUE,TRUE,263 ms,5819 ms,26449 ms, yellow cone+red pyramid+orange pole+green cube+white star+magenta disk+
+,T,1,D,FALSE,TRUE,183 ms,5819 ms,26449 ms, yellow cone+red pyramid+orange pole+green cube+white star+magenta disk+
+,T,1,D,FALSE,FALSE,152 ms,5819 ms,26449 ms, yellow cone+red pyramid+orange pole+green cube+white star+magenta disk+
+,T,1,ND,FALSE,TRUE,395 ms,7632 ms,11364 ms, black wedge+blue sphere+red cross+orange cone+green pole+white pyramid+
+,T,1,ND,TRUE,TRUE,186 ms,7632 ms,11364 ms, black wedge+blue sphere+red cross+orange cone+green pole+white pyramid+
+,T,1,ND,TRUE,TRUE,180 ms,7632 ms,11364 ms, black wedge+blue sphere+red cross+orange cone+green pole+white pyramid+
+,T,1,ND,TRUE,FALSE,181 ms,7632 ms,11364 ms, black wedge+blue sphere+red cross+orange cone+green pole+white pyramid+
+,T,1,ND,TRUE,FALSE,83 ms,7632 ms,11364 ms, black wedge+blue sphere+red cross+orange cone+green pole+white pyramid+
+,T,1,ND,TRUE,FALSE,194 ms,7632 ms,11364 ms, black wedge+blue sphere+red cross+orange cone+green pole+white pyramid+
+,T,1,ND,TRUE,TRUE,1126 ms,9537 ms,13603 ms, brown pole+green block+grey pyramid+yellow sphere+white cone+blue cross+
+,T,1,ND,TRUE,TRUE,52 ms,9537 ms,13603 ms, brown pole+green block+grey pyramid+yellow sphere+white cone+blue cross+
+,T,1,ND,FALSE,TRUE,153 ms,9537 ms,13603 ms, brown pole+green block+grey pyramid+yellow sphere+white cone+blue cross+
+,T,1,ND,TRUE,TRUE,27 ms,9537 ms,13603 ms, brown pole+green block+grey pyramid+yellow sphere+white cone+blue cross+
+,T,1,ND,TRUE,FALSE,167 ms,9537 ms,13603 ms, brown pole+green block+grey pyramid+yellow sphere+white cone+blue cross+
+,T,1,ND,FALSE,FALSE,27 ms,9537 ms,13603 ms, brown pole+green block+grey pyramid+yellow sphere+white cone+blue cross+
+,T,2,ND,FALSE,TRUE,1096 ms,8519 ms,16915 ms, yellow sphere+blue cone+magenta block+white pyramid+green wedge+grey star+
+,T,2,ND,TRUE,FALSE,153 ms,8519 ms,16915 ms, yellow sphere+blue cone+magenta block+white pyramid+green wedge+grey star+
+,T,2,ND,FALSE,FALSE,250 ms,8519 ms,16915 ms, yellow sphere+blue cone+magenta block+white pyramid+green wedge+grey star+
+,T,2,ND,FALSE,FALSE,69 ms,8519 ms,16915 ms, yellow sphere+blue cone+magenta block+white pyramid+green wedge+grey star+
+,T,2,ND,FALSE,FALSE,237 ms,8519 ms,16915 ms, yellow sphere+blue cone+magenta block+white pyramid+green wedge+grey star+
+,T,2,ND,FALSE,FALSE,55 ms,8519 ms,16915 ms, yellow sphere+blue cone+magenta block+white pyramid+green wedge+grey star+
+,T,1,ND,TRUE,TRUE,7721 ms,5499 ms,18849 ms, black pole+red disk+yellow cross+blue star+magenta cube+brown wedge+
+,T,1,ND,FALSE,FALSE,138 ms,5499 ms,18849 ms, black pole+red disk+yellow cross+blue star+magenta cube+brown wedge+
+,T,1,ND,FALSE,FALSE,225 ms,5499 ms,18849 ms, black pole+red disk+yellow cross+blue star+magenta cube+brown wedge+
+,T,1,ND,TRUE,FALSE,95 ms,5499 ms,18849 ms, black pole+red disk+yellow cross+blue star+magenta cube+brown wedge+
+,T,1,ND,TRUE,FALSE,138 ms,5499 ms,18849 ms, black pole+red disk+yellow cross+blue star+magenta cube+brown wedge+
+,T,1,ND,TRUE,FALSE,98 ms,5499 ms,18849 ms, black pole+red disk+yellow cross+blue star+magenta cube+brown wedge+
+,T,1,D,TRUE,TRUE,52892 ms,6320 ms,66590 ms, blue block+orange wedge+brown pyramid+black disk+magenta pole+grey cube+
+,T,1,D,FALSE,TRUE,820 ms,6320 ms,66590 ms, blue block+orange wedge+brown pyramid+black disk+magenta pole+grey cube+
+,T,1,D,TRUE,TRUE,319 ms,6320 ms,66590 ms, blue block+orange wedge+brown pyramid+black disk+magenta pole+grey cube+
+,T,1,D,FALSE,TRUE,250 ms,6320 ms,66590 ms, blue block+orange wedge+brown pyramid+black disk+magenta pole+grey cube+
+,T,1,D,TRUE,TRUE,306 ms,6320 ms,66590 ms, blue block+orange wedge+brown pyramid+black disk+magenta pole+grey cube+
+,T,1,D,FALSE,TRUE,376 ms,6320 ms,66590 ms, blue block+orange wedge+brown pyramid+black disk+magenta pole+grey cube+
+,T,1,ND,TRUE,TRUE,1647 ms,5816 ms,15135 ms, yellow cross+green pole+red sphere+brown block+blue wedge+magenta cube+
+,T,1,ND,TRUE,TRUE,511 ms,5816 ms,15135 ms, yellow cross+green pole+red sphere+brown block+blue wedge+magenta cube+
+,T,1,ND,FALSE,TRUE,526 ms,5816 ms,15135 ms, yellow cross+green pole+red sphere+brown block+blue wedge+magenta cube+
+,T,1,ND,TRUE,FALSE,553 ms,5816 ms,15135 ms, yellow cross+green pole+red sphere+brown block+blue wedge+magenta cube+
+,T,1,ND,FALSE,TRUE,531 ms,5816 ms,15135 ms, yellow cross+green pole+red sphere+brown block+blue wedge+magenta cube+
+,T,1,ND,TRUE,TRUE,527 ms,5816 ms,15135 ms, yellow cross+green pole+red sphere+brown block+blue wedge+magenta cube+
+,T,1,ND,TRUE,TRUE,26791 ms,5818 ms,36304 ms, black pole+red cone+blue disk+white cube+grey star+green cross+
+,T,1,ND,TRUE,TRUE,237 ms,5818 ms,36304 ms, black pole+red cone+blue disk+white cube+grey star+green cross+
+,T,1,ND,FALSE,TRUE,179 ms,5818 ms,36304 ms, black pole+red cone+blue disk+white cube+grey star+green cross+
+,T,1,ND,FALSE,TRUE,168 ms,5818 ms,36304 ms, black pole+red cone+blue disk+white cube+grey star+green cross+
+,T,1,ND,TRUE,TRUE,194 ms,5818 ms,36304 ms, black pole+red cone+blue disk+white cube+grey star+green cross+
+,T,1,ND,FALSE,TRUE,237 ms,5818 ms,36304 ms, black pole+red cone+blue disk+white cube+grey star+green cross+
+,T,1,ND,TRUE,TRUE,8170 ms,7526 ms,19981 ms, black disk+green pole+white wedge+magenta cross+brown cube+orange block+
+,T,1,ND,FALSE,TRUE,206 ms,7526 ms,19981 ms, black disk+green pole+white wedge+magenta cross+brown cube+orange block+
+,T,1,ND,TRUE,TRUE,222 ms,7526 ms,19981 ms, black disk+green pole+white wedge+magenta cross+brown cube+orange block+
+,T,1,ND,TRUE,TRUE,69 ms,7526 ms,19981 ms, black disk+green pole+white wedge+magenta cross+brown cube+orange block+
+,T,1,ND,FALSE,TRUE,166 ms,7526 ms,19981 ms, black disk+green pole+white wedge+magenta cross+brown cube+orange block+
+,T,1,ND,FALSE,TRUE,72 ms,7526 ms,19981 ms, black disk+green pole+white wedge+magenta cross+brown cube+orange block+
