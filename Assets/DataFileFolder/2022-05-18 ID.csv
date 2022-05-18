@@ -1,0 +1,7 @@
+Participant,Technique,Trial,Condition,Associated,Response,Response Time,Prompt Time,Travel Time,Objects In Box
+,T,1,D,TRUE,FALSE,43414 ms,19742 ms,66116 ms, black pole+white cone+blue cube+yellow block+orange cross+green pyramid+
+,T,1,D,TRUE,FALSE,207 ms,19742 ms,66116 ms, black pole+white cone+blue cube+yellow block+orange cross+green pyramid+
+,T,1,D,TRUE,FALSE,166 ms,19742 ms,66116 ms, black pole+white cone+blue cube+yellow block+orange cross+green pyramid+
+,T,1,D,FALSE,FALSE,180 ms,19742 ms,66116 ms, black pole+white cone+blue cube+yellow block+orange cross+green pyramid+
+,T,1,D,FALSE,FALSE,166 ms,19742 ms,66116 ms, black pole+white cone+blue cube+yellow block+orange cross+green pyramid+
+,T,1,D,TRUE,FALSE,208 ms,19742 ms,66116 ms, black pole+white cone+blue cube+yellow block+orange cross+green pyramid+
