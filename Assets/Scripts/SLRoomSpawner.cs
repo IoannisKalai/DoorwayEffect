@@ -29,7 +29,7 @@ public class SLRoomSpawner : MonoBehaviour
     {
         for (int i = 0; i < 60; i++)
         {
-            if (roomSequence.Count >= 4)
+            if (roomSequence.Count >= 3)
             {              
                 int sameChar = 1;
                 char lastChar = roomSequence[roomSequence.Count - 1];               
