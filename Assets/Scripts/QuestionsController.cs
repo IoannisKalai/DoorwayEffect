@@ -113,14 +113,28 @@ public class QuestionsController : MonoBehaviour
             if(negativePromptChance <= 0.4)
             {
                 string negativePrompt = negativePrompts[promptNumber];
-                question.text = "Is there a " + negativePrompt + " in the box?";
+                if(negativePrompt.Split(' ')[0] == "orange")
+                {
+                    question.text = "Is there an " + negativePrompt + " in the box?";
+                }
+                else
+                {
+                    question.text = "Is there a " + negativePrompt + " in the box?";
+                }
                 associated = "FALSE";
                 this.gameObject.GetComponent<Canvas>().enabled = true;
                 responseTimer.Start();
             }
             else
             {
-                question.text = "Is there a " + associatedPrompts[promptNumber] + " in the box?";
+                if (associatedPrompts[promptNumber].Split(' ')[0] == "orange")
+                {
+                    question.text = "Is there an " + associatedPrompts[promptNumber] + " in the box?";
+                }
+                else
+                {
+                    question.text = "Is there a " + associatedPrompts[promptNumber] + " in the box?";
+                }                
                 associated = "TRUE";
                 this.gameObject.GetComponent<Canvas>().enabled = true;
                 responseTimer.Start();

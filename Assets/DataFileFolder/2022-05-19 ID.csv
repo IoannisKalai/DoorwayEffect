@@ -23,3 +23,15 @@ Participant,Technique,Trial,Condition,Associated,Response,Response Time,Prompt T
 ,T,1,ND,FALSE,TRUE,417 ms,9299 ms,18891 ms, magenta disk+yellow cube+black pole+brown cross+white pyramid+red cone+
 ,T,1,ND,TRUE,FALSE,334 ms,9299 ms,18891 ms, magenta disk+yellow cube+black pole+brown cross+white pyramid+red cone+
 ,T,1,ND,FALSE,TRUE,376 ms,9299 ms,18891 ms, magenta disk+yellow cube+black pole+brown cross+white pyramid+red cone+
+,,1,D,TRUE,TRUE,960 ms,3315 ms,10695 ms, grey ball+white cube+pink pyramid+brown cross+yellow star+black block+
+,,1,D,FALSE,TRUE,584 ms,3315 ms,10695 ms, grey ball+white cube+pink pyramid+brown cross+yellow star+black block+
+,,1,D,FALSE,TRUE,404 ms,3315 ms,10695 ms, grey ball+white cube+pink pyramid+brown cross+yellow star+black block+
+,,1,D,TRUE,FALSE,1086 ms,3315 ms,10695 ms, grey ball+white cube+pink pyramid+brown cross+yellow star+black block+
+,,1,D,TRUE,TRUE,654 ms,3315 ms,10695 ms, grey ball+white cube+pink pyramid+brown cross+yellow star+black block+
+,,1,D,FALSE,FALSE,612 ms,3315 ms,10695 ms, grey ball+white cube+pink pyramid+brown cross+yellow star+black block+
+,,2,ND,FALSE,TRUE,1337 ms,5025 ms,15524 ms, yellow pyramid+black cube+blue ball+orange cone+white disk+red wedge+
+,,2,ND,TRUE,TRUE,542 ms,5025 ms,15524 ms, yellow pyramid+black cube+blue ball+orange cone+white disk+red wedge+
+,,2,ND,TRUE,FALSE,932 ms,5025 ms,15524 ms, yellow pyramid+black cube+blue ball+orange cone+white disk+red wedge+
+,,2,ND,TRUE,TRUE,2310 ms,5025 ms,15524 ms, yellow pyramid+black cube+blue ball+orange cone+white disk+red wedge+
+,,2,ND,FALSE,TRUE,1072 ms,5025 ms,15524 ms, yellow pyramid+black cube+blue ball+orange cone+white disk+red wedge+
+,,2,ND,FALSE,TRUE,723 ms,5025 ms,15524 ms, yellow pyramid+black cube+blue ball+orange cone+white disk+red wedge+
