@@ -132,8 +132,16 @@ public class QuestionsController : MonoBehaviour
     {
         yield return new WaitForSeconds(seconds);        
         CreateQuestionPrompts();
-        this.transform.position = new Vector3(camera.transform.position.x + (camera.transform.forward.x * distanceFromCamera), player.transform.position.y + (player.transform.forward.y * distanceFromCamera) + 0.4f, 0f);
-		UnityEngine.Debug.Log("Prompt location" + this.transform.position);
+        if(GameObject.Find("Box_closed(Clone)").gameObject.tag == "Table2")
+        {
+            this.transform.position = new Vector3(camera.transform.position.x - distanceFromCamera, player.transform.position.y + (player.transform.forward.y * distanceFromCamera) + 0.4f, 0f);
+        }
+        else
+        {
+            this.transform.position = new Vector3(camera.transform.position.x + distanceFromCamera, player.transform.position.y + (player.transform.forward.y * distanceFromCamera) + 0.4f, 0f);
+
+        }
+        UnityEngine.Debug.Log("Prompt location" + this.transform.position);
 		UnityEngine.Debug.Log("Camera location" + camera.transform.position);
         this.transform.Rotate(0, 180, 0);
         seconds = 0;
