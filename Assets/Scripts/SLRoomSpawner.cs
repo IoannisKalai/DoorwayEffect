@@ -80,14 +80,16 @@ public class SLRoomSpawner : MonoBehaviour
         {
             int randomRoom = Random.Range(3, roomSequence.Count - 4);
             if(numberOfLargeRooms > numberOfSmallRooms)
-            {
+            {               
                 if (roomSequence[randomRoom] == 'L')
                 {
+                    Debug.Log("EDWWWW Na kanw to L mikro stin thesi " + randomRoom);
                     int counter1 = 0;
                     int counter2 = 0;
                     roomSequence[randomRoom] = 'S';
-                    for (int i = randomRoom - 3; i == randomRoom; i++)
+                    for (int i = randomRoom - 3; i <= randomRoom; i++)
                     {
+                        Debug.Log("Pisw 3 " + roomSequence[i]);
                         if(roomSequence[i] == roomSequence[randomRoom])
                         {
                             counter1++;
@@ -98,8 +100,9 @@ public class SLRoomSpawner : MonoBehaviour
                         }
                     }
 
-                    for (int i = randomRoom + 3; i == randomRoom; i--)
+                    for (int i = randomRoom + 3; i >= randomRoom; i--)
                     {
+                        Debug.Log("mprosta 3 " + roomSequence[i]);
                         if (roomSequence[i] == roomSequence[randomRoom])
                         {
                             counter2++;
@@ -117,20 +120,23 @@ public class SLRoomSpawner : MonoBehaviour
                     }
                     else
                     {
+                        Debug.Log("ALLAKSEE L -> S");
                         numberOfSmallRooms++;
                         numberOfLargeRooms--;
                     }
                 }
             }
             else if(numberOfLargeRooms < numberOfSmallRooms)
-            {
+            {                
                 if (roomSequence[randomRoom] == 'S')
                 {
+                    Debug.Log("EDWWWW Na kanw to S megalo stin thesi " + randomRoom);
                     int counter1 = 0;
                     int counter2 = 0;
                     roomSequence[randomRoom] = 'L';
-                    for (int i = randomRoom - 3; i == randomRoom; i++)
+                    for (int i = randomRoom - 3; i <= randomRoom; i++)
                     {
+                        Debug.Log("Pisw 3 " + roomSequence[i]);
                         if (roomSequence[i] == roomSequence[randomRoom])
                         {
                             counter1++;
@@ -141,8 +147,9 @@ public class SLRoomSpawner : MonoBehaviour
                         }
                     }
 
-                    for (int i = randomRoom + 3; i == randomRoom; i--)
+                    for (int i = randomRoom + 3; i >= randomRoom; i--)
                     {
+                        Debug.Log("mprosta 3 " + roomSequence[i]);
                         if (roomSequence[i] == roomSequence[randomRoom])
                         {
                             counter2++;
@@ -160,6 +167,7 @@ public class SLRoomSpawner : MonoBehaviour
                     }
                     else
                     {
+                        Debug.Log("ALLAKSEE S -> L");
                         numberOfSmallRooms--;
                         numberOfLargeRooms++;
                     }
