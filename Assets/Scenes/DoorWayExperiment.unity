@@ -4660,7 +4660,7 @@ MonoBehaviour:
   noButton: {fileID: 1919046483}
   camera: {fileID: 1919744498}
   player: {fileID: 1583125371}
-  distanceFromCamera: 2
+  distanceFromCamera: 1.8
   secondsForPromptToAppear: 0.5
   promptNumber: 0
   negativePrompts: []

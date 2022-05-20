@@ -35,7 +35,7 @@ public class CreateRandomObject : MonoBehaviour
     void Start()
     {        
         shapes = Resources.LoadAll<GameObject>("InteractObjects");
-        shapeNames = new List<string> { "cone", "cross", "cube", "disk", "ball", "pole", "pyramid", "block","star", "wedge" };
+        shapeNames = new List<string> { "cone", "cross", "cube", "disk", "ball", "cylinder", "pyramid", "block","star", "wedge" };
         boxObject = Resources.Load<GameObject>("Box/Box");
         boxObjectClosed = Resources.Load<GameObject>("Box/Box_closed");
         colors = new Color[10] { new Color(226f / 255f, 53f / 255f, 53f / 255f), new Color(46f / 255f, 64f / 255f, 219f / 255f), new Color(102f / 255f, 204f / 255f, 0f / 255f), Color.grey, new Color(238f / 255f, 238f / 255f, 73f / 255f), new Color(230f / 255f, 41f / 255f, 230f / 255f), Color.white, Color.black, new Color( 110f / 255f, 38f / 255f, 14f / 255f), new Color(220f / 255f, 135f / 255f, 49f / 255f) };
