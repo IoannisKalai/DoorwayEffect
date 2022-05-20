@@ -25,6 +25,7 @@ public class Teleport : MonoBehaviour
     public float countTimer = 3;
     public int ButtonPressedGlobal = 0;
     public bool countdownOnce = false;
+    public bool isPressed = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -50,8 +51,9 @@ public class Teleport : MonoBehaviour
 
     public IEnumerator FadeTeleport(int ButtonPressed)
     {
-        if (ButtonPressed == 2)
+        if (ButtonPressed == 2 && isPressed == false)
         {
+            isPressed = true;
             countdown2.gameObject.SetActive(true);
             countTimer = 3;
             ButtonPressedGlobal = 2;
@@ -60,10 +62,10 @@ public class Teleport : MonoBehaviour
             FadeOut();
             yield return new WaitForSeconds(fadeDuration);
             this.enabled = false;
-           
+
             this.transform.position = new Vector3(-0.7f, this.transform.position.y, this.transform.position.z);
             var ceaOffset = new Vector3(centerEyeAnchor.transform.localPosition.x, 0, centerEyeAnchor.transform.localPosition.z);
-            
+
             this.transform.Translate(-ceaOffset);
             this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, 0);
             this.enabled = true;
@@ -73,14 +75,15 @@ public class Teleport : MonoBehaviour
             FadeIn();
             yield return new WaitForSeconds(fadeDuration);
             if (GameObject.Find("PromptTrigger").gameObject.GetComponent<AppearPrompt>().promptsAppearing == true)
-            {                
+            {
                 promptCanvas.gameObject.GetComponent<QuestionsController>().AppearPromptOnScreen();
-                GameObject.Find("PromptTrigger").gameObject.GetComponent<AppearPrompt>().promptsAppearing = false;                
+                GameObject.Find("PromptTrigger").gameObject.GetComponent<AppearPrompt>().promptsAppearing = false;
             }
-            
+            isPressed = false;
         }
-        else if (ButtonPressed == 1)
+        else if (ButtonPressed == 1 && isPressed == false)
         {
+            isPressed = true;
             countdown1.gameObject.SetActive(true);
             countTimer = 3;
             ButtonPressedGlobal = 1;
@@ -108,6 +111,7 @@ public class Teleport : MonoBehaviour
                 promptCanvas.gameObject.GetComponent<QuestionsController>().AppearPromptOnScreen();
                 GameObject.Find("PromptTrigger").gameObject.GetComponent<AppearPrompt>().promptsAppearing = false;
             }
+            isPressed = false;
         }
     }
     public void FadeIn()
