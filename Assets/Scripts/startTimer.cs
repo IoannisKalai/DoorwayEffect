@@ -10,7 +10,7 @@ public class startTimer : MonoBehaviour
 
 	public void Update()
 	{
-		Debug.Log(this.gameObject.GetComponentInChildren<ObjectsToBox>().objectCollectionTimer.ElapsedMilliseconds);
+		
 	}
 	public void startTimerFirstTime()
     {
