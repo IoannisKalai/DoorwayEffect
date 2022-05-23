@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
-
+using System.Diagnostics;
 public class CreateRandomObject : MonoBehaviour
 {
     public GameObject[] shapes;
@@ -26,11 +26,11 @@ public class CreateRandomObject : MonoBehaviour
 
     public GameObject buttonPole1;
     public GameObject buttonPole2;
-
+    public bool firstTimeIn = true;
 
     public List<string[]> finalData = new List<string[]>();
 
-
+   
     public Canvas promptCanvas;
     void Start()
     {        
@@ -58,11 +58,10 @@ public class CreateRandomObject : MonoBehaviour
             {
                 if(doorWing != null && doorRotation == true)
                 {
-                    Debug.Log("Door Open");
-                    doorWing.transform.eulerAngles = new Vector3(0, -180, 0);
-                    Debug.Log(doorWing.transform.eulerAngles);
+                    doorWing.transform.eulerAngles = new Vector3(0, -180, 0);                    
                     doorRotation = false;
                 }
+                
                 closedBox = Instantiate(boxObjectClosed, box.gameObject.transform.position, box.gameObject.transform.rotation);
                 closedBox.gameObject.tag = box.gameObject.tag;
                 box.gameObject.GetComponentInChildren<ObjectsToBox>().DestroyObjects(); 
@@ -96,6 +95,9 @@ public class CreateRandomObject : MonoBehaviour
         // Box Object creation
         Vector3 boxPosition = new Vector3(0, this.GetComponent<Renderer>().bounds.size.y / 2, this.transform.right.z * this.GetComponent<Renderer>().bounds.size.z / 6 + 0.5f);
         box = Instantiate(boxObject, blockCentre + boxPosition, boxObject.transform.rotation);
+        resetAndStartCollectionTimer();      
+        
+        firstTimeIn = false;
         associatedPrompts = new List<string>();
         negativePrompts =  new List<string>();
         for (int i = 0; i < 6; i++)
@@ -170,22 +172,60 @@ public class CreateRandomObject : MonoBehaviour
                     t.gameObject.tag = "Table2";
                 }
             }
-        }       
-        ItemsOnTable = new List<int>();
-        ColorsOnTable = new List<int>();
-       
-        for (int i = 0; i < 6; i++)
+        }
+
+        int prevColor = 100;
+        int prevShape = 100;
+        for (int i = 0; i < 2; i++)
         {
             int randomColorNegative = Random.Range(0, colors.Length);
-            int randomShapeNegative = Random.Range(0, shapes.Length);            
-            while (associatedPrompts.Contains(colorNames[randomColorNegative] + " " + shapeNames[randomShapeNegative]))
+            int randomShapeNegative = Random.Range(0, shapes.Length);
+            bool flagColor = false;
+            bool flagShape = false;            
+            while(true)
             {
-                randomColorNegative = Random.Range(0, colors.Length);
-                randomShapeNegative = Random.Range(0, shapes.Length);                
-            }
-            negativePrompts.Add(colorNames[randomColorNegative] + " " + shapeNames[randomShapeNegative]);
+                flagColor = false;
+                flagShape = false;
+                for (int j = 0; j < 6; j++)
+                {
+                    if(ColorsOnTable[j] == randomColorNegative)
+                    {
+                        flagColor = true;
+                    }
+                    if(ItemsOnTable[j] == randomShapeNegative)
+                    {
+                        flagShape = true;
+                    }
+                }
 
-        }       
+                if (flagColor == false && flagShape == false)
+                {        
+                    if(prevColor == randomColorNegative || prevShape == randomShapeNegative)
+                    {
+                        randomColorNegative = Random.Range(0, colors.Length);
+                        randomShapeNegative = Random.Range(0, shapes.Length);
+                        continue;
+                    }
+                    else
+                    {
+                        negativePrompts.Add(colorNames[randomColorNegative] + " " + shapeNames[randomShapeNegative]);
+                        prevColor = randomColorNegative;
+                        prevShape = randomShapeNegative;
+                        break;
+                    }                   
+                }
+                else
+                {
+                    randomColorNegative = Random.Range(0, colors.Length);
+                    randomShapeNegative = Random.Range(0, shapes.Length);
+                }
+            }
+            //Debug.Log("Negative prompts " + negativePrompts[i] + " " + randomColorNegative + " " + randomShapeNegative);
+
+        }
+        
+        ItemsOnTable = new List<int>();
+        ColorsOnTable = new List<int>();
 
         if (box.gameObject.tag == "Table1")
         {
@@ -211,11 +251,9 @@ public class CreateRandomObject : MonoBehaviour
         
         
         if (roomToCreate == 'S')
-        {
-            Debug.Log("Door Close");            
-           doorWing = newRoom.transform.GetChild(15).GetChild(0).gameObject;
-            doorWing.transform.eulerAngles = new Vector3(0, -90, 0);
-            Debug.Log(doorWing);
+        {          
+            doorWing = newRoom.transform.GetChild(15).GetChild(0).gameObject;
+            doorWing.transform.eulerAngles = new Vector3(0, -90, 0);           
             doorWing.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
             doorWing.GetComponent<Rigidbody>().velocity = Vector3.zero;
             doorRotation = true;           
@@ -224,20 +262,15 @@ public class CreateRandomObject : MonoBehaviour
 
         trialNumber += 1;
 
-        GameObject.Find("PromptsCanvas").GetComponent<QuestionsController>().setBoxObject(box);
-
+        GameObject.Find("PromptsCanvas").GetComponent<QuestionsController>().setBoxObject(box);       
         return obj;         
     }
 
     //Create new object when touching grabbed object to the opposite table. 
 	public void OnCollisionEnter(Collision collision)
 	{
-       
-
         if (!hasEntered && (collision.gameObject.tag != this.gameObject.name) && (collision.gameObject.name == "Box_closed(Clone)"))
-        {
-            Debug.Log(collision.gameObject.tag + " " + this.gameObject.name + " --- " + collision.gameObject.name);
-            
+        {            
             hasEntered = true;              
             //collision.gameObject.GetComponentInChildren<ObjectsToBox>().DestroyObjects();                    
             GameObject.Find("PromptTrigger").gameObject.GetComponent<AppearPrompt>().promptsAppearing = true;
@@ -245,17 +278,19 @@ public class CreateRandomObject : MonoBehaviour
             collision.gameObject.GetComponent<OVRGrabbable>().travelTimer.Stop();
            
             string travelTime =  collision.gameObject.GetComponent<OVRGrabbable>().travelTimer.ElapsedMilliseconds.ToString() ;
-                        
+           
             finalData = promptCanvas.gameObject.GetComponent<QuestionsController>().rowDataToSent; 
             for(int i = 0; i < finalData.Count; i ++)
             {
-                finalData[i][8] = travelTime +" ms"; 
+                finalData[i][9] = travelTime +" ms";        
+                
             }
             promptCanvas.gameObject.GetComponent<QuestionsController>().rowDataToSent = new List<string[]>();
             
             GameObject.Find("GameObject").gameObject.GetComponent<WriteToCSV>().Save(finalData);
             finalData = new List<string[]>();
             Destroy(collision.gameObject);
+            
             CreateObjects();            
         }           
 	}   
@@ -274,4 +309,9 @@ public class CreateRandomObject : MonoBehaviour
         boxObj = box;
     }
 
+    public void resetAndStartCollectionTimer()
+    {
+        box.gameObject.GetComponentInChildren<ObjectsToBox>().objectCollectionTimer.Reset();
+        box.gameObject.GetComponentInChildren<ObjectsToBox>().objectCollectionTimer.Start();
+    }
 }

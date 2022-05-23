@@ -24,9 +24,12 @@ public class QuestionsController : MonoBehaviour
     public List<string> negativePrompts;
     private Stopwatch responseTimer = new Stopwatch();
     private float responseTime;
-    public GameObject box;
-
+    public GameObject box;     
+    int negativePromptLocation1;
+    int negativePromptLocation2;
     public List<string[]>  rowDataToSent = new List<string[]>();
+
+    public float collTime;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,6 +45,16 @@ public class QuestionsController : MonoBehaviour
         {
             associatedPrompts = GameObject.Find("Box(Clone)").gameObject.GetComponentInChildren<ObjectsToBox>().getAssociatedPrompts(); 
             negativePrompts = GameObject.Find("Box(Clone)").gameObject.GetComponentInChildren<ObjectsToBox>().getNegativePrompts();
+            
+            if (box.GetComponentInChildren<ObjectsToBox>().objectsInsideBox.Count == 6)
+            {
+                box.gameObject.GetComponentInChildren<ObjectsToBox>().objectCollectionTimer.Stop();
+                box.gameObject.GetComponentInChildren<ObjectsToBox>().collectionTime = box.gameObject.GetComponentInChildren<ObjectsToBox>().objectCollectionTimer.ElapsedMilliseconds;
+                 //UnityEngine.Debug.Log(" Collection TIME " + box.gameObject.GetComponentInChildren<ObjectsToBox>().collectionTime);
+                collTime = box.gameObject.GetComponentInChildren<ObjectsToBox>().collectionTime;
+                UnityEngine.Debug.Log(" Collection TIME " + collTime + "  object " + this.name);
+            }
+           
         }
         if (this.gameObject.GetComponent<Canvas>().enabled == true)
         {
@@ -110,10 +123,25 @@ public class QuestionsController : MonoBehaviour
         responseTimer.Reset();
         if(associatedPrompts.Count > 1)
         {           
-            if(negativePromptChance <= 0.4)
+            if(promptNumber == negativePromptLocation1)
             {
-                string negativePrompt = negativePrompts[promptNumber];
+                string negativePrompt = negativePrompts[0];
                 if(negativePrompt.Split(' ')[0] == "orange")
+                {
+                    question.text = "Is there an " + negativePrompt + " in the box?";
+                }
+                else
+                {
+                    question.text = "Is there a " + negativePrompt + " in the box?";
+                }
+                associated = "FALSE";
+                this.gameObject.GetComponent<Canvas>().enabled = true;
+                responseTimer.Start();
+            }
+            else if(promptNumber == negativePromptLocation2)
+            {
+                string negativePrompt = negativePrompts[1];
+                if (negativePrompt.Split(' ')[0] == "orange")
                 {
                     question.text = "Is there an " + negativePrompt + " in the box?";
                 }
@@ -144,7 +172,14 @@ public class QuestionsController : MonoBehaviour
 
     public IEnumerator WaitSomeSeconds(float seconds)
     {
-        yield return new WaitForSeconds(seconds);        
+        yield return new WaitForSeconds(seconds);
+       
+        negativePromptLocation1 = Random.Range(0, 5);
+        negativePromptLocation2 = Random.Range(0, 5);
+        while(negativePromptLocation2 == negativePromptLocation1)
+        {
+            negativePromptLocation2 = Random.Range(0, 5);
+        }
         CreateQuestionPrompts();
         if(GameObject.Find("Box_closed(Clone)").gameObject.tag == "Table2")
         {
@@ -169,7 +204,7 @@ public class QuestionsController : MonoBehaviour
 
     public void writeRowData()
     {
-        rowDataTemp = new string[10];
+        rowDataTemp = new string[12];
         string objectsInBox = " ";
         rowDataTemp[0] = GameObject.Find("GameObject").gameObject.GetComponent<MenuController>().participantID;
         rowDataTemp[1] = GameObject.Find("GameObject").gameObject.GetComponent<MenuController>().locomotionTechnique;
@@ -184,17 +219,19 @@ public class QuestionsController : MonoBehaviour
         {
             rowDataTemp[3] = "ND";
         }
-        rowDataTemp[4] = associated;
-        rowDataTemp[5] = response;
-        rowDataTemp[6] = responseTime.ToString() + " ms";
-        rowDataTemp[7] = GameObject.Find("Box_closed(Clone)").GetComponent<OVRGrabbable>().promptTimer.ElapsedMilliseconds.ToString()+ " ms";
-        rowDataTemp[8] = " ";
+        rowDataTemp[4] = (promptNumber + 1).ToString();
+        rowDataTemp[5] = associated;
+        rowDataTemp[6] = response;
+        rowDataTemp[7] = responseTime.ToString() + " ms";
+        rowDataTemp[8] = GameObject.Find("Box_closed(Clone)").GetComponent<OVRGrabbable>().promptTimer.ElapsedMilliseconds.ToString()+ " ms";
+        rowDataTemp[9] = " ";
 
         for(int i = 0; i < associatedPrompts.Count; i++)
         {
             objectsInBox += associatedPrompts[i] + "+";
         }
-        rowDataTemp[9] = objectsInBox;
+        rowDataTemp[10] = collTime.ToString() + " ms";
+        rowDataTemp[11] = objectsInBox;
         rowData.Add(rowDataTemp);        
     }
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Diagnostics;
 
 public class ObjectsToBox : MonoBehaviour
 {
@@ -9,20 +10,24 @@ public class ObjectsToBox : MonoBehaviour
     private bool playedEffect = false;
 
     public List<string> negativePrompts;
+
+    public Stopwatch objectCollectionTimer = new Stopwatch();
+    public float collectionTime;
     // Start is called before the first frame update
     void Start()
     {
-        
+       
     }
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
         if (objectsInsideBox.Count == 6 && playedEffect == false)
         {
             PlayParticleEffect();
-            playedEffect = true;
+            playedEffect = true;            
         }
+        //UnityEngine.Debug.Log("time " + objectCollectionTimer.ElapsedMilliseconds);
     }
 
 	void OnTriggerEnter(Collider other)
@@ -79,4 +84,6 @@ public class ObjectsToBox : MonoBehaviour
     {
         return negativePrompts;
     }
+
+    
 }

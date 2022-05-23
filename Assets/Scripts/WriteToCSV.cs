@@ -25,18 +25,20 @@ public class WriteToCSV : MonoBehaviour
     {        
         if (!File.Exists(filePath))
         {
-            string[] rowDataTemp = new string[10];
+            string[] rowDataTemp = new string[12];
             filePath = getFilePath();
             rowDataTemp[0] = "Participant";
             rowDataTemp[1] = "Technique";
             rowDataTemp[2] = "Trial";
             rowDataTemp[3] = "Condition";
-            rowDataTemp[4] = "Associated";
-            rowDataTemp[5] = "Response";
-            rowDataTemp[6] = "Response Time";
-            rowDataTemp[7] = "Prompt Time";
-            rowDataTemp[8] = "Travel Time";
-            rowDataTemp[9] = "Objects In Box";
+            rowDataTemp[4] = "Prompt Number";
+            rowDataTemp[5] = "Associated";
+            rowDataTemp[6] = "Response";
+            rowDataTemp[7] = "Response Time";
+            rowDataTemp[8] = "Prompt Time";
+            rowDataTemp[9] = "Travel Time";
+            rowDataTemp[10] = "Object Collection Time";
+            rowDataTemp[11] = "Objects In Box";
             rowData.Add(rowDataTemp);
             string[][] output1 = new string[rowData.Count][];
 

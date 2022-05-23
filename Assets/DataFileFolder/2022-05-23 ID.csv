@@ -1,0 +1,13 @@
+Participant,Technique,Trial,Condition,Prompt Number,Associated,Response,Response Time,Prompt Time,Travel Time,Object Collection Time,Objects In Box
+,,1,ND,1,FALSE,FALSE,444 ms,6863 ms,11317 ms,4719 ms, orange ball+yellow cross+grey cube+pink cylinder+green pyramid+black block+
+,,1,ND,2,TRUE,TRUE,472 ms,6863 ms,11317 ms,4719 ms, orange ball+yellow cross+grey cube+pink cylinder+green pyramid+black block+
+,,1,ND,3,FALSE,FALSE,97 ms,6863 ms,11317 ms,4719 ms, orange ball+yellow cross+grey cube+pink cylinder+green pyramid+black block+
+,,1,ND,4,TRUE,FALSE,125 ms,6863 ms,11317 ms,4719 ms, orange ball+yellow cross+grey cube+pink cylinder+green pyramid+black block+
+,,1,ND,5,TRUE,FALSE,125 ms,6863 ms,11317 ms,4719 ms, orange ball+yellow cross+grey cube+pink cylinder+green pyramid+black block+
+,,1,ND,6,TRUE,FALSE,153 ms,6863 ms,11317 ms,4719 ms, orange ball+yellow cross+grey cube+pink cylinder+green pyramid+black block+
+,,2,D,1,FALSE,FALSE,445 ms,2795 ms,5958 ms,3794 ms, grey disk+green star+yellow cross+black wedge+orange cylinder+blue pyramid+
+,,2,D,2,TRUE,FALSE,195 ms,2795 ms,5958 ms,3794 ms, grey disk+green star+yellow cross+black wedge+orange cylinder+blue pyramid+
+,,2,D,3,FALSE,FALSE,195 ms,2795 ms,5958 ms,3794 ms, grey disk+green star+yellow cross+black wedge+orange cylinder+blue pyramid+
+,,2,D,4,TRUE,FALSE,181 ms,2795 ms,5958 ms,3794 ms, grey disk+green star+yellow cross+black wedge+orange cylinder+blue pyramid+
+,,2,D,5,TRUE,FALSE,195 ms,2795 ms,5958 ms,3794 ms, grey disk+green star+yellow cross+black wedge+orange cylinder+blue pyramid+
+,,2,D,6,TRUE,FALSE,194 ms,2795 ms,5958 ms,3794 ms, grey disk+green star+yellow cross+black wedge+orange cylinder+blue pyramid+
