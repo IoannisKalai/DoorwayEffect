@@ -194,11 +194,11 @@ public class QuestionsController : MonoBehaviour
         }
         else if (GameObject.Find("Box_closed(Clone)").gameObject.tag == "Table1" && promptTriggerName == "PromptTrigger2")
         {
-            negativePromptLocation1 = Random.Range(0, 5);
-            negativePromptLocation2 = Random.Range(0, 5);
+            negativePromptLocation1 = Random.Range(0, 6);
+            negativePromptLocation2 = Random.Range(0, 6);
             while (negativePromptLocation2 == negativePromptLocation1)
             {
-                negativePromptLocation2 = Random.Range(0, 5);
+                negativePromptLocation2 = Random.Range(0, 6);
             }
             CreateQuestionPrompts();
             //this.transform.position = new Vector3(camera.transform.position.x + distanceFromCamera, player.transform.position.y + (player.transform.forward.y * distanceFromCamera) + 0.4f, 0f);
