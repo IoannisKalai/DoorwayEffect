@@ -89,3 +89,15 @@ Participant,Technique,Trial,Condition,Prompt Number,Associated,Response,Response
 ,T,1,D,4,FALSE,TRUE,264 ms,8411 ms,13381 ms,5611 ms, blue disk+pink cone+red cross+black star+green block+yellow pyramid+
 ,T,1,D,5,TRUE,TRUE,236 ms,8411 ms,13381 ms,5611 ms, blue disk+pink cone+red cross+black star+green block+yellow pyramid+
 ,T,1,D,6,TRUE,TRUE,83 ms,8411 ms,13381 ms,5611 ms, blue disk+pink cone+red cross+black star+green block+yellow pyramid+
+,T,1,D,1,TRUE,FALSE,1028 ms,9371 ms,13059 ms,12321 ms, green ball+blue disk+brown cone+pink wedge+yellow star+white cross+
+,T,1,D,2,FALSE,TRUE,124 ms,9371 ms,13059 ms,12321 ms, green ball+blue disk+brown cone+pink wedge+yellow star+white cross+
+,T,1,D,3,TRUE,TRUE,69 ms,9371 ms,13059 ms,12321 ms, green ball+blue disk+brown cone+pink wedge+yellow star+white cross+
+,T,1,D,4,FALSE,TRUE,125 ms,9371 ms,13059 ms,12321 ms, green ball+blue disk+brown cone+pink wedge+yellow star+white cross+
+,T,1,D,5,TRUE,TRUE,69 ms,9371 ms,13059 ms,12321 ms, green ball+blue disk+brown cone+pink wedge+yellow star+white cross+
+,T,1,D,6,TRUE,TRUE,138 ms,9371 ms,13059 ms,12321 ms, green ball+blue disk+brown cone+pink wedge+yellow star+white cross+
+,T,2,ND,1,FALSE,FALSE,1670 ms,11863 ms,16373 ms,4562 ms, brown wedge+white block+pink star+grey cylinder+yellow ball+blue cross+
+,T,2,ND,2,TRUE,TRUE,137 ms,11863 ms,16373 ms,4562 ms, brown wedge+white block+pink star+grey cylinder+yellow ball+blue cross+
+,T,2,ND,3,TRUE,FALSE,83 ms,11863 ms,16373 ms,4562 ms, brown wedge+white block+pink star+grey cylinder+yellow ball+blue cross+
+,T,2,ND,4,TRUE,FALSE,97 ms,11863 ms,16373 ms,4562 ms, brown wedge+white block+pink star+grey cylinder+yellow ball+blue cross+
+,T,2,ND,5,FALSE,FALSE,111 ms,11863 ms,16373 ms,4562 ms, brown wedge+white block+pink star+grey cylinder+yellow ball+blue cross+
+,T,2,ND,6,TRUE,FALSE,97 ms,11863 ms,16373 ms,4562 ms, brown wedge+white block+pink star+grey cylinder+yellow ball+blue cross+

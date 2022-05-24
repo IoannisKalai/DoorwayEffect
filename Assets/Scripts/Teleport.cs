@@ -78,7 +78,7 @@ public class Teleport : MonoBehaviour
             if (GameObject.Find("PromptTrigger1").gameObject.GetComponent<AppearPrompt>().promptsAppearing == true)
             {
                 Debug.Log("Started Coroutine at timestamp : " + Time.time);
-                yield return StartCoroutine(WaitForRealSeconds(0.5f));
+                StartCoroutine(WaitForRealSeconds(0.5f));
                 Debug.Log("Finished Coroutine at timestamp : " + Time.time);
                 promptCanvas.gameObject.GetComponent<QuestionsController>().AppearPromptOnScreen("PromptTrigger1");
                 GameObject.Find("PromptTrigger1").gameObject.GetComponent<AppearPrompt>().promptsAppearing = false;
@@ -114,7 +114,7 @@ public class Teleport : MonoBehaviour
             if (GameObject.Find("PromptTrigger2").gameObject.GetComponent<AppearPrompt>().promptsAppearing == true)
             {
                 Debug.Log("Started Coroutine at timestamp : " + Time.time);
-                yield return StartCoroutine(WaitForRealSeconds(0.5f));
+                StartCoroutine(WaitForRealSeconds(0.5f));
                 Debug.Log("Finished Coroutine at timestamp : " + Time.time);
                 promptCanvas.gameObject.GetComponent<QuestionsController>().AppearPromptOnScreen("PromptTrigger2");
                 GameObject.Find("PromptTrigger2").gameObject.GetComponent<AppearPrompt>().promptsAppearing = false;
