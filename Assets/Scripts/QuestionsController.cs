@@ -236,15 +236,15 @@ public class QuestionsController : MonoBehaviour
         rowDataTemp[4] = (promptNumber + 1).ToString();
         rowDataTemp[5] = associated;
         rowDataTemp[6] = response;
-        rowDataTemp[7] = responseTime.ToString() + " ms";
-        rowDataTemp[8] = GameObject.Find("Box_closed(Clone)").GetComponent<OVRGrabbable>().promptTimer.ElapsedMilliseconds.ToString()+ " ms";
+        rowDataTemp[7] = responseTime.ToString();
+        rowDataTemp[8] = GameObject.Find("Box_closed(Clone)").GetComponent<OVRGrabbable>().promptTimer.ElapsedMilliseconds.ToString();
         rowDataTemp[9] = " ";
 
         for(int i = 0; i < associatedPrompts.Count; i++)
         {
             objectsInBox += associatedPrompts[i] + "+";
         }
-        rowDataTemp[10] = collTime.ToString() + " ms";
+        rowDataTemp[10] = collTime.ToString();
         rowDataTemp[11] = objectsInBox;
         rowData.Add(rowDataTemp);        
     }

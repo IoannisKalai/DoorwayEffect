@@ -34,10 +34,10 @@ public class WriteToCSV : MonoBehaviour
             rowDataTemp[4] = "Prompt Number";
             rowDataTemp[5] = "Associated";
             rowDataTemp[6] = "Response";
-            rowDataTemp[7] = "Response Time";
-            rowDataTemp[8] = "Prompt Time";
-            rowDataTemp[9] = "Travel Time";
-            rowDataTemp[10] = "Object Collection Time";
+            rowDataTemp[7] = "Response Time (ms)";
+            rowDataTemp[8] = "Prompt Time (ms)";
+            rowDataTemp[9] = "Travel Time (ms)";
+            rowDataTemp[10] = "Object Collection Time (ms)";
             rowDataTemp[11] = "Objects In Box";
             rowData.Add(rowDataTemp);
             string[][] output1 = new string[rowData.Count][];

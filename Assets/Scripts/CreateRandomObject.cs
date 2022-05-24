@@ -283,7 +283,7 @@ public class CreateRandomObject : MonoBehaviour
             finalData = promptCanvas.gameObject.GetComponent<QuestionsController>().rowDataToSent; 
             for(int i = 0; i < finalData.Count; i ++)
             {
-                finalData[i][9] = travelTime +" ms";        
+                finalData[i][9] = travelTime;        
                 
             }
             promptCanvas.gameObject.GetComponent<QuestionsController>().rowDataToSent = new List<string[]>();
