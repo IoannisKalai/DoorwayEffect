@@ -30,6 +30,9 @@ public class QuestionsController : MonoBehaviour
     public List<string[]>  rowDataToSent = new List<string[]>();
 
     public float collTime;
+
+    public string promptTriggerName;
+    public bool promptAppearing;
     // Start is called before the first frame update
     void Start()
     {
@@ -170,36 +173,47 @@ public class QuestionsController : MonoBehaviour
         }       
     }
 
-    public IEnumerator WaitSomeSeconds(float seconds)
+    public bool AppearPromptOnScreen(string triggerName)
     {
-        yield return new WaitForSeconds(seconds);
-       
-        negativePromptLocation1 = Random.Range(0, 5);
-        negativePromptLocation2 = Random.Range(0, 5);
-        while(negativePromptLocation2 == negativePromptLocation1)
+        promptTriggerName = triggerName;
+        GameObject.Find("Box_closed(Clone)").GetComponent<OVRGrabbable>().promptTimer.Stop();       
+        if (GameObject.Find("Box_closed(Clone)").gameObject.tag == "Table2" && promptTriggerName == "PromptTrigger1")
         {
+            negativePromptLocation1 = Random.Range(0, 5);
             negativePromptLocation2 = Random.Range(0, 5);
+            while (negativePromptLocation2 == negativePromptLocation1)
+            {
+                negativePromptLocation2 = Random.Range(0, 5);
+            }
+            CreateQuestionPrompts();
+            //this.transform.position = new Vector3(camera.transform.position.x - distanceFromCamera, player.transform.position.y + (player.transform.forward.y * distanceFromCamera) + 0.4f, 0f);
+            this.transform.position = new Vector3(-2.541f, player.transform.position.y + (player.transform.forward.y * distanceFromCamera) + 0.4f, 0f);
+            this.transform.Rotate(0, 180, 0);
+            //UnityEngine.Debug.Log(" MPIKAA " + promptTriggerName + " pinakidaa " + this.transform);
+            promptAppearing = false;
         }
-        CreateQuestionPrompts();
-        if(GameObject.Find("Box_closed(Clone)").gameObject.tag == "Table2")
+        else if (GameObject.Find("Box_closed(Clone)").gameObject.tag == "Table1" && promptTriggerName == "PromptTrigger2")
         {
-            this.transform.position = new Vector3(camera.transform.position.x - distanceFromCamera, player.transform.position.y + (player.transform.forward.y * distanceFromCamera) + 0.4f, 0f);
+            negativePromptLocation1 = Random.Range(0, 5);
+            negativePromptLocation2 = Random.Range(0, 5);
+            while (negativePromptLocation2 == negativePromptLocation1)
+            {
+                negativePromptLocation2 = Random.Range(0, 5);
+            }
+            CreateQuestionPrompts();
+            //this.transform.position = new Vector3(camera.transform.position.x + distanceFromCamera, player.transform.position.y + (player.transform.forward.y * distanceFromCamera) + 0.4f, 0f);
+            this.transform.position = new Vector3(2.541f, player.transform.position.y + (player.transform.forward.y * distanceFromCamera) + 0.4f, 0f);
+            this.transform.Rotate(0, 180, 0);
+            promptAppearing = false;
         }
         else
         {
-            this.transform.position = new Vector3(camera.transform.position.x + distanceFromCamera, player.transform.position.y + (player.transform.forward.y * distanceFromCamera) + 0.4f, 0f);
-
+            promptAppearing = true;
         }
         UnityEngine.Debug.Log("Prompt location" + this.transform.position);
-		UnityEngine.Debug.Log("Camera location" + camera.transform.position);
-        this.transform.Rotate(0, 180, 0);
-        seconds = 0;
-    }
-
-    public void AppearPromptOnScreen()
-    {
-        GameObject.Find("Box_closed(Clone)").GetComponent<OVRGrabbable>().promptTimer.Stop();
-        StartCoroutine(WaitSomeSeconds(secondsForPromptToAppear));       
+        UnityEngine.Debug.Log("Camera location" + camera.transform.position);
+        //UnityEngine.Debug.Log(" PROMPT IN QUESTION CONTROLLER " + promptAppearing);               
+        return promptAppearing;
     }
 
     public void writeRowData()

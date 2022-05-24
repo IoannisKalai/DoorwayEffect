@@ -22,7 +22,7 @@ public class Teleport : MonoBehaviour
 
     public Text countdown1;
     public Text countdown2;
-    public float countTimer = 3;
+    public float countTimer = 2;
     public int ButtonPressedGlobal = 0;
     public bool countdownOnce = false;
     public bool isPressed = false;
@@ -55,10 +55,10 @@ public class Teleport : MonoBehaviour
         {
             isPressed = true;
             countdown2.gameObject.SetActive(true);
-            countTimer = 3;
+            countTimer = 2;
             ButtonPressedGlobal = 2;
             countdownOnce = true;
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(2);
             FadeOut();
             yield return new WaitForSeconds(fadeDuration);
             this.enabled = false;
@@ -74,10 +74,14 @@ public class Teleport : MonoBehaviour
             buttonPole2.SetActive(false);
             FadeIn();
             yield return new WaitForSeconds(fadeDuration);
-            if (GameObject.Find("PromptTrigger").gameObject.GetComponent<AppearPrompt>().promptsAppearing == true)
+           
+            if (GameObject.Find("PromptTrigger1").gameObject.GetComponent<AppearPrompt>().promptsAppearing == true)
             {
-                promptCanvas.gameObject.GetComponent<QuestionsController>().AppearPromptOnScreen();
-                GameObject.Find("PromptTrigger").gameObject.GetComponent<AppearPrompt>().promptsAppearing = false;
+                Debug.Log("Started Coroutine at timestamp : " + Time.time);
+                yield return StartCoroutine(WaitForRealSeconds(0.5f));
+                Debug.Log("Finished Coroutine at timestamp : " + Time.time);
+                promptCanvas.gameObject.GetComponent<QuestionsController>().AppearPromptOnScreen("PromptTrigger1");
+                GameObject.Find("PromptTrigger1").gameObject.GetComponent<AppearPrompt>().promptsAppearing = false;
             }
             isPressed = false;
         }
@@ -85,10 +89,10 @@ public class Teleport : MonoBehaviour
         {
             isPressed = true;
             countdown1.gameObject.SetActive(true);
-            countTimer = 3;
+            countTimer = 2;
             ButtonPressedGlobal = 1;
             countdownOnce = true;
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(2);
             FadeOut();
             yield return new WaitForSeconds(fadeDuration);
             this.enabled = false;
@@ -106,10 +110,14 @@ public class Teleport : MonoBehaviour
             buttonPole1.SetActive(false);
             FadeIn();
             yield return new WaitForSeconds(fadeDuration);
-            if (GameObject.Find("PromptTrigger").gameObject.GetComponent<AppearPrompt>().promptsAppearing == true)
+            
+            if (GameObject.Find("PromptTrigger2").gameObject.GetComponent<AppearPrompt>().promptsAppearing == true)
             {
-                promptCanvas.gameObject.GetComponent<QuestionsController>().AppearPromptOnScreen();
-                GameObject.Find("PromptTrigger").gameObject.GetComponent<AppearPrompt>().promptsAppearing = false;
+                Debug.Log("Started Coroutine at timestamp : " + Time.time);
+                yield return StartCoroutine(WaitForRealSeconds(0.5f));
+                Debug.Log("Finished Coroutine at timestamp : " + Time.time);
+                promptCanvas.gameObject.GetComponent<QuestionsController>().AppearPromptOnScreen("PromptTrigger2");
+                GameObject.Find("PromptTrigger2").gameObject.GetComponent<AppearPrompt>().promptsAppearing = false;
             }
             isPressed = false;
         }
@@ -169,5 +177,14 @@ public class Teleport : MonoBehaviour
             countdown1.gameObject.SetActive(false);
             countdownOnce = false;
         }       
+    }
+
+    public static IEnumerator WaitForRealSeconds(float time)
+    {
+        float start = Time.realtimeSinceStartup;
+        while (Time.realtimeSinceStartup < start + time)
+        {
+            yield return null;
+        }
     }
 }

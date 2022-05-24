@@ -273,7 +273,8 @@ public class CreateRandomObject : MonoBehaviour
         {            
             hasEntered = true;              
             //collision.gameObject.GetComponentInChildren<ObjectsToBox>().DestroyObjects();                    
-            GameObject.Find("PromptTrigger").gameObject.GetComponent<AppearPrompt>().promptsAppearing = true;
+            GameObject.Find("PromptTrigger1").gameObject.GetComponent<AppearPrompt>().promptsAppearing = true;
+            GameObject.Find("PromptTrigger2").gameObject.GetComponent<AppearPrompt>().promptsAppearing = true;
             collision.gameObject.GetComponent<OVRGrabbable>().timerStart = true;
             collision.gameObject.GetComponent<OVRGrabbable>().travelTimer.Stop();
            

@@ -5,7 +5,7 @@ using UnityEngine;
 public class AppearPrompt : MonoBehaviour
 {
     public Canvas promptCanvas;
-    public bool promptsAppearing;
+    public bool promptsAppearing; 
     // Start is called before the first frame update
     void Start()
     {
@@ -24,8 +24,8 @@ public class AppearPrompt : MonoBehaviour
         {
 		    if(other.gameObject.name == "Box_closed(Clone)")
             {
-                promptCanvas.gameObject.GetComponent<QuestionsController>().AppearPromptOnScreen();
-                promptsAppearing = false;
+                //Debug.Log("PROMPT IN APPEAR PROMT " + promptsAppearing);
+                promptsAppearing = promptCanvas.gameObject.GetComponent<QuestionsController>().AppearPromptOnScreen(this.gameObject.name);               
             }
         }
     }
