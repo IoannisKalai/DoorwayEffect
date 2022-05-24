@@ -64,12 +64,12 @@ public class QuestionsController : MonoBehaviour
             if(OVRInput.Get(OVRInput.RawButton.X))
             {                
                 yesButton.GetComponent<Image>().color = Color.cyan;
-                response = "TRUE";
+                response = "1";
             }
             else if(OVRInput.Get(OVRInput.RawButton.A))
             {                              
                 noButton.GetComponent<Image>().color = Color.cyan;
-                response = "FALSE";
+                response = "0";
             }
 
             if (OVRInput.GetUp(OVRInput.RawButton.X))
@@ -137,7 +137,7 @@ public class QuestionsController : MonoBehaviour
                 {
                     question.text = "Is there a " + negativePrompt + " in the box?";
                 }
-                associated = "FALSE";
+                associated = "0";
                 this.gameObject.GetComponent<Canvas>().enabled = true;
                 responseTimer.Start();
             }
@@ -152,7 +152,7 @@ public class QuestionsController : MonoBehaviour
                 {
                     question.text = "Is there a " + negativePrompt + " in the box?";
                 }
-                associated = "FALSE";
+                associated = "0";
                 this.gameObject.GetComponent<Canvas>().enabled = true;
                 responseTimer.Start();
             }
@@ -166,7 +166,7 @@ public class QuestionsController : MonoBehaviour
                 {
                     question.text = "Is there a " + associatedPrompts[promptNumber] + " in the box?";
                 }                
-                associated = "TRUE";
+                associated = "1";
                 this.gameObject.GetComponent<Canvas>().enabled = true;
                 responseTimer.Start();
             }
