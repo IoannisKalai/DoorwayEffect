@@ -244,7 +244,7 @@ public class CreateRandomObject : MonoBehaviour
        
         GameObject newRoom;
         newRoom = GameObject.Find("GameObject").GetComponent<SLRoomSpawner>().SpawnRoom(roomToCreate);        
-        GameObject.Find("GameObject").GetComponent<ChangeWallColors>().ChangeColor(roomToCreate);       
+        //GameObject.Find("GameObject").GetComponent<ChangeWallColors>().ChangeColor(roomToCreate);       
         GameObject.Find("GameObject").GetComponent<SpawnRoomObjects>().SpawnRoomVariation(roomToCreate);         
         box.gameObject.GetComponentInChildren<ObjectsToBox>().SetAssociatedPrompts(associatedPrompts);
         box.gameObject.GetComponentInChildren<ObjectsToBox>().SetNegativePrompts(negativePrompts);
