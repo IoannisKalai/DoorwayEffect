@@ -107,13 +107,13 @@ public class WriteToCSV : MonoBehaviour
 
     public string getFilePath()
     {
-        string dateTime = System.DateTime.Now.ToString("yyyy-MM-dd");
+        string dateTime = System.DateTime.Now.ToString("HH:mm yyyy-MM-dd");
         string participantID = GameObject.Find("GameObject").gameObject.GetComponent<MenuController>().participantID;
-        string fileName = dateTime + " ID" + participantID + ".csv";
+        string fileName = "Doorway " + " ID" + participantID + " " + dateTime  + ".csv";
         #if UNITY_EDITOR
         return (Application.dataPath + "/DataFileFolder/" + fileName);
         #elif UNITY_ANDROID
-        return (Application.persistentDataPath + fileName);
+        return (fileName);
         #endif
     }
 
