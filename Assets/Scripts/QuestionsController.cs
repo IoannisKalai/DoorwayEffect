@@ -187,8 +187,8 @@ public class QuestionsController : MonoBehaviour
             }
             CreateQuestionPrompts();
             //this.transform.position = new Vector3(camera.transform.position.x - distanceFromCamera, player.transform.position.y + (player.transform.forward.y * distanceFromCamera) + 0.4f, 0f);
-            this.transform.position = new Vector3(-2.541f, player.transform.position.y + (player.transform.forward.y * distanceFromCamera) + 0.4f, 0f);
-            this.transform.Rotate(0, 180, 0);
+            this.transform.position = new Vector3(-2.541f, player.transform.position.y + (player.transform.forward.y * distanceFromCamera) + 0.4f, 0f);          
+            this.transform.eulerAngles = new Vector3(0, -90, 0);
             //UnityEngine.Debug.Log(" MPIKAA " + promptTriggerName + " pinakidaa " + this.transform);
             promptAppearing = false;
         }
@@ -203,7 +203,7 @@ public class QuestionsController : MonoBehaviour
             CreateQuestionPrompts();
             //this.transform.position = new Vector3(camera.transform.position.x + distanceFromCamera, player.transform.position.y + (player.transform.forward.y * distanceFromCamera) + 0.4f, 0f);
             this.transform.position = new Vector3(2.541f, player.transform.position.y + (player.transform.forward.y * distanceFromCamera) + 0.4f, 0f);
-            this.transform.Rotate(0, 180, 0);
+            this.transform.eulerAngles = new Vector3(0, -270, 0);
             promptAppearing = false;
         }
         else

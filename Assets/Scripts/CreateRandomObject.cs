@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Diagnostics;
+using System;
 public class CreateRandomObject : MonoBehaviour
 {
     public GameObject[] shapes;
@@ -83,7 +84,7 @@ public class CreateRandomObject : MonoBehaviour
 
 	GameObject CreateObjects()
     {       
-        int chooseItem = Random.Range(0, shapes.Length);
+        int chooseItem = UnityEngine.Random.Range(0, shapes.Length);
         List<int> ItemsOnTable = new List<int>();
         List<int> ColorsOnTable = new List<int>();
         GameObject obj = null; 
@@ -103,15 +104,15 @@ public class CreateRandomObject : MonoBehaviour
         for (int i = 0; i < 6; i++)
         {
 
-            chooseItem = Random.Range(0, shapes.Length);
-            randomColor = Random.Range(0, colors.Length);
+            chooseItem = UnityEngine.Random.Range(0, shapes.Length);
+            randomColor = UnityEngine.Random.Range(0, colors.Length);
             while (ItemsOnTable.Contains(chooseItem))
             {
-                chooseItem = Random.Range(0, shapes.Length);
+                chooseItem = UnityEngine.Random.Range(0, shapes.Length);
             }
             while (ColorsOnTable.Contains(randomColor))
             {
-                randomColor = Random.Range(0, colors.Length);
+                randomColor = UnityEngine.Random.Range(0, colors.Length);
             }
 
             Vector3 position = new Vector3(posx , this.GetComponent<Renderer>().bounds.size.y / 2, this.transform.right.z * this.GetComponent<Renderer>().bounds.size.z / 6 + posz);
@@ -178,8 +179,8 @@ public class CreateRandomObject : MonoBehaviour
         int prevShape = 100;
         for (int i = 0; i < 2; i++)
         {
-            int randomColorNegative = Random.Range(0, colors.Length);
-            int randomShapeNegative = Random.Range(0, shapes.Length);
+            int randomColorNegative = UnityEngine.Random.Range(0, colors.Length);
+            int randomShapeNegative = UnityEngine.Random.Range(0, shapes.Length);
             bool flagColor = false;
             bool flagShape = false;            
             while(true)
@@ -202,8 +203,8 @@ public class CreateRandomObject : MonoBehaviour
                 {        
                     if(prevColor == randomColorNegative || prevShape == randomShapeNegative)
                     {
-                        randomColorNegative = Random.Range(0, colors.Length);
-                        randomShapeNegative = Random.Range(0, shapes.Length);
+                        randomColorNegative = UnityEngine.Random.Range(0, colors.Length);
+                        randomShapeNegative = UnityEngine.Random.Range(0, shapes.Length);
                         continue;
                     }
                     else
@@ -216,8 +217,8 @@ public class CreateRandomObject : MonoBehaviour
                 }
                 else
                 {
-                    randomColorNegative = Random.Range(0, colors.Length);
-                    randomShapeNegative = Random.Range(0, shapes.Length);
+                    randomColorNegative = UnityEngine.Random.Range(0, colors.Length);
+                    randomShapeNegative = UnityEngine.Random.Range(0, shapes.Length);
                 }
             }
             //Debug.Log("Negative prompts " + negativePrompts[i] + " " + randomColorNegative + " " + randomShapeNegative);
@@ -291,7 +292,8 @@ public class CreateRandomObject : MonoBehaviour
             GameObject.Find("GameObject").gameObject.GetComponent<WriteToCSV>().Save(finalData);
             finalData = new List<string[]>();
             Destroy(collision.gameObject);
-            
+            Resources.UnloadUnusedAssets();
+            GC.Collect(); 
             CreateObjects();            
         }           
 	}   

@@ -57,10 +57,16 @@ public class Teleport : MonoBehaviour
             countdown2.gameObject.SetActive(true);
             countTimer = 2;
             ButtonPressedGlobal = 2;
-            countdownOnce = true;
-            yield return new WaitForSeconds(2);
-            FadeOut();
-            yield return new WaitForSeconds(fadeDuration);
+            countdownOnce = true;           
+            WaitForSeconds waitForTp = new WaitForSeconds(2);
+            yield return waitForTp;
+            WaitForSeconds waitFadeDuration = new WaitForSeconds(fadeDuration);
+            WaitForSeconds waitPromptToAppear = new WaitForSeconds(0.5f);
+
+            Debug.Log("Started fadeout at timestamp : " + Time.time);
+            FadeOut();            
+            yield return  waitFadeDuration;
+            Debug.Log("Finished fadeout at timestamp : " + Time.time);
             this.enabled = false;
 
             this.transform.position = new Vector3(-0.7f, this.transform.position.y, this.transform.position.z);
@@ -72,13 +78,15 @@ public class Teleport : MonoBehaviour
             //cameraRig.transform.position = TeleportPoint1.transform.position;
             //cameraRig.transform.position += new Vector3(-2.957f, 0, 0);
             buttonPole2.SetActive(false);
+            Debug.Log("Started fadein at timestamp : " + Time.time);
             FadeIn();
-            yield return new WaitForSeconds(fadeDuration);
-           
+            yield return waitFadeDuration;
+            Debug.Log("Finished fadein at timestamp : " + Time.time);
+
             if (GameObject.Find("PromptTrigger1").gameObject.GetComponent<AppearPrompt>().promptsAppearing == true)
             {
                 Debug.Log("Started Coroutine at timestamp : " + Time.time);
-                StartCoroutine(WaitForRealSeconds(0.5f));
+                yield return waitPromptToAppear;
                 Debug.Log("Finished Coroutine at timestamp : " + Time.time);
                 promptCanvas.gameObject.GetComponent<QuestionsController>().AppearPromptOnScreen("PromptTrigger1");
                 GameObject.Find("PromptTrigger1").gameObject.GetComponent<AppearPrompt>().promptsAppearing = false;
@@ -92,9 +100,14 @@ public class Teleport : MonoBehaviour
             countTimer = 2;
             ButtonPressedGlobal = 1;
             countdownOnce = true;
-            yield return new WaitForSeconds(2);
+            WaitForSeconds waitForTp = new WaitForSeconds(2);
+            yield return waitForTp;
+            WaitForSeconds waitFadeDuration = new WaitForSeconds(fadeDuration);
+            WaitForSeconds waitPromptToAppear = new WaitForSeconds(0.5f);
+            Debug.Log("Started fadeout at timestamp : " + Time.time);
             FadeOut();
-            yield return new WaitForSeconds(fadeDuration);
+            yield return waitFadeDuration;
+            Debug.Log("Finished fadeout at timestamp : " + Time.time);
             this.enabled = false;
             this.transform.position = new Vector3(0.7f, this.transform.position.y, this.transform.position.z);
             var ceaOffset = new Vector3(centerEyeAnchor.transform.localPosition.x, 0, centerEyeAnchor.transform.localPosition.z);
@@ -108,13 +121,15 @@ public class Teleport : MonoBehaviour
             //cameraRig.transform.position = TeleportPoint2.transform.position;
             //this.transform.position += new Vector3(3.1f, 0, 0);
             buttonPole1.SetActive(false);
+            Debug.Log("Started fadein at timestamp : " + Time.time);
             FadeIn();
-            yield return new WaitForSeconds(fadeDuration);
-            
+            yield return waitFadeDuration;
+            Debug.Log("Finished fadein at timestamp : " + Time.time);
+
             if (GameObject.Find("PromptTrigger2").gameObject.GetComponent<AppearPrompt>().promptsAppearing == true)
             {
                 Debug.Log("Started Coroutine at timestamp : " + Time.time);
-                StartCoroutine(WaitForRealSeconds(0.5f));
+                yield return waitPromptToAppear;
                 Debug.Log("Finished Coroutine at timestamp : " + Time.time);
                 promptCanvas.gameObject.GetComponent<QuestionsController>().AppearPromptOnScreen("PromptTrigger2");
                 GameObject.Find("PromptTrigger2").gameObject.GetComponent<AppearPrompt>().promptsAppearing = false;
