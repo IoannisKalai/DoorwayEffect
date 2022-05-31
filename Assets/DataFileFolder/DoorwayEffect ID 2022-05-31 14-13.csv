@@ -1,0 +1,7 @@
+Participant,Technique,Trial,Condition,Prompt Number,Associated,Response,Response Time (ms),Prompt Time (ms),Travel Time (ms),Object Collection Time (ms),Objects In Box
+,T,1,ND,1,0,0,1058,3606,10566,2143, yellow star+green cylinder+red disk+black pyramid+grey ball+orange wedge+
+,T,1,ND,2,1,1,445,3606,10566,2143, yellow star+green cylinder+red disk+black pyramid+grey ball+orange wedge+
+,T,1,ND,3,1,1,306,3606,10566,2143, yellow star+green cylinder+red disk+black pyramid+grey ball+orange wedge+
+,T,1,ND,4,0,1,110,3606,10566,2143, yellow star+green cylinder+red disk+black pyramid+grey ball+orange wedge+
+,T,1,ND,5,1,1,208,3606,10566,2143, yellow star+green cylinder+red disk+black pyramid+grey ball+orange wedge+
+,T,1,ND,6,1,1,27,3606,10566,2143, yellow star+green cylinder+red disk+black pyramid+grey ball+orange wedge+

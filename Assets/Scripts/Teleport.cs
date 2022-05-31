@@ -83,7 +83,7 @@ public class Teleport : MonoBehaviour
 
             if (GameObject.Find("PromptTrigger1").gameObject.GetComponent<AppearPrompt>().promptsAppearing == true)
             {
-                StartCoroutine(WaitForPromptAppear("PromptTrigger1"));
+                StartCoroutine(WaitForPromptAppear("PromptTrigger1"));               
             }
             isPressed = false;
         }
@@ -125,7 +125,9 @@ public class Teleport : MonoBehaviour
 
             if (GameObject.Find("PromptTrigger2").gameObject.GetComponent<AppearPrompt>().promptsAppearing == true)
             {
-                StartCoroutine(WaitForPromptAppear("PromptTrigger2"));            
+               
+                StartCoroutine(WaitForPromptAppear("PromptTrigger2"));
+              
             }
             isPressed = false;
         }
@@ -189,8 +191,10 @@ public class Teleport : MonoBehaviour
 
     public IEnumerator WaitForPromptAppear(string promptName)
     {
-        yield return new WaitForSecondsRealtime(1);
+        Debug.Log("Started appear at timestamp : " + Time.time);
+        yield return new WaitForSecondsRealtime(0.5f);
         promptCanvas.gameObject.GetComponent<QuestionsController>().AppearPromptOnScreen(promptName);
         GameObject.Find(promptName).gameObject.GetComponent<AppearPrompt>().promptsAppearing = false;
+        Debug.Log("Finished appear at timestamp : " + Time.time);
     }
 }

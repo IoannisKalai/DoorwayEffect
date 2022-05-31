@@ -1,0 +1,7 @@
+Participant,Technique,Trial,Condition,Prompt Number,Associated,Response,Response Time (ms),Prompt Time (ms),Travel Time (ms),Object Collection Time (ms),Objects In Box
+,T,1,D,1,0,0,710,3744,8463,7587, blue cylinder+black star+orange wedge+brown disk+white pyramid+grey ball+
+,T,1,D,2,1,1,333,3744,8463,7587, blue cylinder+black star+orange wedge+brown disk+white pyramid+grey ball+
+,T,1,D,3,1,0,152,3744,8463,7587, blue cylinder+black star+orange wedge+brown disk+white pyramid+grey ball+
+,T,1,D,4,0,1,124,3744,8463,7587, blue cylinder+black star+orange wedge+brown disk+white pyramid+grey ball+
+,T,1,D,5,1,0,125,3744,8463,7587, blue cylinder+black star+orange wedge+brown disk+white pyramid+grey ball+
+,T,1,D,6,1,0,166,3744,8463,7587, blue cylinder+black star+orange wedge+brown disk+white pyramid+grey ball+

@@ -1,0 +1,13 @@
+Participant,Technique,Trial,Condition,Prompt Number,Associated,Response,Response Time (ms),Prompt Time (ms),Travel Time (ms),Object Collection Time (ms),Objects In Box
+,T,1,D,1,1,1,2352,7074,12767,3955, black cross+white cube+orange cone+yellow disk+green ball+red star+
+,T,1,D,2,0,1,556,7074,12767,3955, black cross+white cube+orange cone+yellow disk+green ball+red star+
+,T,1,D,3,0,0,125,7074,12767,3955, black cross+white cube+orange cone+yellow disk+green ball+red star+
+,T,1,D,4,1,1,83,7074,12767,3955, black cross+white cube+orange cone+yellow disk+green ball+red star+
+,T,1,D,5,1,0,125,7074,12767,3955, black cross+white cube+orange cone+yellow disk+green ball+red star+
+,T,1,D,6,1,1,83,7074,12767,3955, black cross+white cube+orange cone+yellow disk+green ball+red star+
+,T,2,ND,1,0,0,389,9424,12362,2215, white cone+yellow block+orange cross+red cube+blue cylinder+pink star+
+,T,2,ND,2,1,0,139,9424,12362,2215, white cone+yellow block+orange cross+red cube+blue cylinder+pink star+
+,T,2,ND,3,0,0,27,9424,12362,2215, white cone+yellow block+orange cross+red cube+blue cylinder+pink star+
+,T,2,ND,4,1,0,139,9424,12362,2215, white cone+yellow block+orange cross+red cube+blue cylinder+pink star+
+,T,2,ND,5,1,0,14,9424,12362,2215, white cone+yellow block+orange cross+red cube+blue cylinder+pink star+
+,T,2,ND,6,1,0,166,9424,12362,2215, white cone+yellow block+orange cross+red cube+blue cylinder+pink star+

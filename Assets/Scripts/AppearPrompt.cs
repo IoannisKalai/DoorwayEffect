@@ -20,7 +20,7 @@ public class AppearPrompt : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
-        if(promptsAppearing == true)
+        if(promptsAppearing == true && (GameObject.Find("GameObject").gameObject.GetComponent<MenuController>().locomotionTechnique == "W"))
         {
 		    if(other.gameObject.name == "Box_closed(Clone)")
             {
