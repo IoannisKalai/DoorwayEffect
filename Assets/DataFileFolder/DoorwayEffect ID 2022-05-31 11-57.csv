@@ -1,0 +1,19 @@
+Participant,Technique,Trial,Condition,Prompt Number,Associated,Response,Response Time (ms),Prompt Time (ms),Travel Time (ms),Object Collection Time (ms),Objects In Box
+,T,1,ND,1,1,0,861,11361,18126,2394, red ball+blue cone+black block+pink cube+grey cross+green disk+
+,T,1,ND,2,1,0,444,11361,18126,2394, red ball+blue cone+black block+pink cube+grey cross+green disk+
+,T,1,ND,3,1,0,124,11361,18126,2394, red ball+blue cone+black block+pink cube+grey cross+green disk+
+,T,1,ND,4,0,1,306,11361,18126,2394, red ball+blue cone+black block+pink cube+grey cross+green disk+
+,T,1,ND,5,0,0,194,11361,18126,2394, red ball+blue cone+black block+pink cube+grey cross+green disk+
+,T,1,ND,6,1,0,487,11361,18126,2394, red ball+blue cone+black block+pink cube+grey cross+green disk+
+,T,2,ND,1,1,0,1601,7797,12809,2479, pink cylinder+green pyramid+black cone+white ball+brown star+grey block+
+,T,2,ND,2,0,1,236,7797,12809,2479, pink cylinder+green pyramid+black cone+white ball+brown star+grey block+
+,T,2,ND,3,1,0,166,7797,12809,2479, pink cylinder+green pyramid+black cone+white ball+brown star+grey block+
+,T,2,ND,4,1,1,97,7797,12809,2479, pink cylinder+green pyramid+black cone+white ball+brown star+grey block+
+,T,2,ND,5,0,0,125,7797,12809,2479, pink cylinder+green pyramid+black cone+white ball+brown star+grey block+
+,T,2,ND,6,1,1,97,7797,12809,2479, pink cylinder+green pyramid+black cone+white ball+brown star+grey block+
+,T,3,ND,1,1,1,792,10092,13949,3390, yellow cone+black disk+white pyramid+orange block+blue cylinder+brown wedge+
+,T,3,ND,2,1,0,97,10092,13949,3390, yellow cone+black disk+white pyramid+orange block+blue cylinder+brown wedge+
+,T,3,ND,3,0,1,111,10092,13949,3390, yellow cone+black disk+white pyramid+orange block+blue cylinder+brown wedge+
+,T,3,ND,4,1,1,83,10092,13949,3390, yellow cone+black disk+white pyramid+orange block+blue cylinder+brown wedge+
+,T,3,ND,5,0,1,125,10092,13949,3390, yellow cone+black disk+white pyramid+orange block+blue cylinder+brown wedge+
+,T,3,ND,6,1,1,55,10092,13949,3390, yellow cone+black disk+white pyramid+orange block+blue cylinder+brown wedge+

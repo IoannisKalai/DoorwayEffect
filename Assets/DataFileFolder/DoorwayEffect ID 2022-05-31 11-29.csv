@@ -1,0 +1,25 @@
+Participant,Technique,Trial,Condition,Prompt Number,Associated,Response,Response Time (ms),Prompt Time (ms),Travel Time (ms),Object Collection Time (ms),Objects In Box
+,T,1,ND,1,0,1,806,6251,9577,3341, red wedge+green cone+brown block+grey cylinder+pink star+white pyramid+
+,T,1,ND,2,1,1,83,6251,9577,3341, red wedge+green cone+brown block+grey cylinder+pink star+white pyramid+
+,T,1,ND,3,1,0,152,6251,9577,3341, red wedge+green cone+brown block+grey cylinder+pink star+white pyramid+
+,T,1,ND,4,1,0,125,6251,9577,3341, red wedge+green cone+brown block+grey cylinder+pink star+white pyramid+
+,T,1,ND,5,0,1,125,6251,9577,3341, red wedge+green cone+brown block+grey cylinder+pink star+white pyramid+
+,T,1,ND,6,1,0,124,6251,9577,3341, red wedge+green cone+brown block+grey cylinder+pink star+white pyramid+
+,T,2,ND,1,1,0,1948,6948,12322,2621, brown ball+orange cylinder+yellow pyramid+white cone+pink disk+red cube+
+,T,2,ND,2,0,0,431,6948,12322,2621, brown ball+orange cylinder+yellow pyramid+white cone+pink disk+red cube+
+,T,2,ND,3,1,1,222,6948,12322,2621, brown ball+orange cylinder+yellow pyramid+white cone+pink disk+red cube+
+,T,2,ND,4,1,1,153,6948,12322,2621, brown ball+orange cylinder+yellow pyramid+white cone+pink disk+red cube+
+,T,2,ND,5,1,1,110,6948,12322,2621, brown ball+orange cylinder+yellow pyramid+white cone+pink disk+red cube+
+,T,2,ND,6,0,1,167,6948,12322,2621, brown ball+orange cylinder+yellow pyramid+white cone+pink disk+red cube+
+,T,3,ND,1,1,1,1016,6320,11666,2501, white cube+red cross+yellow star+brown ball+grey cylinder+blue cone+
+,T,3,ND,2,1,0,180,6320,11666,2501, white cube+red cross+yellow star+brown ball+grey cylinder+blue cone+
+,T,3,ND,3,1,0,264,6320,11666,2501, white cube+red cross+yellow star+brown ball+grey cylinder+blue cone+
+,T,3,ND,4,0,0,222,6320,11666,2501, white cube+red cross+yellow star+brown ball+grey cylinder+blue cone+
+,T,3,ND,5,0,0,125,6320,11666,2501, white cube+red cross+yellow star+brown ball+grey cylinder+blue cone+
+,T,3,ND,6,1,1,166,6320,11666,2501, white cube+red cross+yellow star+brown ball+grey cylinder+blue cone+
+,T,4,D,1,1,1,1266,7073,12195,2557, yellow wedge+green cube+blue cylinder+grey disk+pink ball+red pyramid+
+,T,4,D,2,0,0,333,7073,12195,2557, yellow wedge+green cube+blue cylinder+grey disk+pink ball+red pyramid+
+,T,4,D,3,1,1,180,7073,12195,2557, yellow wedge+green cube+blue cylinder+grey disk+pink ball+red pyramid+
+,T,4,D,4,0,1,27,7073,12195,2557, yellow wedge+green cube+blue cylinder+grey disk+pink ball+red pyramid+
+,T,4,D,5,1,0,167,7073,12195,2557, yellow wedge+green cube+blue cylinder+grey disk+pink ball+red pyramid+
+,T,4,D,6,1,1,194,7073,12195,2557, yellow wedge+green cube+blue cylinder+grey disk+pink ball+red pyramid+

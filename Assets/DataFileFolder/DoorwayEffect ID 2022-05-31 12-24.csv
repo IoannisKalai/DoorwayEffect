@@ -1,0 +1,19 @@
+Participant,Technique,Trial,Condition,Prompt Number,Associated,Response,Response Time (ms),Prompt Time (ms),Travel Time (ms),Object Collection Time (ms),Objects In Box
+,T,1,ND,1,0,0,1170,4077,10076,3829, pink cross+green ball+yellow cube+blue star+black wedge+grey pyramid+
+,T,1,ND,2,0,1,331,4077,10076,3829, pink cross+green ball+yellow cube+blue star+black wedge+grey pyramid+
+,T,1,ND,3,1,0,195,4077,10076,3829, pink cross+green ball+yellow cube+blue star+black wedge+grey pyramid+
+,T,1,ND,4,1,0,208,4077,10076,3829, pink cross+green ball+yellow cube+blue star+black wedge+grey pyramid+
+,T,1,ND,5,1,0,83,4077,10076,3829, pink cross+green ball+yellow cube+blue star+black wedge+grey pyramid+
+,T,1,ND,6,1,0,278,4077,10076,3829, pink cross+green ball+yellow cube+blue star+black wedge+grey pyramid+
+,T,2,D,1,1,0,864,4747,12126,3413, grey disk+black pyramid+blue cube+yellow cross+pink cone+orange ball+
+,T,2,D,2,0,0,389,4747,12126,3413, grey disk+black pyramid+blue cube+yellow cross+pink cone+orange ball+
+,T,2,D,3,0,0,250,4747,12126,3413, grey disk+black pyramid+blue cube+yellow cross+pink cone+orange ball+
+,T,2,D,4,1,1,334,4747,12126,3413, grey disk+black pyramid+blue cube+yellow cross+pink cone+orange ball+
+,T,2,D,5,1,0,404,4747,12126,3413, grey disk+black pyramid+blue cube+yellow cross+pink cone+orange ball+
+,T,2,D,6,1,0,264,4747,12126,3413, grey disk+black pyramid+blue cube+yellow cross+pink cone+orange ball+
+,T,3,ND,1,1,0,5095,4581,13114,3556, grey star+white pyramid+pink cylinder+black ball+brown cube+red cross+
+,T,3,ND,2,1,0,361,4581,13114,3556, grey star+white pyramid+pink cylinder+black ball+brown cube+red cross+
+,T,3,ND,3,1,0,153,4581,13114,3556, grey star+white pyramid+pink cylinder+black ball+brown cube+red cross+
+,T,3,ND,4,0,0,292,4581,13114,3556, grey star+white pyramid+pink cylinder+black ball+brown cube+red cross+
+,T,3,ND,5,0,0,264,4581,13114,3556, grey star+white pyramid+pink cylinder+black ball+brown cube+red cross+
+,T,3,ND,6,1,0,306,4581,13114,3556, grey star+white pyramid+pink cylinder+black ball+brown cube+red cross+
