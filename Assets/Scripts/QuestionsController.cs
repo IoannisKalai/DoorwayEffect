@@ -122,7 +122,7 @@ public class QuestionsController : MonoBehaviour
 
     public void CreateQuestionPrompts()
     {
-        float negativePromptChance = Random.Range(0.0f, 1.0f);
+        //float negativePromptChance = Random.Range(0.0f, 1.0f);
         responseTimer.Reset();
         if(associatedPrompts.Count > 1)
         {           
