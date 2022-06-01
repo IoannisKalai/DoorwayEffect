@@ -114,10 +114,8 @@ public class WriteToCSV : MonoBehaviour
         
         #if UNITY_EDITOR
         return (Application.dataPath + "/DataFileFolder/" + fileName);
-        #elif UNITY_ANDROID
-        string appdatapath = Application.persistentDataPath;
-        appdatapath.Replace("files","");
-        return (appdatapath + fileName);
+        #elif UNITY_ANDROID        
+        return (Application.persistentDataPath + '/' + fileName);
         #endif
     }
 
