@@ -1,0 +1,7 @@
+Participant,Technique,Trial,Condition,Prompt Number,Associated,Response,Response Time (ms),Prompt Time (ms),Travel Time (ms),Object Collection Time (ms),Objects In Box
+,W,1,ND,1,0,0,584,3049,10607,4288, black pyramid+red wedge+orange block+white star+brown disk+grey cube+
+,W,1,ND,2,1,0,180,3049,10607,4288, black pyramid+red wedge+orange block+white star+brown disk+grey cube+
+,W,1,ND,3,1,1,139,3049,10607,4288, black pyramid+red wedge+orange block+white star+brown disk+grey cube+
+,W,1,ND,4,1,0,180,3049,10607,4288, black pyramid+red wedge+orange block+white star+brown disk+grey cube+
+,W,1,ND,5,0,0,41,3049,10607,4288, black pyramid+red wedge+orange block+white star+brown disk+grey cube+
+,W,1,ND,6,1,0,209,3049,10607,4288, black pyramid+red wedge+orange block+white star+brown disk+grey cube+

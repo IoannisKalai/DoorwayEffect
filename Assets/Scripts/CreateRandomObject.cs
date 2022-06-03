@@ -46,7 +46,7 @@ public class CreateRandomObject : MonoBehaviour
         buttonPole1.SetActive(false);
         if (this.gameObject.name.Equals("Table2"))
         {
-            createdObjects.Add(CreateObjects());
+            CreateObjects();
         } 
    
     }
@@ -82,7 +82,7 @@ public class CreateRandomObject : MonoBehaviour
        }
     }
 
-	GameObject CreateObjects()
+	void CreateObjects()
     {       
         int chooseItem = UnityEngine.Random.Range(0, shapes.Length);
         List<int> ItemsOnTable = new List<int>();
@@ -263,8 +263,7 @@ public class CreateRandomObject : MonoBehaviour
 
         trialNumber += 1;
 
-        GameObject.Find("PromptsCanvas").GetComponent<QuestionsController>().setBoxObject(box);       
-        return obj;         
+        GameObject.Find("PromptsCanvas").GetComponent<QuestionsController>().setBoxObject(box);                        
     }
 
     //Create new object when touching grabbed object to the opposite table. 
