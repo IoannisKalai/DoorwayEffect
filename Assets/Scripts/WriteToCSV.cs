@@ -4,7 +4,7 @@ using UnityEngine;
 using System.Text;
 using System.IO;
 using System;
-
+// Write each data entry from rowData list to a CSV file with the title being the time and date of the file creation
 public class WriteToCSV : MonoBehaviour
 {
     public List<string[]> rowData = new List<string[]>();
