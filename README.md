@@ -7,11 +7,7 @@ The “doorway effect” predicts that it is more difficult to remember recent o
 You can read our paper about the doorway effect here (insert link for Doorway Paper)
 
 ## Project Description
-The way this application works is that it generates large or small rooms in 3D space, with some randomly placed furniture in them and six random colored 3D shapes placed on a virtual table that the user must try to remember. 
-The rooms that we generate have the same dimensions with the actual room we used for the user to physically walk inside.
-The goal is to try to remember all of these colored shapes and answer accurately at some questions about them while walking or teleporting between rooms.
-The player must use the Oculus Quest 2 controllers to grab the shapes, put them inside a virtual box and then physically walk to another virtual table that is in the other side of the same room or in a different room.
-The participant must complete 40 randomly generated memory trials while we collect the data we need.
+The way this application works is that it generates large or small rooms in 3D space, with some randomly placed furniture in them and six random colored 3D shapes placed on a virtual table that the user must try to remember. The rooms that we generate have the same dimensions as the actual room we used for the user to physically walk inside. The goal is to try to remember all of these colored shapes and answer accurately some questions about them while walking or teleporting between rooms. The player must use the Oculus Quest 2 controllers to grab the shapes, put them inside a virtual box and then physically walk to another virtual table that is on the other side of the same room or in a different room. The participant must complete 40 randomly generated memory trials while we collect the data we need.
 
 ### Setup Project
 Setting up this project is fairly simple. After the application starts we have to press the right oculus joystick, enter a participant ID and then choose between two different locomotion techniques, Walking or Teleportation.
