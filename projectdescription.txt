@@ -4,8 +4,7 @@
 
 This application was created to investigate the doorway effect in Virtual Reality while using different locomotion techniques.
 For the implementation we used Unity version 2020.3.30f1 together with the Oculus Quest 2 and the latest Oculus Integration Package for Unity.
-The way that this application works is that it generates large or small rooms in 3D space, with some randomly placed furniture in them and six random colored 3D shapes placed on a virtual table
-that the user must try to remember. The rooms that we generate have the same dimensions with the actual room we used for the user to physically walk inside.
+The way that this application works is that it generates large or small rooms in 3D space, with some randomly placed furniture in them and six random colored 3D shapes placed on a virtual table that the user must try to remember. The rooms that we generate have the same dimensions with the actual room we used for the user to physically walk inside.
 The goal is to try to remember all of these colored shapes and answer accurately at some questions about them while walking or teleporting between rooms.
 The player must use the Oculus Quest 2 controllers to grab the shapes, put them inside a virtual box and then physically walk to another table that is in the other side of the same room or in a different room.
 Setting up this project is fairly simple. After starting the application we have to press the right oculus joystick, enter a participant ID and then choose between two different
